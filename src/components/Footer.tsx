@@ -8,7 +8,7 @@ import { FiPhone, FiMail } from "react-icons/fi";
 function Footer() {
   return (
     <footer className="bg-[#2c7bbd]">
-        <div className="mx-auto max-w-screen-xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
+        <div className="mx-auto max-w-screen-2xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                 <div>
                     <div className="md:flex md:items-center md:gap-12 h-[30px]">
@@ -22,7 +22,7 @@ function Footer() {
                         </a>
                     </div>
 
-                    <p className="mt-8 max-w-md text-center leading-relaxed text-white sm:max-w-xs sm:text-left text-sm">
+                    <p className="mt-16 md:mt-8 max-w-md text-center leading-relaxed text-white sm:max-w-xs sm:text-left text-sm">
                         Through community engagement workshops on neurodiversity and tailored training for parents, guardians, 
                         educators, healthcare workers, and social service providers, we equip individuals and organizations to create 
                         inclusive spaces where everyone can thrive.
@@ -163,10 +163,10 @@ function Footer() {
                         </ul>
                     </div>
 
-                    <div className="text-center sm:text-left space-y-6">
-                        <div>
+                    <div className="text-center md:text-left space-y-6">
+                        <div className="flex flex-col items-center md:items-start">
                             <p className="text-lg font-medium text-white">Stay up to date</p>
-                            <div className="relative mt-4 w-62"> 
+                            <div className="relative w-62 md:w-62 mt-4 md:mt-8">
                                 <input 
                                     type="email"
                                     className="w-full pl-4 pr-10 py-2 rounded-md text-gray-300 bg-white/10 backdrop-blur-lg text-sm" 
@@ -174,49 +174,27 @@ function Footer() {
                                 />
                                 <FiSend className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white" />
                             </div>
-                          
                         </div>
 
-                        <div className="text-sm text-white space-y-2 w-72">
-                            <p className="font-medium">Contact Us</p>
-                            <div className='flex gap-2 items-center'>
-                                <FiPhone className='bg-white/10 backdrop-blur-lg text-3xl p-1 rounded-full'/>
+                        <div className="text-sm text-white space-y-2 mx-auto md:mx-0 w-full md:w-72">
+                            <p className="font-medium text-center md:text-left">Contact Us</p>
+                            <div className='flex gap-2 items-center justify-center md:justify-start mt-2 md:mt-4'>
+                                <FiPhone className='bg-white/10 backdrop-blur-lg text-xl md:text-2xl p-1 rounded-full'/>
                                 <p>Phone: (+63) 236 6322</p>
                             </div>
-                            <div className='flex gap-2 items-center'>
-                            <FiMail className='bg-white/10 backdrop-blur-lg text-3xl p-1 rounded-full'/>
-                            <p>public@news.com</p>
+                            <div className='flex gap-2 items-center justify-center md:justify-start'>
+                                <FiMail className='bg-white/10 backdrop-blur-lg text-xl md:text-2xl p-1 rounded-full'/>
+                                <p>public@news.com</p>
                             </div>
                         </div>
-                    </div>
-
-                    
+                    </div>              
                 </div>
             </div>
 
-            <div className="mt-12 border-t border-gray-100 pt-6">
-                <div className="text-center sm:flex sm:justify-between sm:text-left">
-                    <p className="text-sm text-gray-500">
-                    <span className="block sm:inline">All rights reserved.</span>
-
-                    <a
-                        className="inline-block text-teal-600 underline transition hover:text-teal-600/75"
-                        href="#"
-                    >
-                        Terms & Conditions
-                    </a>
-
-                    <span>&middot;</span>
-
-                    <a
-                        className="inline-block text-teal-600 underline transition hover:text-teal-600/75"
-                        href="#"
-                    >
-                        Privacy Policy
-                    </a>
+            <div className="mt-12 border-t border-gray-400 pt-6">
+                <div className="text-center ">
+                    <p className="text-sm text-white"> Copyright &copy; 2025 Phebean Neurodiversity support. All rights reserved
                     </p>
-
-                    <p className="mt-4 text-sm text-gray-500 sm:order-first sm:mt-0">&copy; 2022 Company Name</p>
                 </div>
             </div>
         </div>

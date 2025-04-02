@@ -19,7 +19,7 @@ function Header() {
     const pathname = usePathname();
 
   return (
-    <header className="bg-">
+    <header className="fixed w-full top-0 left-0 right-0 z-50 bg-white shadow-sm">
         <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex h-16 items-center justify-between">
                 <div className="md:flex md:items-center md:gap-12">
@@ -73,7 +73,7 @@ function Header() {
 
                     <div className="block md:hidden">
                         <button
-                            className="rounded-sm bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75"
+                            className="rounded-sm bg-blue-100 p-2 text-gray-600 transition hover:text-gray-600/75"
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         >
                             <svg
