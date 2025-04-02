@@ -19,8 +19,8 @@ function Header() {
     const pathname = usePathname();
 
   return (
-    <header className="fixed w-full top-0 left-0 right-0 z-50 bg-white shadow-sm">
-        <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 py-4">
+    <header className="fixed w-full top-0 left-0 right-0 z-50 bg-transparent px-40">
+        <div className="mx-auto max-w-screen-3xl px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex h-16 items-center justify-between">
                 <div className="md:flex md:items-center md:gap-12">
                     <a className="block text-teal-600" href="#">
@@ -63,7 +63,7 @@ function Header() {
 
                         <div className="hidden sm:flex">
                             <a
-                            className="rounded-full outline px-10 py-3.5 text-sm font-medium text-white"
+                            className="rounded-full outline border border-white px-10 py-3.5 text-sm font-medium text-white"
                             href="#"
                             >
                             Get in Touch

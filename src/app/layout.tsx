@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Poppins } from "next/font/google"; 
+import { Montserrat } from "next/font/google"; 
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const poppins = Poppins({
+const poppins = Montserrat({
   weight: ["400", "500", "600", "700"], 
   subsets: ["latin"],
   variable: "--font-poppins", 
