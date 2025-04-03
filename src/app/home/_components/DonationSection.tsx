@@ -1,0 +1,39 @@
+import React from 'react';
+
+function DonateSection() {
+  return (
+    <div className="relative  px-4 sm:px-6 lg:px-8 overflow-hidden py-20 mt-20">
+      {/* Background image*/}
+      <div className="absolute inset-0 -z-10">
+        <img 
+          src="/image/donatSection-image.jpeg" 
+          className="h-full w-full object-cover"
+          alt="Donation background"
+        />
+        {/* Overlay */}
+        {/* <div className="absolute inset-0 bg-white/20"></div> */}
+      </div>
+
+        <div className='max-w-screen-2xl mx-auto '>
+            <div className="relative z-10 text-center max-w-3xl mx-auto p-6 inset-0 bg-white/80">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#F9AE40] mb-6">DONATE HERE!</h2>
+                
+                <p className="text-lg md:text-xl text-white mb-6 leading-relaxed">
+                Your Financial Contributions to our Programs and services are pivotal to providing support and assistance
+                to people with neurodiversity.
+                </p>
+                
+                <p className="text-lg md:text-xl text-white mb-10 leading-relaxed">
+                Join our amazing donors and use your finances and other resources to make the world a better place.
+                </p>
+
+                <button className="bg-[#2c7bbd] hover:bg-[#1e5a9a] text-white font-bold py-4 px-10 rounded-full text-lg transition-colors duration-300">
+                MAKE A DONATION
+                </button>
+            </div>
+        </div>
+    </div>
+  );
+}
+
+export default DonateSection;
