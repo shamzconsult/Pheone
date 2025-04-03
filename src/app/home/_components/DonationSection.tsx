@@ -2,7 +2,7 @@ import React from 'react';
 
 function DonateSection() {
   return (
-    <div className="relative  px-4 sm:px-6 lg:px-8 overflow-hidden py-20 mt-20">
+    <div className="relative  px-4 sm:px-6 lg:px-8 overflow-hidden py-20 mt-20 mb-20">
       {/* Background image*/}
       <div className="absolute inset-0 -z-10">
         <img 
