@@ -32,12 +32,12 @@ function CoreValues() {
 
                 <div className="grid md:grid-cols-2 gap-8 mb-12">
                     {/* All your core value boxes remain exactly the same */}
-                    <div className="bg-white">
-                        <div className='flex border-l-2 border-l-[#2c7bbd] shadow-xl '>
+                    <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
+                        <div className='flex border-l-2 border-l-[#2c7bbd] shadow-xl'>
                         <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> <span className='font-bold text-[#2c7bbd]'>Inclusion-</span> We embrace and celebrate neurodiversity, ensuring that every individual feels valued, understood, and supported.</h3>
                         </div>
                     </div>
-                    <div className="bg-white">
+                    <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
                         <div className='flex border-l-2 shadow-xl '>
                             <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> 
                                 <span className='font-bold text-[#BF232E]'>Empowerment-</span> 
@@ -45,7 +45,7 @@ function CoreValues() {
                             </h3>
                         </div>
                     </div>
-                    <div className="bg-white">
+                    <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
                         <div className='flex border-l-2 shadow-xl '>
                             <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> 
                                 <span className='font-bold text-[#6AA541]'>Advocacy-</span> 
@@ -53,7 +53,7 @@ function CoreValues() {
                             </h3>
                         </div>
                     </div>
-                    <div className="bg-white">
+                    <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
                         <div className='flex border-l-2 shadow-xl '>
                             <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> 
                                 <span className='font-bold text-[#F9AE40]'>Innovation-</span> 
@@ -61,7 +61,7 @@ function CoreValues() {
                             </h3>
                         </div>
                     </div>
-                    <div className="bg-white">
+                    <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
                         <div className='flex border-l-2 shadow-xl '>
                             <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> 
                                 <span className='font-bold text-[#BF232E]'>Compassion-</span> 
@@ -69,7 +69,7 @@ function CoreValues() {
                             </h3>
                         </div>
                     </div>
-                    <div className="bg-white">
+                    <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
                         <div className='flex border-l-2 shadow-xl '>
                             <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> 
                                 <span className='font-bold text-[#1F75BB]'>Professionalism-</span> 
@@ -77,7 +77,7 @@ function CoreValues() {
                             </h3>
                         </div>
                     </div>
-                    <div className="bg-white">
+                    <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
                         <div className='flex border-l-2 shadow-xl '>
                             <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> 
                                 <span className='font-bold text-[#F9AE40]'>Community Intervention-</span> 
