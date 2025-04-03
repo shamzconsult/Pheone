@@ -2,7 +2,7 @@ import React from 'react'
 
 function WhyChooseUs() {
   return (
-    <div className='relative  overflow-hidden'>
+    <div className='relative  overflow-hidden h-[800] '>
 
         {/* Side background */}
         <div className="absolute left-0 top-0 h-full w-[30%] max-w-[500px] -z-10">
