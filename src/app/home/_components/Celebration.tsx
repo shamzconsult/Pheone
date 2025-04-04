@@ -12,7 +12,7 @@ function Celebration() {
                   className='w-full h-auto  mx-auto'
                 />
             </div>
-            <div className='w-full lg:w-1/2 md:mt-6 lg:mt-0 text-center md:text-left md:max-w-3xl leading-relaxed'>
+            <div className='w-full lg:w-1/2 md:mt-6 lg:mt-0 text-center md:text-left md:max-w-3xl leading-relaxed p-2 md:p-0'>
                 <h1 className='text-2xl md:text-4xl lg:text-2xl 2xl:text-4xl text-white font-bold mb-6'>
                     Celebrating Abilities, Empowering Lives
                 </h1>

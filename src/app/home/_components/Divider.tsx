@@ -2,7 +2,7 @@ import React from 'react'
 
 function Divider() {
   return (
-    <div className=''>
+    <div className='mt-20 md:mt-0'>
         <span className="flex items-center">
         <span className="h-px flex-1 bg-[#2c7bbd]"></span>
 
