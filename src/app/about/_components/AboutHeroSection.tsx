@@ -13,7 +13,7 @@ function AboutHeroSection() {
       </div>
 
       {/* Right Blue Shape */}
-      <div className="absolute hidden lg:block right-0 top-0 h-full lg:h-[800] lg:max-w-[500px] w-full max-w-[300px] 2xl:max-w-[700px] -z-10">
+      <div className="absolute hidden lg:block right-0 top-0 h-full lg:h-[700] 2xl:h-[800] lg:max-w-[500px] w-full max-w-[300px] 2xl:max-w-[700px] -z-10">
         <img 
           src="/image/Rectangle 40.png" 
           className="h-[600px] lg:h-full w-full object-cover object-right"
