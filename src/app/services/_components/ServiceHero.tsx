@@ -3,9 +3,9 @@
 import React, { useState } from 'react'
 
 function ServiceHero() {
-     const [expandedSections, setExpandedSections] = useState({});
+     const [expandedSections, setExpandedSections] = useState<Record<number, boolean>>({});
     
-    const toggleSection = (index) => {
+    const toggleSection = (index: number) => {
         setExpandedSections(prev => ({
         ...prev,
         [index]: !prev[index]
@@ -89,7 +89,7 @@ function ServiceHero() {
             />
         </div>
 
-        <div className='max-w-screen-xl mx-auto mt-32'>
+        <div className='max-w-screen-xl mx-auto mt-32 p-2 md:p-10'>
             <div className='text-center'>
                 <h1 className='text-xl font-bold mt-6 text-white bg-[#2c7bbd] mb-6 inline-block p-2 px-10 rounded-full'>OUR SERVICES</h1>
                 <h2 className='text-3xl mb-4 font-semibold tracking-wide'>Get a comprehensive Individualized Support</h2>
@@ -106,12 +106,12 @@ function ServiceHero() {
                           className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden transition-all duration-300"
                           >
                           <div 
-                              className="flex justify-between items-center p-6 px-6 cursor-pointer hover:bg-gray-50"
+                              className="flex justify-between items-center p-2 xl:p-6 px-6 cursor-pointer hover:bg-gray-50"
                               onClick={() => toggleSection(index)}
                           >
                               <h2 className={`lg:text-lg text-md font-semibold text-left text-[#2c7bbd] ${obj.titleColor}`}>{obj.title}</h2>
                               <span className="text-[#2c7bbd] text-2xl font-bold">
-                              {expandedSections[index] ? '−' : '+'}
+                                {expandedSections[index] ? '−' : '+'}
                               </span>
                           </div>
 

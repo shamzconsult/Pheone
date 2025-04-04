@@ -3,9 +3,9 @@
 import React, { useState } from 'react'
 
 function OurObjectives() {
-    const [expandedSections, setExpandedSections] = useState({});
+    const [expandedSections, setExpandedSections] = useState<Record<number, boolean>>({});
 
-    const toggleSection = (index) => {
+    const toggleSection = (index: number) => {
       setExpandedSections(prev => ({
         ...prev,
         [index]: !prev[index]
