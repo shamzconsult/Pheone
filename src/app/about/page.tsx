@@ -3,6 +3,8 @@ import AboutHeroSection from './_components/AboutHeroSection'
 import Operation from './_components/Operation'
 // import Objectives from './_components/Objectives'
 import OurObjectives from './_components/OurObjectives'
+import Divider from '../home/_components/Divider'
+import Members from './_components/Members'
 
 function page() {
   return (
@@ -11,6 +13,8 @@ function page() {
         <Operation/>
         {/* <Objectives/> */}
         <OurObjectives/>
+        <Divider/>
+        <Members/>
     </div>
   )
 }
