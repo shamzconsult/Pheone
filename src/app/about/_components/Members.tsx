@@ -3,6 +3,7 @@ import React from 'react'
 function Members() {
   return (
     <div >
+       
         <div className='max-w-screen-2xl mx-auto'>
             <div className='text-center mt-20'>
                 <h1 className='text-xl mt-6 text-white bg-[#2c7bbd] mb-6 inline-block p-2 px-10 rounded-full'>GET TO KNOW US</h1>
@@ -12,6 +13,14 @@ function Members() {
 
                 {/* Container for Member's section */}
                 <div className='p-6'>
+                    {/* Blue background */}
+                    <div className="absolute right-0 top- h-full w-[30%] max-w-[500px] -z-10">
+                        <img 
+                        src="/image/Group 3.png" 
+                        className="h-full w-full object-cover object-left"
+                        alt="Decorative blue background"
+                        />
+                    </div>
                     {/* Individual Member, Member 1 */}
                     <div className='md:flex md:gap-10 lg:gap-20 items-center'>
                         <div className='md:w-5/12 shadow-2xl mb-2 rounded-2xl'>
@@ -27,6 +36,15 @@ function Members() {
                                 Committed to supporting families and vulnerable individuals, she studies Applied Behavior Analysis to break barriers to quality education and foster inclusion.
                             </p>
                         </div>
+                    </div>
+
+                     {/* Side background */}
+                     <div className="absolute left-0 top- h-full w-[30%] max-w-[500px] -z-10">
+                        <img 
+                        src="/image/Group 1000001761.png"
+                        className="h-full w-full object-cover object-right"
+                        alt="Decorative blue background"
+                        />
                     </div>
 
                     {/* Member 2 */}
