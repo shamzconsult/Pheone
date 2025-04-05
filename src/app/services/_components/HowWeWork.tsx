@@ -2,7 +2,7 @@ import React from 'react'
 
 function HowWeWork() {
   return (
-    <div>
+    <div className='py-20'>
         <div className='max-w-screen-2xl mx-auto'>
             <div className='text-center'>
                 <h1 className='text-xl font-semibold text-white bg-[#2c7bbd] mb-6 inline-block py-2 px-8 rounded-full'>

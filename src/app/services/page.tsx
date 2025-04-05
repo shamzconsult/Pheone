@@ -4,6 +4,9 @@ import Objectives from './_components/Objectives'
 import Exploits from './_components/Exploits'
 import FuturePlan from './_components/FuturePlan'
 import HowWeWork from './_components/HowWeWork'
+import Divider from '../home/_components/Divider'
+import DonateSection from '../home/_components/DonationSection'
+import GrowImage from './_components/GrowImage'
 
 function page() {
   return (
@@ -13,6 +16,9 @@ function page() {
         <Exploits/>
         <FuturePlan/>
         <HowWeWork/>
+        <Divider/>
+        <DonateSection/>
+        <GrowImage/>
     </div>
   )
 }

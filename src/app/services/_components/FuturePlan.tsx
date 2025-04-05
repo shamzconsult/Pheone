@@ -29,7 +29,7 @@ function FuturePlan() {
   ];
 
   return (
-    <div className='mt-20 mb-20 px-4 sm:px-6 lg:px-8'>
+    <div className='mt-28 mb-20 px-4 sm:px-6 lg:px-8'>
         {/* Blue background */}
         <div className="absolute right-0 top- h-full w-[30%] max-w-[500px] -z-10">
             <img 
