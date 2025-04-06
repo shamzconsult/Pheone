@@ -9,8 +9,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { IoMdCheckmark } from "react-icons/io";
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
 
 
 function HomePage() {
