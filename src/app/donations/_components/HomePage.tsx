@@ -8,6 +8,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { IoMdCheckmark } from "react-icons/io";
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+
 
 function HomePage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -19,7 +23,8 @@ function HomePage() {
   });
   const [paymentMethod, setPaymentMethod] = useState('');
   const [showSuccess, setShowSuccess] = useState(false);
-  const [showCardModal, setShowCardModal] = useState(false)
+  const [showCardModal, setShowCardModal] = useState(false);
+  const [showSuccessPage, setShowSuccessPage] = useState(false);
   const [cardDetails, setCardDetails] = useState({
     cardName: '',
     cardNumber: '',
@@ -28,7 +33,7 @@ function HomePage() {
   });
 
   const handleNextStep = () => {
-    if (currentStep < 3) setCurrentStep(currentStep + 1);
+    if (currentStep < 4) setCurrentStep(currentStep + 1);
   };
 
   const handlePrevStep = () => {
@@ -45,112 +50,182 @@ function HomePage() {
     setCardDetails(prev => ({ ...prev, [name]: value }));
   };
 
-  const handlePaymentMethodSelect = (method) => {
+  const handlePaymentMethodSelect = (method: string) => {
     setPaymentMethod(method);
-    if (method === 'card') {
-      setShowCardModal(true);
-    }
+    // if (method === 'card') {
+    //   setShowCardModal(true);
+    // }
+    handleNextStep()
   }
 
   const handleCompleteDonation = () => {
-    setShowSuccess(true);
     setShowCardModal(false);
+    setShowSuccess(false);
+    setShowSuccessPage(true);
+    
+    
   };
 
+  const SuccessPage = () => (
+    <div className='relative py-40 flex flex-col'>
+      <div className="flex-grow bg-white flex flex-col items-center justify-center p-6 text-center relative">
+        <div className=''>
+          <div className="absolute left-0 top- h-full w-full -z-10 overflow-hidden">
+            <img 
+              src="/image/Polygon 1.png" 
+              className="h-full w-auto object-cover object-left"
+              alt="Decorative blue shape"
+            />
+            <img 
+              src="/image/Rectangle 40.png" 
+              className="absolute right-0 top- h-full w-auto object-cover object-right hidden lg:block"
+              alt="Decorative blue shape"
+            />
+          </div>
+        </div>
+  
+        {/* Success content */}
+        <div className="max-w-md mx-auto z-10">
+          <div className='gap-4 px-4 items-center mb-10 inline-flex p-1 rounded-full bg-[#2c7bbd]'>
+            <IoMdCheckmark className='text-[#2c7bbd] text-2xl rounded-full bg-white p-1'/>
+            <p className='text-white'>SUCCESS!</p>
+          </div>
+          <h3 className="text-2xl font-bold text-[#2c7bbd] mb-4">Hey {donorInfo.firstName}, Thanks for your donation!</h3>
+          <p className="text-gray-700 mb-6">
+            {donorInfo.firstName}, your contribution means a lot and will be put to good use in making a difference. 
+            We have sent your donation receipt to <span className='font-semibold'>{donorInfo.email}</span> 
+          </p>
+          <button
+            onClick={() => {
+              setShowSuccessPage(false);
+              // Reset all form states
+              setCurrentStep(1);
+              setDonationAmount('');
+              setDonorInfo({ firstName: '', lastName: '', email: '' });
+              setPaymentMethod('');
+              setCardDetails({ cardName: '', cardNumber: '', expiry: '', cvv: '' });
+            }}
+            className="bg-[#2c7bbd] text-white py-2 rounded-full px-16"
+          >
+            OKAY
+          </button>
+        </div>
+      </div>
+      {/* <Footer  /> */}
+    </div>
+  );
+  
   
 
 
-  const renderPaymentMethodContent = () => {
-    if (paymentMethod === 'card') {
-      return (
-        <div className="space-y-4 mt-4">
-          <h4 className="font-medium">Card Details</h4>
-          <p className="text-sm text-gray-600">Enter your debit card details to complete payment</p>
-          
-          <div className="flex gap-2 mb-4">
-            <span className="p-2 border rounded">VISA</span>
-            <span className="p-2 border rounded">Mastercard</span>
-            <span className="p-2 border rounded">Stripe</span>
-          </div>
-          
-          <div className="space-y-3">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Cardholder's Name</label>
-              <input
-                type="text"
-                name="cardName"
-                value={cardDetails.cardName}
-                onChange={handleCardDetailsChange}
-                className="w-full p-3 border border-gray-300 rounded-lg"
-                placeholder="Enter name on your card"
-              />
+  const renderCardModal = () => (
+    <Dialog open={showCardModal} onOpenChange={setShowCardModal}>
+      <DialogContent className="max-w-md">
+        <DialogHeader>
+          <DialogTitle className="text-center mb-6">Enter Card Details</DialogTitle>
+          <div className="space-y-4">
+            <div className="flex gap-2 mb-4">
+              <span className="p-2 border rounded">VISA</span>
+              <span className="p-2 border rounded">Mastercard</span>
+              <span className="p-2 border rounded">Stripe</span>
             </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
-              <input
-                type="text"
-                name="cardNumber"
-                value={cardDetails.cardNumber}
-                onChange={handleCardDetailsChange}
-                className="w-full p-3 border border-gray-300 rounded-lg"
-                placeholder="Enter card number seen on the card"
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
+            
+            <div className="space-y-3">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Expiry</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Cardholder&apos;s Name</label>
                 <input
                   type="text"
-                  name="expiry"
-                  value={cardDetails.expiry}
+                  name="cardName"
+                  value={cardDetails.cardName}
                   onChange={handleCardDetailsChange}
                   className="w-full p-3 border border-gray-300 rounded-lg"
-                  placeholder="MM/YY"
+                  placeholder="Enter name on your card"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">CVV</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
                 <input
                   type="text"
-                  name="cvv"
-                  value={cardDetails.cvv}
+                  name="cardNumber"
+                  value={cardDetails.cardNumber}
                   onChange={handleCardDetailsChange}
                   className="w-full p-3 border border-gray-300 rounded-lg"
-                  placeholder="123"
+                  placeholder="Enter card number"
                 />
               </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Expiry</label>
+                  <input
+                    type="text"
+                    name="expiry"
+                    value={cardDetails.expiry}
+                    onChange={handleCardDetailsChange}
+                    className="w-full p-3 border border-gray-300 rounded-lg"
+                    placeholder="MM/YY"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">CVV</label>
+                  <input
+                    type="text"
+                    name="cvv"
+                    value={cardDetails.cvv}
+                    onChange={handleCardDetailsChange}
+                    className="w-full p-3 border border-gray-300 rounded-lg"
+                    placeholder="123"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-between mt-6">
+              <button
+                onClick={() => setShowCardModal(false)}
+                className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
+              >
+                Back
+              </button>
+              <button
+                onClick={handleCompleteDonation}
+                disabled={!cardDetails.cardName || !cardDetails.cardNumber || !cardDetails.expiry || !cardDetails.cvv}
+                className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg disabled:opacity-50"
+              >
+                Pay ${donationAmount}
+              </button>
             </div>
           </div>
-        </div>
-      );
-    } else if (paymentMethod === 'offline') {
-      return (
-        <div className="space-y-4 mt-4">
-          <h4 className="font-medium">Bank Transfer Details</h4>
-          <p className="text-sm text-gray-600">Please transfer to any of these accounts:</p>
-          
-          <div className="bg-gray-50 p-4 rounded-lg">
-            <h5 className="font-medium mb-2">USD Account</h5>
-            <p className="text-sm">Bank Name: International Bank</p>
-            <p className="text-sm">Account Number: 1234567890</p>
-            <p className="text-sm">SWIFT Code: ABCDUS123</p>
-          </div>
-          
-          <div className="bg-gray-50 p-4 rounded-lg mt-3">
-            <h5 className="font-medium mb-2">NGN Account</h5>
-            <p className="text-sm">Bank Name: Local Bank</p>
-            <p className="text-sm">Account Number: 0987654321</p>
-            <p className="text-sm">Sort Code: 123456</p>
-          </div>
-          
-          <p className="text-sm text-gray-600 mt-3">
-            Please include your name as reference when making the transfer.
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+  );
+
+  const renderSuccessModal = () => (
+    <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
+      <DialogContent className="text-center max-w-md">
+        <DialogHeader>
+          <h3 className="text-2xl font-bold mb-4">Hey {donorInfo.firstName}, Thanks for your donation!</h3>
+          <p className="text-gray-700 mb-6">
+            {donorInfo.firstName}, your contribution means a lot and will be put to good use. 
+            We&apos;ve sent your receipt to {donorInfo.email}
           </p>
-        </div>
-      );
-    }
-    return null;
-  };
+          <button
+            onClick={() => {
+              setShowSuccess(false);
+              setCurrentStep(1);
+              setDonationAmount('');
+              setDonorInfo({ firstName: '', lastName: '', email: '' });
+              setPaymentMethod('');
+              setCardDetails({ cardName: '', cardNumber: '', expiry: '', cvv: '' });
+            }}
+            className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg"
+          >
+            OKAY
+          </button>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+  );
 
   const renderStepContent = () => {
     if (showSuccess) {
@@ -176,6 +251,7 @@ function HomePage() {
         </div>
       );
     }
+
 
     switch (currentStep) {
       case 1:
@@ -280,133 +356,224 @@ function HomePage() {
             </div>
           </div>
         );
-      case 3:
-        return (
-          <div className="px-6">
-            <h3 className="text-sm font-semibold mb-4 text-center">How would you like to pay for your donation?</h3>
-            <div className="mb-6">
-              
-              <div className="bg-gray-100 p-4 rounded-lg mb-4">
-              <h4 className="font-semibold mb-2 text-center">Donation Summary</h4>
-                <p className="flex justify-between mb-2 p-1 text-sm">
-                  <span>Payment amount:</span>
-                  <span>${donationAmount}</span>
-                </p>
-                <p className="flex justify-between p-1 mb-2 text-sm">
-                  <span>Giving frequency:</span>
-                  <span>One-Time Donation</span>
-                </p>
-                <p className="flex justify-between p-1 text-sm">
-                  <span>Donor:</span>
-                  <span>{donorInfo.firstName} {donorInfo.lastName}</span>
-                </p>
-                <p className="flex justify-between p-1 text-sm">
-                  <span>Donation Total:</span>
-                  <span className='text-[#2c7bbd] font-semibold'>${donationAmount}</span>
-                </p>
+        case 3:
+          return (
+            <div className="px-6">
+              <h3 className="text-sm font-semibold mb-4 text-center">How would you like to pay for your donation?</h3>
+              <div className="mb-6">
+                <div className="bg-gray-100 p-4 rounded-lg mb-4">
+                  <h4 className="font-semibold mb-2 text-center">Donation Summary</h4>
+                  <p className="flex justify-between mb-2 p-1 text-sm">
+                    <span>Payment amount:</span>
+                    <span>${donationAmount}</span>
+                  </p>
+                  <p className="flex justify-between p-1 mb-2 text-sm">
+                    <span>Giving frequency:</span>
+                    <span>One-Time Donation</span>
+                  </p>
+                  <p className="flex justify-between p-1 text-sm">
+                    <span>Donor:</span>
+                    <span>{donorInfo.firstName} {donorInfo.lastName}</span>
+                  </p>
+                  <p className="flex justify-between p-1 text-sm">
+                    <span>Donation Total:</span>
+                    <span className='text-[#2c7bbd] font-semibold'>${donationAmount}</span>
+                  </p>
+                </div>
+  
+                <h4 className="font-medium mb-2">Payment Method</h4>
+                <fieldset className="space-y-3">
+                  <legend className="sr-only">Payment Method</legend>
+                  <div>
+                    <label
+                      htmlFor="payWithCard"
+                      className={`flex items-center justify-between gap-4 p-3 text-sm font-medium transition-colors hover:bg-gray-50 hover:border-l-[#2c7bbd] hover:border-l-2 ${
+                        paymentMethod === 'card' ? 'border-l-[#2c7bbd] border-l-2 bg-gray-50' : 'bg-white'
+                      }`}
+                    >
+                      <div>
+                        <p className="text-gray-900">Pay Using Card</p>
+                      </div>
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="card"
+                        id="payWithCard"
+                        className="size-5 border-gray-300"
+                        checked={paymentMethod === 'card'}
+                        onChange={() => handlePaymentMethodSelect('card')}
+                      />
+                    </label>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="payOffline"
+                      className={`flex items-center justify-between gap-4 p-3 text-sm font-medium transition-colors hover:bg-gray-50 hover:border-l-[#2c7bbd] hover:border-l-2 ${
+                        paymentMethod === 'offline' ? 'border-l-[#2c7bbd] border-l-2 bg-gray-50' : 'bg-white'
+                      }`}
+                    >
+                      <div>
+                        <p className="text-gray-900">Pay Offline</p>
+                      </div>
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="offline"
+                        id="payOffline"
+                        className="size-5 border-gray-300"
+                        checked={paymentMethod === 'offline'}
+                        onChange={() => handlePaymentMethodSelect('offline')}
+                      />
+                    </label>
+                  </div>
+                </fieldset>
               </div>
 
-              <h4 className="font-medium mb-2">Payment Method</h4>
-              <fieldset className="space-y-3">
-                <legend className="sr-only">Payment Method</legend>
-
-                <div>
-                  <label
-                    htmlFor="payWithCard"
-                    className={`flex items-center justify-between gap-4 p-3 text-sm font-medium transition-colors hover:bg-gray-50 hover:border-l-[#2c7bbd] hover:border-l-2 ${
-                      paymentMethod === 'card' ? 'border-blue-600 bg-blue-50 ring-1 ring-blue-600' : 'border-gray-300 bg-white'
-                    }`}
-                  >
-                    <div>
-                      <p className="text-gray-900">Pay Using Card</p>
-                      {/* <p className="text-gray-900">VISA, Mastercard, etc.</p> */}
-                    </div>
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="card"
-                      id="payWithCard"
-                      className="size-5 border-gray-300"
-                      checked={paymentMethod === 'card'}
-                      onChange={() => setPaymentMethod('card')}
-                    />
-                  </label>
+              <div className="flex justify-between">
+                <button
+                  onClick={handlePrevStep}
+                  className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
+                >
+                  Back
+                </button>
+                <button
+                  disabled
+                  className="invisible py-2 px-6"
+                >
+                  {/* Spacer */}
+                </button>
+              </div>
+            </div>
+          );
+          case 4:
+            return paymentMethod === 'card' ? (
+              <div className="px-6">
+                {/* <h3 className="text-lg font-semibold mb-4 text-center">Card Details</h3> */}
+                <p className='text-sm text-center font-semibold -mt-4 mb-4'>Enter your debit card details to complete payment</p>
+                <p className='font-semibold text-sm'>Payment methods</p>
+                <div className='flex justify-around py-6'>
+                  <img src="/image/credit-card.png" alt="" className='h-10 w-14'/>
+                  <img src="/image/credit-card (1).png" alt="" className='h-10 w-14'/>
+                  <img src="/image/credit-card (2).png" alt="" className='h-10 w-14'/>
+                  <img src="/image/credit-card (3).png" alt="" className='h-10 w-14'/>
+                  <img src="/image/credit-card (4).png" alt="" className='h-10 w-14'/>
                 </div>
-
-                <div>
-                  <label
-                    htmlFor="payOffline"
-                    className={`flex items-center justify-between gap-4 p-3 text-sm font-medium transition-colors hover:bg-gray-50 hover:border-l-[#2c7bbd] hover:border-l-2 ${
-                      paymentMethod === 'offline' ? 'border-blue-600 bg-blue-50 ring-1 ring-blue-600' : 'border-gray-300 bg-white'
-                    }`}
-                  >
-                    <div>
-                      <p className="text-gray-900">Pay Offline</p>
-                      {/* <p className="text-gray-900">Bank transfer details</p> */}
-                    </div>
+               
+                
+                <div className="space-y-3">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Cardholder&apos;s Name</label>
                     <input
-                      type="radio"
-                      name="paymentMethod"
-                      value="offline"
-                      id="payOffline"
-                      className="size-5 border-gray-300"
-                      checked={paymentMethod === 'offline'}
-                      onChange={() => setPaymentMethod('offline')}
+                      type="text"
+                      name="cardName"
+                      value={cardDetails.cardName}
+                      onChange={handleCardDetailsChange}
+                      className="w-full p-3 border border-[#2c7bbd] rounded-full"
+                      placeholder="Enter name on your card"
                     />
-                  </label>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                    <input
+                      type="text"
+                      name="cardNumber"
+                      value={cardDetails.cardNumber}
+                      onChange={handleCardDetailsChange}
+                      className="w-full p-3 border border-[#2c7bbd] rounded-full"
+                      placeholder="Enter card number"
+                    />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Expiry</label>
+                      <input
+                        type="text"
+                        name="expiry"
+                        value={cardDetails.expiry}
+                        onChange={handleCardDetailsChange}
+                        className="w-full p-3 border border-[#2c7bbd] rounded-full"
+                        placeholder="MM/YY"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">CVV</label>
+                      <input
+                        type="text"
+                        name="cvv"
+                        value={cardDetails.cvv}
+                        onChange={handleCardDetailsChange}
+                        className="w-full p-3 border border-[#2c7bbd] rounded-full"
+                        placeholder="123"
+                      />
+                    </div>
+                  </div>
                 </div>
-              </fieldset>
-              {paymentMethod && renderPaymentMethodContent()}
-            </div>
-            
-
-            <div className="flex justify-between">
-              <button
-                onClick={handlePrevStep}
-                className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
-              >
-                Back
-              </button>
-              <button
-                onClick={handleCompleteDonation}
-                disabled={!paymentMethod || (paymentMethod === 'card' && (!cardDetails.cardName || !cardDetails.cardNumber || !cardDetails.expiry || !cardDetails.cvv))}
-                className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg disabled:opacity-50"
-              >
-                Complete Donation
-              </button>
-            </div>
-          </div>
-        );
-        
-      default:
-        return null;
-      case 4: 
-      return (
-        <div>
-          {renderPaymentMethodContent()}
-          <div className="flex justify-between">
-              <button
-                onClick={handlePrevStep}
-                className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
-              >
-                Back
-              </button>
-              <button
-                onClick={handleCompleteDonation}
-                disabled={!paymentMethod || (paymentMethod === 'card' && (!cardDetails.cardName || !cardDetails.cardNumber || !cardDetails.expiry || !cardDetails.cvv))}
-                className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg disabled:opacity-50"
-              >
-                Complete Donation
-              </button>
-            </div>
-        </div>
-      )
-    }
-  };
+    
+                <div className="flex justify-between mt-6">
+                  <button
+                    onClick={handlePrevStep}
+                    className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
+                  >
+                    Back
+                  </button>
+                  <button
+                    onClick={handleCompleteDonation}
+                    disabled={!cardDetails.cardName || !cardDetails.cardNumber || !cardDetails.expiry || !cardDetails.cvv}
+                    className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg disabled:opacity-50"
+                  >
+                    Pay ${donationAmount}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="px-6">
+                <h3 className="text-lg font-semibold mb-4">Bank Transfer Details</h3>
+                <div className="space-y-4">
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h5 className="font-medium mb-2">USD Account</h5>
+                    <p className="text-sm">Bank Name: International Bank</p>
+                    <p className="text-sm">Account Number: 1234567890</p>
+                    <p className="text-sm">SWIFT Code: ABCDUS123</p>
+                  </div>
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h5 className="font-medium mb-2">NGN Account</h5>
+                    <p className="text-sm">Bank Name: Local Bank</p>
+                    <p className="text-sm">Account Number: 0987654321</p>
+                  </div>
+                  <p className="text-sm text-gray-600 mt-3">
+                    Please include your name as reference when making the transfer.
+                  </p>
+                </div>
+    
+                <div className="flex justify-between mt-6">
+                  <button
+                    onClick={handlePrevStep}
+                    className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
+                  >
+                    Back
+                  </button>
+                  <button
+                    onClick={handleCompleteDonation}
+                    className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg"
+                  >
+                    Confirm Payment
+                  </button>
+                </div>
+              </div>
+            );
+          default:
+            return null;
+        }
+      };
+    
 
 
   return (
     <div className='relative overflow-x-hidden'>
+      {showSuccessPage ? (
+      <SuccessPage />
+    ) : (
+      <>
       <div className="absolute left-0 top-64 -z-10">
         <img 
           src="/image/Polygon 1.png" 
@@ -471,7 +638,9 @@ function HomePage() {
                     {!showSuccess && (
                       <DialogTitle className='text-center mb-6'>
                         {currentStep === 1 ? 'How much would you like to donate?' : 
-                        currentStep === 2 ? "Who's Giving?" : 'Payment Details'}
+                        currentStep === 2 ? "Who's Giving?" : 
+                        currentStep === 3 ? 'Payment Method' : 
+                        'Card Details'}
                       </DialogTitle>
                     )}
                     
@@ -507,6 +676,10 @@ function HomePage() {
           </div>
         </div>
       </div>
+      {renderCardModal()}
+      {renderSuccessModal()}
+      </>
+    )}
     </div>
   );
 
