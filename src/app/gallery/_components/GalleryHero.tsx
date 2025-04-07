@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Pagination,
     PaginationContent,
@@ -33,23 +33,37 @@ const images = [
 
 function GalleryHero() {
     const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(16);
+  
+    // const [itemsPerPage, setItemsPerPage] = useState(getItemsPerPage);
 
-    const getItemsPerPage = () => {
+    
+    useEffect(() => {
+      const getItemsPerPage = () => {
         if (window.innerWidth < 768) return 4;
         if (window.innerWidth < 1024) return 9;
         return 16;
-    };
-
-    const [itemsPerPage, setItemsPerPage] = useState(getItemsPerPage);
-
-    React.useEffect(() => {
-        const handleResize = () => {
-          setItemsPerPage(getItemsPerPage());
-        };
-        
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+      };
+  
+      // Set initial value
+      setItemsPerPage(getItemsPerPage());
+  
+      const handleResize = () => {
+        setItemsPerPage(getItemsPerPage());
+      };
+  
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    // React.useEffect(() => {
+    //     const handleResize = () => {
+    //       setItemsPerPage(getItemsPerPage());
+    //     };
+        
+    //     window.addEventListener('resize', handleResize);
+    //     return () => window.removeEventListener('resize', handleResize);
+    // }, []);
 
     const totalPages = Math.ceil(images.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
