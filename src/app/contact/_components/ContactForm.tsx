@@ -50,8 +50,8 @@ function ContactForm() {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold text-center mb-6">Get In Touch With Us</h2>
+    <div className="max-w-screen-xl mx-auto p-6 bg-white">
+      <h2 className="text-2xl font-bold text-[#2c7bbd] mb-10">Get In Touch With Us</h2>
       
       {submitStatus === 'success' && (
         <div className="mb-4 p-4 bg-green-100 text-green-700 rounded">
@@ -67,8 +67,8 @@ function ContactForm() {
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name Field */}
-        <div className='flex gap-20'>
-            <div className='w-1/2'>
+        <div className='md:flex gap-20'>
+            <div className='md:w-1/2 '>
                 <label htmlFor="name" className="block text-2xl font-medium text-gray-700 mb-1">
                     Enter Your Name
                 </label>
@@ -85,7 +85,7 @@ function ContactForm() {
             </div>
 
             {/* Email Field */}
-            <div className='w-1/2'>
+            <div className='md:w-1/2 mt-6 md:mt-0'>
                 <label htmlFor="email" className="block text-2xl font-medium text-gray-700 mb-1">
                     Email Address
                 </label>
@@ -102,9 +102,9 @@ function ContactForm() {
             </div>
         </div>
 
-        <div className='flex gap-20 mt-10'>
+        <div className='md:flex gap-20 mt-10'>
             {/* Phone Field */}
-            <div className='w-1/2'>
+            <div className='md:w-1/2 mt-6 md:mt-0'>
                 <label htmlFor="phone" className="block text-2xl font-medium text-gray-700 mb-1">
                     Phone Number
                 </label>
@@ -120,7 +120,7 @@ function ContactForm() {
             </div>
 
             {/* Subject Field */}
-            <div className='w-1/2'>
+            <div className='md:w-1/2 mt-6 md:mt-0'>
                 <label htmlFor="subject" className="block text-2xl font-medium text-gray-700 mb-1">
                     Subject
                 </label>
@@ -154,15 +154,15 @@ function ContactForm() {
         </div>
 
         {/* Submit Button */}
-        <div className='inline-flex justify-center items-center'>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full bg-[#2c7bbd] text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300 disabled:opacity-50"
-          >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-          </button>
-        </div>
+        <div className="text-center">
+            <button
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-[#2c7bbd] text-white py-2 px-40 rounded-full hover:bg-blue-700 transition duration-300 disabled:opacity-50 mx-auto inline-block"
+            >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+            </button>
+            </div>
       </form>
     </div>
   );
