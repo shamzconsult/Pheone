@@ -29,6 +29,7 @@ function HomePage() {
     expiry: '',
     cvv: ''
   });
+  const [donationType, setDonationType] = useState<'one-time' | 'monthly' | 'partnership'>('one-time');
 
   const handleNextStep = () => {
     if (currentStep < 4) setCurrentStep(currentStep + 1);
@@ -50,9 +51,6 @@ function HomePage() {
 
   const handlePaymentMethodSelect = (method: string) => {
     setPaymentMethod(method);
-    // if (method === 'card') {
-    //   setShowCardModal(true);
-    // }
     handleNextStep()
   }
 
@@ -60,9 +58,25 @@ function HomePage() {
     setShowCardModal(false);
     setShowSuccess(false);
     setShowSuccessPage(true);
-    
-    
   };
+
+  const handleDonationTypeSelect = (type: 'one-time' | 'monthly' | 'partnership') => {
+    setDonationType(type);
+  };
+
+  const getFrequencyText = () => {
+    switch (donationType) {
+      case 'one-time':
+        return 'One-Time Donation';
+      case 'monthly':
+        return 'Monthly Donation';
+      case 'partnership':
+        return 'Partnership Donation';
+      default:
+        return 'One-Time Donation';
+    }
+  };
+
 
   const SuccessPage = () => (
     <div className='relative py-40 flex flex-col'>
@@ -112,9 +126,6 @@ function HomePage() {
       {/* <Footer  /> */}
     </div>
   );
-  
-  
-
 
   const renderCardModal = () => (
     <Dialog open={showCardModal} onOpenChange={setShowCardModal}>
@@ -198,6 +209,7 @@ function HomePage() {
     </Dialog>
   );
 
+
   const renderSuccessModal = () => (
     <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
       <DialogContent className="text-center max-w-md">
@@ -269,8 +281,8 @@ function HomePage() {
               {[10, 25, 50, 100, 250, 500].map(amount => (
                 <button
                   key={amount}
-                  onClick={() => setDonationAmount(amount)}
-                  className={`p-3 rounded-full border ${donationAmount === amount ? 'bg-[#2c7bbd] text-white border-blue-500' : 'border-[#2c7bbd]'}`}
+                  onClick={() => setDonationAmount(amount.toString())}
+                  className={`p-3 rounded-full border ${donationAmount === amount.toString() ? 'bg-[#2c7bbd] text-white border-blue-500' : 'border-[#2c7bbd]'}`}
                 >
                   ${amount}.00
                 </button>
@@ -367,7 +379,7 @@ function HomePage() {
                   </p>
                   <p className="flex justify-between p-1 mb-2 text-sm">
                     <span>Giving frequency:</span>
-                    <span>One-Time Donation</span>
+                    <span>{getFrequencyText()}</span>
                   </p>
                   <p className="flex justify-between p-1 text-sm">
                     <span>Donor:</span>
@@ -606,7 +618,7 @@ function HomePage() {
               <p className='font-semibold mb-4'>One-Time Donation</p>
               <p className='text-gray-500 mb-4 px-4 flex-grow'>Make a one-time contribution to support our initiatives</p>
               <Dialog>
-                <DialogTrigger className='bg-[#2c7bbd] text-white rounded-full py-2 px-6 mt-auto w-fit mx-auto'>
+                <DialogTrigger className='bg-[#2c7bbd] text-white rounded-full py-2 px-6 mt-auto w-fit mx-auto' onClick={() => handleDonationTypeSelect('one-time')}>
                   Donate Now
                 </DialogTrigger>
                 <DialogContent className='text-center max-w-md'>
@@ -655,9 +667,47 @@ function HomePage() {
               </div>
               <p className='font-semibold mb-4'>Monthly Giving</p>
               <p className='text-gray-500 mb-4 px-4 flex-grow'>Join our community of supporters with a recurring donation.</p>
-                <button className='bg-[#6AA541] text-white rounded-full py-2 px-6 mt-auto w-fit mx-auto'>
-                Give Monthly
-                </button>
+              <Dialog>
+                <DialogTrigger className='bg-[#6AA541] text-white rounded-full py-2 px-6 mt-auto w-fit mx-auto' onClick={() => handleDonationTypeSelect('monthly')}>
+                  Give Monthly
+                </DialogTrigger>
+                <DialogContent className='text-center max-w-md'>
+                  <DialogHeader>
+                    {!showSuccess && (
+                      <div className='mt-6 p-4'>
+                        <div className="relative after:absolute after:inset-x-0 after:top-1/2 after:block after:h-0.5 after:-translate-y-1/2 after:rounded-lg after:bg-gray-200">
+                          <ol className="relative z-10 flex justify-between text-sm font-medium text-black">
+                            {[1, 2, 3].map((step) => (
+                              <li key={step} className="flex items-center gap-2 bg-white p-2">
+                                <span className={`size-6 rounded-full text-center text-xs font-bold flex items-center justify-center ${
+                                  currentStep > step ? 'bg-green-500 text-white' :
+                                  currentStep === step ? 'bg-blue-600 text-white' : 'bg-gray-200'
+                                }`}>
+                                  {currentStep > step ? '✓' : step}
+                                </span>
+                                <span className="hidden sm:block text-xs">
+                                  {step === 1 ? 'Select Amount' : step === 2 ? "Who's Giving" : 'Payment'}
+                                </span>
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
+                      </div>
+                    )}
+
+                    {!showSuccess && (
+                      <DialogTitle className='text-center mb-6'>
+                        {currentStep === 1 ? 'How much would you like to donate?' : 
+                        currentStep === 2 ? "Who's Giving?" : 
+                        currentStep === 3 ? 'Payment Method' : 
+                        'Card Details'}
+                      </DialogTitle>
+                    )}
+                    
+                    {renderStepContent()}
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </div>
 
             {/* Card 3 */}
@@ -667,9 +717,47 @@ function HomePage() {
               </div>
               <p className='font-semibold mb-4'>Corporate Sponsorship</p>
               <p className='text-gray-500 mb-4 px-4 flex-grow'>Make a one-time contribution to support our initiatives</p>
-                <button className='bg-[#F9AE40] text-white rounded-full py-2 px-6 mt-auto w-fit mx-auto'>
-                Partner Now
-                </button>
+              <Dialog>
+                <DialogTrigger className='bg-[#F9AE40] text-white rounded-full py-2 px-6 mt-auto w-fit mx-auto'  onClick={() => handleDonationTypeSelect('partnership')}>
+                  Partner Now
+                </DialogTrigger>
+                <DialogContent className='text-center max-w-md'>
+                  <DialogHeader>
+                    {!showSuccess && (
+                      <div className='mt-6 p-4'>
+                        <div className="relative after:absolute after:inset-x-0 after:top-1/2 after:block after:h-0.5 after:-translate-y-1/2 after:rounded-lg after:bg-gray-200">
+                          <ol className="relative z-10 flex justify-between text-sm font-medium text-black">
+                            {[1, 2, 3].map((step) => (
+                              <li key={step} className="flex items-center gap-2 bg-white p-2">
+                                <span className={`size-6 rounded-full text-center text-xs font-bold flex items-center justify-center ${
+                                  currentStep > step ? 'bg-green-500 text-white' :
+                                  currentStep === step ? 'bg-blue-600 text-white' : 'bg-gray-200'
+                                }`}>
+                                  {currentStep > step ? '✓' : step}
+                                </span>
+                                <span className="hidden sm:block text-xs">
+                                  {step === 1 ? 'Select Amount' : step === 2 ? "Who's Giving" : 'Payment'}
+                                </span>
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
+                      </div>
+                    )}
+
+                    {!showSuccess && (
+                      <DialogTitle className='text-center mb-6'>
+                        {currentStep === 1 ? 'How much would you like to donate?' : 
+                        currentStep === 2 ? "Who's Giving?" : 
+                        currentStep === 3 ? 'Payment Method' : 
+                        'Card Details'}
+                      </DialogTitle>
+                    )}
+                    
+                    {renderStepContent()}
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
