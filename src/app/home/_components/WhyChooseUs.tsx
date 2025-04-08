@@ -49,8 +49,8 @@ function WhyChooseUs() {
                         </div>
                     </div>
                 </div>
-                <div className='mt-6 md:w-1/2 md:mt-28 xl:mt-0'>
-                <img src="/image/disabledandhere-047-1-scaled.png" alt="" />
+                <div className='mt-6 hidden md:block md:w-1/2 md:mt-28 xl:mt-0'>
+                <img src="/image/disabledandhere-047-1-scaled.png" alt=""  />
                 </div>
             </div>
         </div>

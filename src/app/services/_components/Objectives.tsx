@@ -15,9 +15,9 @@ function Objectives() {
                 <section className="overflow-hidden  sm:grid sm:grid-cols-2">
                     <div className="p-8 md:p-12 lg:px-16 lg:py-24">
                         <div className="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
-                            <div className='text-left'>
+                            <div className='text-center md:text-left'>
                                 <h1 className='text-xl font-bold mt-6 text-white bg-[#2c7bbd] mb-6 inline-block p-2 px-10 rounded-full'>OUR OBJECTIVES</h1>
-                                <p className='text-lg font-semibold text-black mb-8 max-w-4xl mx-auto leading-loose '>
+                                <p className='text-sm md:text-lg font-semibold text-black mb-8 max-w-4xl mx-auto leading-loose '>
                                     we are committed to fostering an inclusive and supportive environment for neurodivergent individuals. Our key objectives include:
                                 </p>
                             </div>

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link';
 import React from 'react'
 import { FiSend } from "react-icons/fi";
 import { FiPhone, FiMail } from "react-icons/fi";
@@ -113,28 +114,28 @@ function Footer() {
 
                         <ul className="mt-8 space-y-4 text-sm">
                             <li>
-                            <a className="text-white transition hover:text-gray-300" href="#">
+                            <Link className="text-white transition hover:text-gray-300" href="/">
                                 Home
-                            </a>
+                            </Link>
                             </li>
 
                             <li>
-                            <a className="text-white transition hover:text-gray-300" href="#">
+                            <a className="text-white transition hover:text-gray-300" href="/about">
                                 About us
                             </a>
                             </li>
 
                             <li>
-                            <a className="text-white transition hover:text-gray-300" href="#">
+                            <a className="text-white transition hover:text-gray-300" href="/services">
                                 Services
                             </a>
                             </li>
 
                             <li>
-                                <a className="text-white transition hover:text-gray-300" href="#"> Contact us </a>
+                                <a className="text-white transition hover:text-gray-300" href="/contact"> Contact us </a>
                             </li>
                             <li>
-                                <a className="text-white transition hover:text-gray-300" href="#"> Donations </a>
+                                <a className="text-white transition hover:text-gray-300" href="/donations"> Donations </a>
                             </li>
                         </ul>
                     </div>
@@ -144,13 +145,13 @@ function Footer() {
 
                         <ul className="mt-8 space-y-4 text-sm">
                             <li>
-                            <a className="text-white transition hover:text-gray-300" href="#">
+                            <a className="text-white transition hover:text-gray-300" href="/contact">
                                 Help Center
                             </a>
                             </li>
 
                             <li>
-                            <a className="text-white transition hover:text-gray-300" href="#"> Terms of Services </a>
+                            <a className="text-white transition hover:text-gray-300" href="services">Terms of Services </a>
                             </li>
 
                             <li>
@@ -180,11 +181,15 @@ function Footer() {
                             <p className="font-medium text-center md:text-left">Contact Us</p>
                             <div className='flex gap-2 items-center justify-center md:justify-start mt-2 md:mt-4'>
                                 <FiPhone className='bg-white/10 backdrop-blur-lg text-xl md:text-2xl p-1 rounded-full'/>
-                                <p>Phone: (+63) 236 6322</p>
+                                <a href="tel:+632366322" className="hover:underline">
+                                    Phone: (+63) 236 6322
+                                </a>
                             </div>
                             <div className='flex gap-2 items-center justify-center md:justify-start'>
                                 <FiMail className='bg-white/10 backdrop-blur-lg text-xl md:text-2xl p-1 rounded-full'/>
-                                <p>public@news.com</p>
+                                <a href="mailto:public@news.com" className="hover:underline">
+                                    public@news.com
+                                </a>
                             </div>
                         </div>
                     </div>              

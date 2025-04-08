@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 function DonateSection() {
@@ -27,9 +28,9 @@ function DonateSection() {
                 Join our amazing donors and use your finances and other resources to make the world a better place.
                 </p>
 
-                <button className="bg-white  text-[#F9AE40] border border-[#F9AE40] font-bold py-4 px-10 rounded-full text-lg transition-colors duration-300">
+                <Link href="/donations" className="bg-white  text-[#F9AE40] border border-[#F9AE40] font-bold py-4 px-10 rounded-full text-lg transition-colors duration-300">
                 MAKE A DONATION
-                </button>
+                </Link>
             </div>
         </div>
     </div>
