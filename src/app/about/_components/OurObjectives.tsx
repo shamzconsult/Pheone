@@ -71,7 +71,7 @@ function OurObjectives() {
       ];
 
   return (
-    <div className='max-w-screen-2xl mx-auto mt-20 md:mb-28 mb-56 relative'>
+    <div className='max-w-screen-2xl mx-auto mt-20 md:mb-28 mb-72 relative'>
         <div className='w-full  relative overflow-'>
             <div className='h-[700px]'>
                 {/* Background Image Blue color */}
@@ -96,7 +96,7 @@ function OurObjectives() {
                       {objectives.map((obj, index) => (
                           <div 
                           key={index} 
-                          className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden transition-all duration-300"
+                          className="bg-white rounded-xl self-start shadow-md border border-gray-100 overflow-hidden transition-all duration-300"
                           >
                           <div 
                               className="flex justify-between items-center p-3 px-6 cursor-pointer hover:bg-gray-50"
@@ -116,7 +116,7 @@ function OurObjectives() {
                                   {obj.items.map((item, i) => (
                                       <li key={i} className="flex items-start">
                                       {/* <span className="text-[#2c7bbd] mr-2"></span> */}
-                                      <span className="text-gray-700 text-left">{item}</span>
+                                      <span className="text-gray-700 text-left text-sm">{item}</span>
                                       </li>
                                   ))}
                                   </ul>

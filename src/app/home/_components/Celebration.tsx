@@ -21,7 +21,7 @@ function Celebration() {
                 </p>
                 <div className='text-center md:text-left'>
                     <Link 
-                      href='/' 
+                      href='/contact' 
                       className="inline-block bg-transparent md:text-2xl lg:text-xl 2xl:text-2xl text-white border-1 border-white font-bold py-1 md:py-3 px-16 rounded-full hover:bg-white hover:text-[#2c7bbd] transition-colors duration-300"
                     >
                         GET IN TOUCH

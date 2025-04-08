@@ -81,16 +81,20 @@ function HomePage() {
   const SuccessPage = () => (
     <div className='relative py-40 flex flex-col'>
       <div className="flex-grow bg-white flex flex-col items-center justify-center p-6 text-center relative">
-        <div className=''>
-          <div className="absolute left-0 top- h-full w-full -z-10 overflow-hidden">
+        <div className='relative overflow-x-hidden'>
+          <div className="absolute  left-0 top-0 h-full xl:w-[350px] xl:max-w-[400px] -z-10">
             <img 
-              src="/image/Polygon 1.png" 
-              className="h-full w-auto object-cover object-left"
+              src="/image/Group 4.png" 
+              className="h-full w-full object-cover object-left"
               alt="Decorative blue shape"
             />
+          </div>
+
+          {/* Right Blue Shape */}
+          <div className="absolute hidden lg:block right-0 top-0 h-full lg:h-[700] 2xl:h-[800] lg:max-w-[500px] w-full max-w-[300px] 2xl:max-w-[700px] -z-10">
             <img 
               src="/image/Rectangle 40.png" 
-              className="absolute right-0 top- h-full w-auto object-cover object-right hidden lg:block"
+              className="h-[600px] lg:h-full w-full object-cover object-right"
               alt="Decorative blue shape"
             />
           </div>

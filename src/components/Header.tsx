@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState, useEffect } from 'react'
 
@@ -31,7 +32,7 @@ function Header() {
             <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-4 py-4">
                 <div className="flex h-16 items-center justify-between">
                     <div className="md:flex md:items-center md:gap-12">
-                        <a className="block" href="#">
+                        <Link className="block" href="/">
                             <span className="sr-only">Home</span>
                             <Image 
                                 src='/image/Phebean_New_Logo.png' 
@@ -40,7 +41,7 @@ function Header() {
                                 height={100}
                                 className=''
                             />
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="hidden lg:block">
@@ -75,7 +76,7 @@ function Header() {
                                     ? 'border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white'
                                     : 'border border-white text-white hover:bg-white hover:text-blue-500'
                                 }`}
-                                href="#"
+                                href="/contact"
                             >
                                 Get in Touch
                             </a>

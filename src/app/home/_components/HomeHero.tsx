@@ -35,7 +35,7 @@ function HomeHero() {
             <div>
               <a
                 className="inline-block whitespace-nowrap rounded-full font-bold px-6 py-3.5 text-sm bg-[#2c7bbd] text-white md:px-10 hover:bg-[#1a5a9a] transition-colors"
-                href="#"
+                href="/contact"
               >
                 Get in Touch
               </a>
