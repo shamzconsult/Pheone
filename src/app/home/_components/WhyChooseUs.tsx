@@ -19,28 +19,28 @@ function WhyChooseUs() {
                     <h1 className='bg-[#2c7bbd] text-white text-xl rounded-full p-2 px-10 inline-block mb-6'>WHY CHOOSE US</h1>
                     <p className='font-semibold tracking-wider'>At Phebean Neurodiversity Support, we are dedicated to recognizing, valuing, and empowering every unique ability.</p>
                     <div>
-                        <div className='flex gap-6 mt-10 shadow-2xl bg-white p-4 rounded-2xl'>
+                        <div className='flex gap-6 mt-6 2xl:mt-10 shadow-2xl bg-white p-4 rounded-2xl'>
                             <img src="/image/Service.png" alt="" />
                             <div>
                                 <p className='text-[#2c7bbd] font-semibold'>Personalized Assistance</p>
                                 <p className='text-sm'>Personalized support to individual&apos;s needs.</p>
                             </div>
                         </div>
-                        <div className='flex gap-6 mt-10 shadow-2xl bg-white p-4 rounded-2xl'>
+                        <div className='flex gap-6 mt-6 2xl:mt-10 shadow-2xl bg-white p-4 rounded-2xl'>
                             <img src="/image/Accessibility Tools.png" alt="" />
                             <div>
                                 <p className='text-[#BF232E] font-semibold'>Accessibility and Inclusivity</p>
                                 <p className='text-sm'>Inclusive programs for everyone.</p>
                             </div>
                         </div>
-                        <div className='flex gap-6 mt-10 shadow-2xl bg-white p-4 rounded-2xl'>
+                        <div className='flex gap-6 mt-6 2xl:mt-10 shadow-2xl bg-white p-4 rounded-2xl'>
                             <img src="/image/Personal Growth.png" alt="" />
                             <div>
                                 <p className='text-[#6AA541] font-semibold'>Success Stories</p>
                                 <p className='text-sm'>Real transformations through our services.</p>
                             </div>
                         </div>
-                        <div className='flex gap-6 mt-10 shadow-2xl bg-white p-4 rounded-2xl'>
+                        <div className='flex gap-6 mt-6 2xl:mt-10 shadow-2xl bg-white p-4 rounded-2xl'>
                             <img src="/image/User Groups.png" alt="" />
                             <div>
                                 <p className='text-[#F9AE40] font-semibold'>Support for Marginalized Groups</p>

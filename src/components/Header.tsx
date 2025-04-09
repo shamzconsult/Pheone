@@ -29,17 +29,17 @@ function Header() {
 
     return (
         <header className={`fixed w-full top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
-            <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-4 py-4">
+            <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-4 py-2">
                 <div className="flex h-16 items-center justify-between">
                     <div className="md:flex md:items-center md:gap-12">
                         <Link className="block" href="/">
                             <span className="sr-only">Home</span>
                             <Image 
-                                src='/image/Phebean_New_Logo.png' 
+                                src='/image/Logo.png' 
                                 alt='logo' 
                                 width={200} 
                                 height={100}
-                                className=''
+                                className='h-auto max-h-[100px] w-[200px]'
                             />
                         </Link>
                     </div>

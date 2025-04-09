@@ -2,7 +2,7 @@ import React from 'react'
 import AboutHeroSection from './_components/AboutHeroSection'
 import Operation from './_components/Operation'
 import OurObjectives from './_components/OurObjectives'
-import Divider from '../home/_components/Divider'
+// import Divider from '../home/_components/Divider'
 import Members from './_components/Members'
 import LetConnect from './_components/LetConnect'
 
@@ -12,7 +12,7 @@ function page() {
         <AboutHeroSection/>
         <Operation/>
         <OurObjectives/>
-        <Divider/>
+        {/* <Divider/> */}
         <Members/>
         <LetConnect/>
     </div>

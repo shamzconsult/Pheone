@@ -17,7 +17,7 @@ function ContactHero() {
             <p className='text-xl font-semibold text-black mb-8 max-w-4xl mx-auto leading-loose tracking-wide'>
                 Reach Out For Individual Development Support
             </p>
-            </div>
+          </div>
       </div>
 
       <div className='w-full'>

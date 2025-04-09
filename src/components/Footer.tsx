@@ -12,13 +12,14 @@ function Footer() {
         <div className="mx-auto max-w-screen-2xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                 <div>
-                    <div className="md:flex md:items-center md:gap-12 h-[30px]">
-                        <a className="block text-teal-600" href="#">
+                    <div className="md:flex md:items-center md:gap-12 h-[30px] ">
+                        <a className="block text-teal-600 " href="#">
                             <Image 
-                                src='/image/Phebean_New_Logo-removebg-preview.png' 
+                                src='/image/Logo-blue.png' 
                                 alt='logo' 
                                 width={200} 
                                 height={100}
+                                className=''
                             />
                         </a>
                     </div>
