@@ -606,8 +606,8 @@ function HomePage() {
       <div className='max-w-screen-xl mx-auto mt-40 mb-40'>
         <div>
           <div className='text-center'>
-            <h1 className='text-xl font-bold mt-6 text-white bg-[#2c7bbd] mb-6 inline-block p-2 px-10 rounded-full'>Donation</h1>
-            <h2 className='text-3xl mb-4 font-semibold tracking-wide'>Support Our Mission</h2>
+            <h1 className='text-xl font-bold mt-6 text-white bg-[#2c7bbd] mb-6 inline-block p-2 px-10 rounded-full'>Support Our Mission</h1>
+            {/* <h2 className='text-3xl mb-4 font-semibold tracking-wide'>Support Our Mission</h2> */}
             <p className='text-md text-black mb-8 max-w-4xl mx-auto leading-loose'>
               Your donation helps us provide resources, education, and advocacy for neurodivergent individuals. Every contribution makes a difference!
             </p>
@@ -669,7 +669,7 @@ function HomePage() {
               <div className='flex justify-center mb-6 flex-shrink-0'>
                 <img src="/image/Donate.png" alt="" className='h-16 w-auto' />
               </div>
-              <p className='font-semibold mb-4'>Monthly Giving</p>
+              <p className='font-semibold mb-4'>Monthly Donation</p>
               <p className='text-gray-500 mb-4 px-4 flex-grow'>Join our community of supporters with a recurring donation.</p>
               <Dialog>
                 <DialogTrigger className='bg-[#6AA541] text-white rounded-full py-2 px-6 mt-auto w-fit mx-auto' onClick={() => handleDonationTypeSelect('monthly')}>

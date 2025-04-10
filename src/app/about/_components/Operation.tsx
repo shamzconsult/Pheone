@@ -33,7 +33,7 @@ const contents = [
 
 function Operation() {
   return (
-    <div className='max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20'>
+    <div className='max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-8'>
         <div className='text-center w-full mb-12 md:mb-20'>
             <h1 className='bg-[#2c7bbd] text-white inline-block p-2 px-6 rounded-full mb-6 text-sm md:text-lg font-semibold'>
                 THEMATIC OPERATIONAL AREAS
@@ -54,9 +54,10 @@ function Operation() {
                     key={index} 
                     className={`group flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative
                     before:absolute before:left-0 before:top-1 before:bottom-1 before:w-0 before:rounded-l-lg
-                    hover:before:w-0.5 ${borderColor}`}
+                    hover:before:w-0.5 ${borderColor}
+                    transform hover:-translate-y-2 hover:scale-[1.02] transition-transform duration-300 ease-in-out`}
                 >
-                    <div className='mb-6 w-12 h-12 flex items-center justify-center'>
+                    <div className='mb-6 w-12 h-12 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300'>
                     <img 
                         src={content.image} 
                         alt={content.title} 
@@ -66,7 +67,7 @@ function Operation() {
                     <h2 className={`text-xl font-bold mb-4 ${content.titleColor}`}>
                     {content.title}
                     </h2>
-                    <p className='text-gray-700 text-sm'>
+                    <p className='text-gray-700 text-sm group-hover:text-gray-900 transition-colors duration-300'>
                     {content.description}
                     </p>
                 </div>

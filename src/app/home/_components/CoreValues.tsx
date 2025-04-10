@@ -13,7 +13,7 @@ function CoreValues() {
         />
       </div>
 
-        <div className='max-w-screen-2xl mx-auto'>
+        <div className='max-w-screen-2xl mx-auto -mt-10'>
             <div className="flex flex-col xl:flex-row items-start">
                 {/* Image  */}
                 <div className="w-full px-4 xl:w-[40%] lg:px-0 lg:pr-8 xl:mt-20 flex justify-center">
@@ -34,53 +34,53 @@ function CoreValues() {
                     <div className="grid md:grid-cols-2 gap-8 mb-12">
                         {/* All your core value boxes remain exactly the same */}
                         <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
-                            <div className='flex border-l-2 border-l-[#2c7bbd] shadow-xl'>
-                            <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> <span className='font-bold text-[#2c7bbd]'>Inclusion-</span> We embrace and celebrate neurodiversity, ensuring that every individual feels valued, understood, and supported.</h3>
+                            <div className='flex border-l-2 hover:border-l-[#2c7bbd] shadow-xl'>
+                                <h3 className="text-sm tracking-wider 2xl:leading-relaxed p-1 2xl:p-3 mb-2"> <span className='font-bold text-[#2c7bbd]'>Inclusion-</span> We embrace and celebrate neurodiversity, ensuring that every individual feels valued, understood, and supported.</h3>
                             </div>
                         </div>
                         <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
-                            <div className='flex border-l-2 shadow-xl '>
-                                <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> 
+                            <div className='flex border-l-2 shadow-xl hover:border-l-[#BF232E]'>
+                                <h3 className="text-sm tracking-wider 2xl:leading-relaxed p-1 2xl:p-3 mb-2"> 
                                     <span className='font-bold text-[#BF232E]'>Empowerment-</span> 
                                     We equip neurodivergent individuals with the skills, confidence, and opportunities to thrive in all areas of life.
                                 </h3>
                             </div>
                         </div>
                         <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
-                            <div className='flex border-l-2 shadow-xl '>
-                                <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> 
+                            <div className='flex border-l-2 shadow-xl hover:border-l-[#6AA541]'>
+                                <h3 className="text-sm tracking-wider 2xl:leading-relaxed p-1 2xl:p-3 mb-2"> 
                                     <span className='font-bold text-[#6AA541]'>Advocacy-</span> 
                                     We amplify voices, challenge stigma, and drive policies that promote equal rights and opportunities for neurodiverse individuals.
                                 </h3>
                             </div>
                         </div>
                         <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
-                            <div className='flex border-l-2 shadow-xl '>
-                                <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> 
+                            <div className='flex border-l-2 shadow-xl hover:border-l-[#F9AE40]'>
+                                <h3 className="text-sm tracking-wider 2xl:leading-relaxed p-1 2xl:p-3 mb-2"> 
                                     <span className='font-bold text-[#F9AE40]'>Innovation-</span> 
                                     We adopt creative, evidence-based approaches to education, support, and community engagement for neurodivergent individuals.
                                 </h3>
                             </div>
                         </div>
                         <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
-                            <div className='flex border-l-2 shadow-xl '>
-                                <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> 
+                            <div className='flex border-l-2 shadow-xl hover:border-l-[#BF232E]'>
+                                <h3 className="text-sm tracking-wider 2xl:leading-relaxed p-1 2xl:p-3 mb-2"> 
                                     <span className='font-bold text-[#BF232E]'>Compassion-</span> 
                                     We foster an environment of kindness, patience, and understanding, ensuring that everyone receives the support they need.
                                 </h3>
                             </div>
                         </div>
                         <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
-                            <div className='flex border-l-2 shadow-xl '>
-                                <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> 
+                            <div className='flex border-l-2 shadow-xl hover:border-l-[#1F75BB]'>
+                                <h3 className="text-sm tracking-wider 2xl:leading-relaxed p-1 2xl:p-3 mb-2"> 
                                     <span className='font-bold text-[#1F75BB]'>Professionalism-</span> 
                                     We uphold the highest ethical standards, ensuring excellence, integrity, and accountability in all our services.
                                 </h3>
                             </div>
                         </div>
                         <div className="bg-white transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-lg active:scale-[1.01]">
-                            <div className='flex border-l-2 shadow-xl '>
-                                <h3 className="text-sm tracking-wider leading-relaxed p-3 mb-2"> 
+                            <div className='flex border-l-2 shadow-xl hover:border-l-[#F9AE40]'>
+                                <h3 className="text-sm tracking-wider 2xl:leading-relaxed p-1 2xl:p-3 mb-2"> 
                                     <span className='font-bold text-[#F9AE40]'>Community Intervention-</span> 
                                     We actively engage with communities to create awareness, drive systemic change, and provide inclusive support programs.
                                 </h3>

@@ -1,8 +1,9 @@
+import Link from 'next/link'
 import React from 'react'
 
 function Divider() {
   return (
-    <div className='mt-20 md:mt-0'>
+    <Link href='/contact' className='mt-20 md:mt-0 xl:-mt-28 2xl:-mt-10'>
         <span className="flex items-center">
         <span className="h-px flex-1 bg-[#2c7bbd]"></span>
 
@@ -10,7 +11,7 @@ function Divider() {
 
         <span className="h-px flex-1 bg-[#2c7bbd]"></span>
         </span>
-    </div>
+    </Link >
   )
 }
 
