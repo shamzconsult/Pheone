@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios'; 
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -164,6 +165,69 @@ function ContactForm() {
             </button>
             </div>
       </form>
+
+      <div className='max-w-screen-lg mx-auto'>
+        <div className='bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300'>
+          <h2 className='text-2xl font-bold text-[#2c7bbd] mb-6'>Get In Touch</h2>
+                  
+          <div className='space-y-4 md:flex md:gap-20'>
+            <div className='flex items-start'>
+              <div className='bg-[#2c7bbd] p-3 rounded-full text-white mr-4'>
+                <FaPhone className='text-lg' />
+              </div>
+              <div>
+                <h3 className='font-semibold text-gray-800'>Phone</h3>
+                <a href="tel:+234123456789" className='text-gray-600 hover:text-[#2c7bbd] transition-colors'>
+                  +234 123 456 789
+                </a>
+              </div>
+            </div>
+
+            <div className='flex items-start'>
+              <div className='bg-[#2c7bbd] p-3 rounded-full text-white mr-4'>
+                <FaEnvelope className='text-lg' />
+              </div>
+              <div>
+                <h3 className='font-semibold text-gray-800'>Email</h3>
+                <a href="mailto:info@phebeansupport.org" className='text-gray-600 hover:text-[#2c7bbd] transition-colors'>
+                  info@phebeansupport.org
+                </a>
+              </div>
+            </div>
+
+            <div className='flex items-start'>
+              <div className='bg-[#2c7bbd] p-3 rounded-full text-white mr-4'>
+                <FaMapMarkerAlt className='text-lg' />
+              </div>
+              <div>
+                <h3 className='font-semibold text-gray-800'>Address</h3>
+                <p className='text-gray-600'>
+                  123 Mokola Road, Ibadan, Oyo State, Nigeria
+                </p>
+              </div>
+            </div>
+          </div>
+      
+          {/* Social Media Links */}
+          <div className='mt-8 max-w-sm mx-auto'>
+            <h3 className='font-semibold text-gray-800 mb-4'>Follow Us</h3>
+            <div className='flex space-x-4 justify-between'>
+              <a href="#" className='bg-gray-100 p-3 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-colors'>
+                <FaFacebook className='text-xl' />
+              </a>
+              <a href="#" className='bg-gray-100 p-3 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-colors'>
+                <FaTwitter className='text-xl' />
+              </a>
+              <a href="#" className='bg-gray-100 p-3 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-colors'>
+                <FaInstagram className='text-xl' />
+              </a>
+              <a href="#" className='bg-gray-100 p-3 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-colors'>
+                <FaLinkedin className='text-xl' />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

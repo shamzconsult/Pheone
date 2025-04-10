@@ -44,7 +44,7 @@ function FuturePlan() {
             OUR FUTURE PLANS
           </h1>
           <p className='text-xl font-semibold text-gray-700 mb-12 max-w-3xl mx-auto leading-relaxed'>
-          we are committed to fostering an inclusive and supportive environment for neurodivergent individuals. Our key objectives include:
+          We are committed to fostering an inclusive and supportive environment for neurodivergent individuals. Our key objectives include:
           </p>
         </div>
 

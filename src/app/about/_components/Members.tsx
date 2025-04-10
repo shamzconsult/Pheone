@@ -4,7 +4,7 @@ function Members() {
   return (
     <div >
        
-        <div className='max-w-screen-2xl mx-auto'>
+        <div className='max-w-screen-xl mx-auto'>
             <div className='text-center mt-20'>
                 <h1 className='text-xl mt-6 text-white bg-[#2c7bbd] mb-6 inline-block p-2 px-10 rounded-full'>GET TO KNOW US</h1>
                 <p className='text-xl font-semibold text-black mb-8 max-w-4xl mx-auto'>
@@ -24,7 +24,7 @@ function Members() {
                     {/* Individual Member, Member 1 */}
                     <div className='md:flex md:gap-10 lg:gap-20 items-center'>
                         <div className='md:w-5/12 shadow-2xl mb-2 rounded-2xl'>
-                            <img src="/image/Haynes2-ht-ml-200731_1596206628688_hpMain_16x9_992.png" alt="" className='w-full h-[400]' />
+                            <img src="/image/Amb._Yinka_Dada_Founder-removebg-preview.png" alt="" className='w-full h-[400]' />
                             <p className='text-center text-lg font-semibold'>OLAYINKA ELIZABETH DADA</p>
                             <p className='text-center text-md py-2 font-semibold text-[#2c7bbd]'>Founder/Chief Executive Officer.</p>
                         </div>
@@ -39,13 +39,13 @@ function Members() {
                     </div>
 
                      {/* Side background */}
-                     <div className="absolute left-0 top- h-full w-[30%] max-w-[500px] -z-10">
+                     {/* <div className="absolute left-0 top- h-full w-[30%] max-w-[500px] -z-10">
                         <img 
                         src="/image/Group 1000001761.png"
                         className="h-full w-full object-cover object-right"
                         alt="Decorative blue background"
                         />
-                    </div>
+                    </div> */}
 
                     {/* Member 2 */}
                     <div className='md:flex md:gap-10 lg:gap-20 items-center'>
@@ -59,7 +59,7 @@ function Members() {
                             </p>
                         </div>
                         <div className='md:w-5/12 shadow-2xl mb-2 rounded-2xl'>
-                            <img src="/image/mature-african-american-man-walking-260nw-1911547450.png" alt="" className='w-full h-[400]' />
+                            <img src="/image/Mr_Ade_Kelani__Member__Phebean_Board_of_Trustees-removebg-preview.png" alt="" className='w-full h-[400]' />
                             <p className='text-center text-lg font-semibold'>Ade Kelani</p>
                             <p className='text-center text-md py-2 font-semibold text-[#2c7bbd]'>Board MemberProject Coordinator.</p>
                         </div>
@@ -68,7 +68,7 @@ function Members() {
                     {/* Member 3 */}
                     <div className='md:flex md:gap-10 lg:gap-20 items-center'>
                         <div className='md:w-5/12 shadow-2xl mb-2 rounded-2xl'>
-                            <img src="/image/african-american-businessman-smiling-260nw-505976194.png" alt="" className='w-full h-[400]' />
+                            <img src="/image/Mr_Opeyemi_Ogunjimi_Director__Phebean_Board_of_Trustees-removebg-preview.png" alt="" className='w-full h-[400]' />
                             <p className='text-center text-lg font-semibold'>Opeyemi Oguntomi, MBA</p>
                             <p className='text-center text-md py-2 font-semibold text-[#2c7bbd]'>Project Coordinator.</p>
                         </div>

@@ -1,6 +1,7 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface Objective {
   title: string;
@@ -11,6 +12,11 @@ interface Objective {
 
 function ServiceHero() {
   const [expandedSections, setExpandedSections] = useState<Record<number, boolean>>({});
+  const [, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const toggleSection = (index: number) => {
     setExpandedSections(prev => ({
@@ -74,67 +80,150 @@ function ServiceHero() {
     }
   ];
 
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.8 } }
+  };
+
   return (
     <div className='relative overflow-x-hidden'>
-      <div className="absolute left-0 top-64 -z-10">
+      {/* Background shapes with animation */}
+      <motion.div 
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="absolute left-0 top-64 -z-10"
+      >
         <img
           src="/image/Polygon 1.png"
           className="h-full w-full object-cover object-left"
           alt="Decorative blue shape"
         />
-      </div>
+      </motion.div>
 
-      {/* Right Blue Shape */}
-      <div className="absolute hidden lg:block right-0 top-0 h-full lg:h-[600] 2xl:h-[700] lg:max-w-[500px] w-full max-w-[300px] 2xl:max-w-[900px] -z-10">
+      <motion.div
+        initial={{ x: 100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="absolute hidden lg:block right-0 top-0 h-full lg:h-[600] 2xl:h-[700] lg:max-w-[500px] w-full max-w-[300px] 2xl:max-w-[900px] -z-10"
+      >
         <img
           src="/image/Rectangle 40.png"
           className="h-[600px] lg:h-full w-full object-cover object-right"
           alt="Decorative blue shape"
         />
-      </div>
+      </motion.div>
 
       <div className='max-w-screen-xl mx-auto mt-32 p-2 md:p-10'>
-        <div className='text-center'>
-          <h1 className='text-xl font-bold mt-6 text-white bg-[#2c7bbd] mb-6 inline-block p-2 px-10 rounded-full'>OUR SERVICES</h1>
-          <h2 className='text-3xl mb-4 font-semibold tracking-wide'>Get a comprehensive Individualized Support</h2>
-          <p className='text-md text-black mb-8 max-w-4xl mx-auto leading-loose'>
-            At Phebean Neurodiversity Support, we empower individuals with disabilities through career coaching, family support, and organizational partnerships.  We reach out to an array of individuals with neurological complications through the following services:
-          </p>
-        </div>
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          className='text-center'
+        >
+          <motion.h1 
+            whileHover={{ scale: 1.05 }}
+            className='text-xl font-bold mt-6 text-white bg-[#2c7bbd] mb-6 inline-block p-2 px-10 rounded-full'
+          >
+            OUR SERVICES
+          </motion.h1>
+          <motion.h2 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className='text-3xl mb-4 font-semibold tracking-wide'
+          >
+            Get a comprehensive Individualized Support
+          </motion.h2>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className='text-md text-black mb-8 max-w-4xl mx-auto leading-loose'
+          >
+            At Phebean Neurodiversity Support, we empower individuals with disabilities through career coaching, family support, and organizational partnerships. We reach out to an array of individuals with neurological complications through the following services:
+          </motion.p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start"
+        >
           {objectives.map((obj, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={item}
+              whileHover={{ y: -5 }}
               className="flex flex-col self-start bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden transition-all duration-300"
             >
-              <div
+              <motion.div
                 className="flex justify-between items-center p-2 xl:p-6 px-6 cursor-pointer hover:bg-gray-50"
                 onClick={() => toggleSection(index)}
+                whileHover={{ backgroundColor: 'rgba(249, 250, 251, 0.8)' }}
               >
-                <h2 className={`lg:text-lg text-md font-semibold text-left text-[#2c7bbd] ${obj.titleColor}`}>{obj.title}</h2>
-                <span className="text-[#2c7bbd] text-2xl font-bold">
+                <h2 className={`lg:text-lg text-md font-semibold text-left ${obj.titleColor}`}>
+                  {obj.title}
+                </h2>
+                <motion.span 
+                  className={`text-2xl font-bold ${obj.titleColor}`}
+                  animate={{ rotate: expandedSections[index] ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
                   {expandedSections[index] ? '−' : '+'}
-                </span>
-              </div>
+                </motion.span>
+              </motion.div>
 
-              {expandedSections[index] && (
-                <div className="px-6 pb-6 pt-0">
-                  {obj.content && <p className="text-gray-700 mb-4">{obj.content}</p>}
-                  {obj.items.length > 0 && (
-                    <ul className="space-y-2">
-                      {obj.items.map((item, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="text-gray-700 text-left text-sm">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              )}
-            </div>
+              <AnimatePresence>
+                {expandedSections[index] && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-6 pt-0">
+                      {obj.content && <p className="text-gray-700 mb-4">{obj.content}</p>}
+                      {obj.items.length > 0 && (
+                        <ul className="space-y-2">
+                          {obj.items.map((item, i) => (
+                            <motion.li 
+                              key={i} 
+                              className="flex items-start"
+                              initial={{ x: -10, opacity: 0 }}
+                              animate={{ x: 0, opacity: 1 }}
+                              transition={{ delay: i * 0.1 }}
+                            >
+                              <span className="text-gray-700 text-left text-sm">{item}</span>
+                            </motion.li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
