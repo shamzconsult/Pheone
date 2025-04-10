@@ -52,7 +52,7 @@ function ContactForm() {
 
   return (
     <div className="max-w-screen-xl mx-auto p-6 bg-white">
-      <h2 className="text-2xl font-bold text-[#2c7bbd] mb-10">Get In Touch With Us</h2>
+      <h2 className="text-2xl font-bold text-[#2c7bbd] mb-10">Send Us a Message</h2>
       
       {submitStatus === 'success' && (
         <div className="mb-4 p-4 bg-green-100 text-green-700 rounded">
@@ -166,65 +166,103 @@ function ContactForm() {
             </div>
       </form>
 
-      <div className='max-w-screen-lg mx-auto'>
-        <div className='bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300'>
-          <h2 className='text-2xl font-bold text-[#2c7bbd] mb-6'>Get In Touch</h2>
-                  
-          <div className='space-y-4 md:flex md:gap-20'>
-            <div className='flex items-start'>
-              <div className='bg-[#2c7bbd] p-3 rounded-full text-white mr-4'>
-                <FaPhone className='text-lg' />
+      <div className='max-w-screen-lg mx-auto px-4 sm:px-6 mt-10'>
+        <div className='bg-white p-8 sm:p-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100'>
+          <h2 className='text-3xl font-bold text-[#2c7bbd] mb-8 text-center'>Get In Touch</h2>
+          
+          {/* Contact Information Grid */}
+          <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-10'>
+            {/* Phone */}
+            <div 
+              className='flex flex-col items-center text-center p-6 rounded-lg bg-gray-50 hover:bg-[#f0f7ff] transition-colors duration-300 group'
+            >
+              <div className='bg-[#2c7bbd] p-4 rounded-full text-white mb-4 group-hover:scale-110 transition-transform'>
+                <FaPhone className='text-xl' />
               </div>
-              <div>
-                <h3 className='font-semibold text-gray-800'>Phone</h3>
-                <a href="tel:+234123456789" className='text-gray-600 hover:text-[#2c7bbd] transition-colors'>
-                  +234 123 456 789
-                </a>
-              </div>
+              <h3 className='font-semibold text-gray-800 text-lg mb-2'>Phone</h3>
+              <a 
+                href="tel:+234123456789" 
+                className='text-gray-600 hover:text-[#2c7bbd] transition-colors text-md font-medium'
+              >
+                +234 123 456 789
+              </a>
             </div>
 
-            <div className='flex items-start'>
-              <div className='bg-[#2c7bbd] p-3 rounded-full text-white mr-4'>
-                <FaEnvelope className='text-lg' />
+            {/* Email */}
+            <div 
+              className='flex flex-col items-center text-center p-6 rounded-lg bg-gray-50 hover:bg-[#f0f7ff] transition-colors duration-300 group'
+            >
+              <div className='bg-[#2c7bbd] p-4 rounded-full text-white mb-4 group-hover:scale-110 transition-transform'>
+                <FaEnvelope className='text-xl' />
               </div>
-              <div>
-                <h3 className='font-semibold text-gray-800'>Email</h3>
-                <a href="mailto:info@phebeansupport.org" className='text-gray-600 hover:text-[#2c7bbd] transition-colors'>
-                  info@phebeansupport.org
-                </a>
-              </div>
+              <h3 className='font-semibold text-gray-800 text-lg mb-2'>Email</h3>
+              <a 
+                href="mailto:info@phebeansupport.org" 
+                className='text-gray-600 hover:text-[#2c7bbd] transition-colors text-md font-medium break-all'
+              >
+                info@phebeansupport.org
+              </a>
             </div>
 
-            <div className='flex items-start'>
-              <div className='bg-[#2c7bbd] p-3 rounded-full text-white mr-4'>
-                <FaMapMarkerAlt className='text-lg' />
+            {/* Address */}
+            <div 
+              className='flex flex-col items-center text-center p-6 rounded-lg bg-gray-50 hover:bg-[#f0f7ff] transition-colors duration-300 group'
+            >
+              <div className='bg-[#2c7bbd] p-4 rounded-full text-white mb-4 group-hover:scale-110 transition-transform'>
+                <FaMapMarkerAlt className='text-xl' />
               </div>
-              <div>
-                <h3 className='font-semibold text-gray-800'>Address</h3>
-                <p className='text-gray-600'>
-                  123 Mokola Road, Ibadan, Oyo State, Nigeria
-                </p>
-              </div>
+              <h3 className='font-semibold text-gray-800 text-lg mb-2'>Address</h3>
+              <p className='text-gray-600 text-md font-medium'>
+                123 Mokola Road<br />
+                Ibadan, Oyo State<br />
+                Nigeria
+              </p>
             </div>
           </div>
-      
+          
           {/* Social Media Links */}
-          <div className='mt-8 max-w-sm mx-auto'>
-            <h3 className='font-semibold text-gray-800 mb-4'>Follow Us</h3>
-            <div className='flex space-x-4 justify-between'>
-              <a href="#" className='bg-gray-100 p-3 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-colors'>
-                <FaFacebook className='text-xl' />
+          <div className='text-center'>
+            <h3 className='font-semibold text-gray-800 text-xl mb-6'>Connect With Us</h3>
+            <div className='flex justify-center space-x-6'>
+              <a 
+                href="#" 
+                className='bg-gray-100 p-4 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-all duration-300 transform hover:-translate-y-1'
+                aria-label="Facebook"
+              >
+                <FaFacebook className='text-2xl' />
               </a>
-              <a href="#" className='bg-gray-100 p-3 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-colors'>
-                <FaTwitter className='text-xl' />
+              <a 
+                href="#" 
+                className='bg-gray-100 p-4 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-all duration-300 transform hover:-translate-y-1'
+                aria-label="Twitter"
+              >
+                <FaTwitter className='text-2xl' />
               </a>
-              <a href="#" className='bg-gray-100 p-3 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-colors'>
-                <FaInstagram className='text-xl' />
+              <a 
+                href="#" 
+                className='bg-gray-100 p-4 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-all duration-300 transform hover:-translate-y-1'
+                aria-label="Instagram"
+              >
+                <FaInstagram className='text-2xl' />
               </a>
-              <a href="#" className='bg-gray-100 p-3 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-colors'>
-                <FaLinkedin className='text-xl' />
+              <a 
+                href="#" 
+                className='bg-gray-100 p-4 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-all duration-300 transform hover:-translate-y-1'
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin className='text-2xl' />
               </a>
             </div>
+          </div>
+
+          {/* Call-to-action */}
+          <div className='mt-12 text-center'>
+            <p className='text-gray-600 mb-6 max-w-2xl mx-auto'>
+              Have questions? We&apos;re available 24/7 to assist you with any inquiries.
+            </p>
+            {/* <button className='bg-[#2c7bbd] text-white px-8 py-3 rounded-lg hover:bg-[#1e5a8a] transition-colors font-semibold text-lg shadow-md hover:shadow-lg'>
+              Contact Support
+            </button> */}
           </div>
         </div>
       </div>
