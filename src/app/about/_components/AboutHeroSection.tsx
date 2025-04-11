@@ -88,7 +88,7 @@ function AboutHeroSection() {
               transition={{ delay: 0.8, type: 'spring' }}
             >
               <Link 
-                href='' 
+                href='/attributes' 
                 className='text-[#F9AE40] tracking-wide font-semibold bg-white inline-block mt-6 shadow-lg hover:shadow-xl transition-shadow duration-300 mb-10 rounded-md px-6 py-3 text-sm md:text-lg'
               >
                 Read More +

@@ -23,8 +23,14 @@ function Members() {
                     </div>
                     {/* Individual Member, Member 1 */}
                     <div className='md:flex md:gap-10 lg:gap-20 items-center'>
-                        <div className='md:w-5/12 shadow-2xl mb-2 rounded-2xl'>
-                            <img src="/image/Amb._Yinka_Dada_Founder-removebg-preview.png" alt="" className='w-full h-[400]' />
+                        <div className='md:w-5/12 shadow-2xl mb-2 rounded-2xl flex flex-col items-center'>
+                            <div className='flex justify-center'>
+                                <img 
+                                    src="/image/Amb._Yinka_Dada_Founder-removebg-preview.png" 
+                                    alt="Olayinka Elizabeth Dada" 
+                                    className='w-[400px] h-[400px] object-contain' 
+                                />
+                            </div>
                             <p className='text-center text-lg font-semibold'>OLAYINKA ELIZABETH DADA</p>
                             <p className='text-center text-md py-2 font-semibold text-[#2c7bbd]'>Founder/Chief Executive Officer.</p>
                         </div>
@@ -51,6 +57,42 @@ function Members() {
                     <div className='md:flex md:gap-10 lg:gap-20 items-center'>
                         <div className='md:w-7/12 text-left max-w-3xl mt-10 md:mt-0'>
                             <p className='tracking-wider leading-loose text-left'>
+                                <span className='text-[#2c7bbd]'>Tiffany</span>   is passionate about germane issues pertaining to young adults and takes every given 
+                                opportunity to mentor around career path, social enrichment, and behavioral skills. She also gets airtime to promote the build-up of her 
+                                privately owned communications boutique; Flawless ‘N’ Ridge. She holds a Doctorate degree in International Business (DBA) from the International School of business, 
+                                a Master of Business Administration (MBA) from the University of Massachusetts and a bachelor’s degree in economics. As an adjunct Professor, Tiffany is passionate 
+                                about teaching and building tomorrow’s leaders through professional development, skills development with emphasis on young immigrant’s integration into their new environment. 
+                            </p>
+                        </div>
+                        <div className='md:w-5/12 shadow-2xl mb-2 rounded-2xl flex flex-col items-center'>
+                            <div className='flex justify-center'>
+                                <img 
+                                    src="/image/Dr_Tiffany_Oloke__Phebean_NeuroDiversity_Support_President-removebg-preview.png" 
+                                    alt="Olayinka Elizabeth Dada" 
+                                    className='w-[400px] h-[400px] object-contain' 
+                                />
+                            </div>
+                            <p className='text-center text-lg font-semibold'>Dr. Tiffany Oloke</p>
+                            <p className='text-center text-md py-2 font-semibold text-[#2c7bbd]'>Phebean NeuroDiversity Support President</p>
+                        </div>
+                        
+                    </div>
+
+                    {/* Member 3 */}
+                    <div className='md:flex md:gap-10 lg:gap-20 items-center'>
+                        <div className='md:w-5/12 shadow-2xl mb-2 rounded-2xl flex flex-col items-center'>
+                            <div className='flex justify-center'>
+                                <img 
+                                    src="/image/Mr_Ade_Kelani__Member__Phebean_Board_of_Trustees-removebg-preview.png" 
+                                    alt="Olayinka Elizabeth Dada" 
+                                    className='w-[400px] h-[400px] object-contain' 
+                                />
+                            </div>
+                            <p className='text-center text-lg font-semibold'>Ade Kelani</p>
+                            <p className='text-center text-md py-2 font-semibold text-[#2c7bbd]'>Board Member, Project Coordinator.</p>
+                        </div>
+                        <div className='md:w-7/12 text-left max-w-3xl mt-10 md:mt-0'>
+                            <p className='tracking-wider leading-loose text-left'>
                                 <span className='text-[#2c7bbd]'>Ade Kelani</span> is a seasoned management, finance, and IT consulting expert with over 30 years of global experience, 
                                 including leadership roles at KPMG, Accenture, BearingPoint, and Deloitte. He has played a key role in strategic nation-building initiatives, infrastructure 
                                 development, and capacity-building in Africa. As the founder of Trade Afrique LLC, he is driving Africa’s economic renaissance by connecting the continent to global markets. 
@@ -58,20 +100,11 @@ function Members() {
                                 industry and economic growth worldwide.
                             </p>
                         </div>
-                        <div className='md:w-5/12 shadow-2xl mb-2 rounded-2xl'>
-                            <img src="/image/Mr_Ade_Kelani__Member__Phebean_Board_of_Trustees-removebg-preview.png" alt="" className='w-full h-[400]' />
-                            <p className='text-center text-lg font-semibold'>Ade Kelani</p>
-                            <p className='text-center text-md py-2 font-semibold text-[#2c7bbd]'>Board MemberProject Coordinator.</p>
-                        </div>
+                        
                     </div>
 
-                    {/* Member 3 */}
+                    {/* Member 4 */}
                     <div className='md:flex md:gap-10 lg:gap-20 items-center'>
-                        <div className='md:w-5/12 shadow-2xl mb-2 rounded-2xl'>
-                            <img src="/image/Mr_Opeyemi_Ogunjimi_Director__Phebean_Board_of_Trustees-removebg-preview.png" alt="" className='w-full h-[400]' />
-                            <p className='text-center text-lg font-semibold'>Opeyemi Oguntomi, MBA</p>
-                            <p className='text-center text-md py-2 font-semibold text-[#2c7bbd]'>Project Coordinator.</p>
-                        </div>
                         <div className='md:w-7/12 text-left max-w-3xl mt-10 md:mt-0'>
                             <p className='tracking-wider leading-loose text-left'>
                                 <span className='text-[#2c7bbd]'>Opeyemi</span>  is a dedicated Youth Development and Program Specialist with over eight years 
@@ -82,10 +115,33 @@ function Members() {
                                 through knowledge-driven solutions.
                             </p>
                         </div>
+                        <div className='md:w-5/12 shadow-2xl mb-2 rounded-2xl flex flex-col items-center'>
+                            <div className='flex justify-center'>
+                                <img 
+                                    src="/image/Mr_Opeyemi_Ogunjimi_Director__Phebean_Board_of_Trustees-removebg-preview.png" 
+                                    alt="Olayinka Elizabeth Dada" 
+                                    className='w-[400px] h-[400px] object-contain' 
+                                />
+                            </div>
+                            <p className='text-center text-lg font-semibold'>Opeyemi Oguntomi, MBA</p>
+                            <p className='text-center text-md py-2 font-semibold text-[#2c7bbd]'>Project Coordinator.</p>
+                        </div>
+                       
                     </div>
 
-                    {/* Member 4 */}
+                    {/* Member 5 */}
                     <div className='md:flex md:gap-10 lg:gap-20 items-center'>
+                        <div className='md:w-5/12 shadow-2xl mb-2 rounded-2xl flex flex-col items-center'>
+                            <div className='flex justify-center'>
+                                <img 
+                                    src="/image/avatar.jpg" 
+                                    alt="Olayinka Elizabeth Dada" 
+                                    className='w-[400px] h-[400px] object-contain' 
+                                />
+                            </div>
+                            <p className='text-center text-lg font-semibold'>Salena Lyare, M.A</p>
+                            <p className='text-center text-md py-2 font-semibold text-[#2c7bbd]'>Board Member.</p>
+                        </div>
                         <div className='md:w-7/12 text-left max-w-3xl mt-10 md:mt-0'>
                             <p className='tracking-wider leading-loose text-left'>
                                 <span className='text-[#2c7bbd]'>Salena Lyare</span> is a distinguished Behavioral Analyst based in Tinley Park, IL, 
@@ -95,11 +151,7 @@ function Members() {
                                 she fosters supportive environments that empower individuals to achieve meaningful progress in their personal and educational journeys.
                             </p>
                         </div>
-                        <div className='md:w-5/12 shadow-2xl mb-2 rounded-2xl'>
-                            <img src="/image/360_F_29594789_gruUqSPmfKUchKUkWumMYE1bXdfxN6Kt.png" alt="" className='w-full h-[400]' />
-                            <p className='text-center text-lg font-semibold'>Salena Lyare, M.A</p>
-                            <p className='text-center text-md py-2 font-semibold text-[#2c7bbd]'>Board Member.</p>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
