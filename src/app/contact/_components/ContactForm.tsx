@@ -213,9 +213,8 @@ function ContactForm() {
               </div>
               <h3 className='font-semibold text-gray-800 text-lg mb-2'>Address</h3>
               <p className='text-gray-600 text-md font-medium'>
-                123 Mokola Road<br />
-                Ibadan, Oyo State<br />
-                Nigeria
+                1900I Harding Avenue Flossmoor<br />
+                IL, 60422  USA
               </p>
             </div>
           </div>
@@ -225,28 +224,28 @@ function ContactForm() {
             <h3 className='font-semibold text-gray-800 text-xl mb-6'>Connect With Us</h3>
             <div className='flex justify-center space-x-6'>
               <a 
-                href="#" 
+                href="https://web.facebook.com/me/" 
                 className='bg-gray-100 p-4 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-all duration-300 transform hover:-translate-y-1'
                 aria-label="Facebook"
               >
                 <FaFacebook className='text-2xl' />
               </a>
               <a 
-                href="#" 
+                href=" https://x.com/phebeaneuro" 
                 className='bg-gray-100 p-4 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-all duration-300 transform hover:-translate-y-1'
                 aria-label="Twitter"
               >
                 <FaTwitter className='text-2xl' />
               </a>
               <a 
-                href="#" 
+                href="https://instagram.com/phebeanneuro" 
                 className='bg-gray-100 p-4 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-all duration-300 transform hover:-translate-y-1'
                 aria-label="Instagram"
               >
                 <FaInstagram className='text-2xl' />
               </a>
               <a 
-                href="#" 
+                href="https://www.linkedin.com/company/106966137/admin/dashboard/" 
                 className='bg-gray-100 p-4 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-all duration-300 transform hover:-translate-y-1'
                 aria-label="LinkedIn"
               >
