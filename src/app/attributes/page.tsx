@@ -1,8 +1,11 @@
 import React from 'react'
+import MemorialPage from './_components/AttributesPage'
 
 function page() {
   return (
-    <div>page</div>
+    <div>
+       <MemorialPage/>
+    </div>
   )
 }
 
