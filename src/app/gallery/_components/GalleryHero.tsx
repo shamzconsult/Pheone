@@ -152,20 +152,35 @@ function GalleryHero() {
                         {/* Image grid */}
                         <div className='gap-4 grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4'>
                             {currentImages.map((image, index) => (
-                                <div key={`${image._id}-${index}`} className="w-full p-2 group">
-                                    <div className="relative overflow-hidden rounded-lg shadow-md ">
-                                        <img 
-                                            src={image.image} 
-                                            alt={image.description || `Gallery image ${index + 1}`}
-                                            className="w-[500] h-[500] object-cover transition-transform duration-300 group-hover:scale-105"
-                                            loading="lazy"
-                                        />
-                                        {image.description && (
-                                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                                <p className="text-white text-sm">{image.description}</p>
-                                            </div>
-                                        )}
+                                <div key={`${image._id}-${index}`} className="w-full p-2">
+                                <div className="relative overflow-hidden rounded-lg shadow-md ">
+                                    {/* Image */}
+                                    <img 
+                                    src={image.image} 
+                                    alt={image.description || `Gallery image ${index + 1}`}
+                                    className="w-full h-[500] object-center"
+                                    loading="lazy"
+                                    />
+                                    
+                                    {/* Text with slanted white background */}
+                                    {image.description && (
+                                    <div className="absolute bottom-0 left-1/3 -translate-x-1/2 w-11/12">
+                                        <div className="relative">
+                                        {/* Slanted white background */}
+                                        <div className="bg-white h-20 -skew-x-12 transform origin-bottom-left border-r-8 border-r-[#2c7bbd]"></div>
+                                        
+                                        {/* Text container */}
+                                        <div className="absolute inset-0 flex items-center justify-center">
+                                            <p className="text-[#2c7bbd] font-bold uppercase tracking-wider text-center px-4">
+                                            {image.description.split(' ').map((word, i) => (
+                                                <span key={i} className="block">{word}</span>
+                                            ))}
+                                            </p>
+                                        </div>
+                                        </div>
                                     </div>
+                                    )}
+                                </div>
                                 </div>
                             ))}
                         </div>
