@@ -26,11 +26,17 @@ export default function GalleryDashboard() {
     try {
       const response = await fetch("/api/gallery");
       const data = await response.json();
-      setImages(data);
+      const imageArray = Array.isArray(data) ? data : 
+        (Array.isArray(data?.data) ? data.data : []);
+      
+      setImages(imageArray);
+      // setImages(data);
       setLoading(false);
-    } catch (error) {
+    }  catch (error) {
       console.error("Error fetching images:", error);
       toast.error("Failed to load images");
+      setImages([]); 
+    } finally {
       setLoading(false);
     }
   };
