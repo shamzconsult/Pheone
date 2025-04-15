@@ -4,6 +4,21 @@ import cloudinary from "@/lib/cloudinary";
 import Event from "@/app/models/Events";
 import connectViaMongoose from "@/lib/mongodb";
 
+interface UploadResult {
+  secure_url: string;
+  public_id: string;
+}
+
+export interface ApiEvent {
+  _id: string;
+  title: string;
+  description: string;
+  date: string;
+  location: string;
+  mediaType: string;
+  mediaUrl: string;
+}
+
 export async function POST(req: Request) {
   try {
     await connectDB();
@@ -11,7 +26,6 @@ export async function POST(req: Request) {
     const { title, description, date, location, mediaType } = Object.fromEntries(formData);
     const mediaFile = formData.get("media") as File;
 
-    // Validate required fields
     if (!title || !description || !date || !location || !mediaType || !mediaFile) {
       return NextResponse.json(
         { message: "All fields are required" },
@@ -23,7 +37,7 @@ export async function POST(req: Request) {
     const arrayBuffer = await mediaFile.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
     
-    const uploadResult = await new Promise((resolve, reject) => {
+    const uploadResult = await new Promise<UploadResult>((resolve, reject) => {
       cloudinary.uploader.upload_stream(
         {
           resource_type: mediaType === 'video' ? 'video' : 'image',
@@ -33,14 +47,19 @@ export async function POST(req: Request) {
           if (error) {
             console.error('Cloudinary upload error:', error);
             reject(error);
+          } else if (result) {
+            resolve({
+              secure_url: result.secure_url,
+              public_id: result.public_id
+            });
           } else {
-            resolve(result);
+            reject(new Error('Unknown upload error'));
           }
         }
       ).end(buffer);
     });
+    
 
-    // Create new event with the correct field names
     const newEvent = await Event.create({
       title,
       description,

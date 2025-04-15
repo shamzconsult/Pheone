@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import { FiEdit, FiTrash2, FiCalendar, FiMapPin } from "react-icons/fi";
+import { ApiEvent } from "@/app/api/events/route";
 
 interface Event {
   id: string;
@@ -49,8 +50,11 @@ export default function EventCreationForm() {
     try {
       const response = await fetch("/api/events");
       if (!response.ok) throw new Error("Failed to fetch events");
-      const data = await response.json();
-      setEvents(data.map((event: any) => ({
+
+      const data: ApiEvent[] = await response.json();
+
+      // const data = await response.json();
+      setEvents(data.map((event: ApiEvent) => ({
         id: event._id,
         ...event
       })));
@@ -88,8 +92,9 @@ export default function EventCreationForm() {
       formDataToSend.append("date", formData.date);
       formDataToSend.append("location", formData.location);
       formDataToSend.append("mediaType", formData.mediaType);
-      if (mediaFile) formDataToSend.append("media", mediaFile);
-
+      if (mediaFile) {
+        formDataToSend.append("media", mediaFile);
+      }
       const url = editingId ? `/api/events/${editingId}` : "/api/events";
       const method = editingId ? "PUT" : "POST";
 
