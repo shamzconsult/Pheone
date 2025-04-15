@@ -1,4 +1,5 @@
 "use client";
+import ConfirmationModal from "@/components/ConfirmationModal";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
@@ -8,15 +9,21 @@ interface GalleryItem {
   image: string;
 }
 
-export default function GalleryDashboard() {
-  const [images, setImages] = useState<GalleryItem[]>([]);
-  const [loading, setLoading] = useState(true);
+interface AdminGalleryProps {
+  images: GalleryItem[];
+}
+
+export default function GalleryDashboard({images: initalImage}: AdminGalleryProps) {
+  const [images, setImages] = useState<GalleryItem[]>(initalImage);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     description: "",
     image: "",
   });
   const [editingId, setEditingId] = useState<string | null>(null);
   const [imagePreview, setImagePreview] = useState("");
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [itemToDelete, setItemToDelete] = useState<string | null>(null);
 
   useEffect(() => {
     fetchImages();
@@ -24,7 +31,7 @@ export default function GalleryDashboard() {
 
   const fetchImages = async () => {
     try {
-      setLoading(true);
+      // setLoading(true);
       const response = await fetch("/api/gallery");
       const data = await response.json();
       const imageArray = Array.isArray(data) ? data : 
@@ -35,7 +42,7 @@ export default function GalleryDashboard() {
       toast.error("Failed to load images");
       setImages([]); 
     } finally {
-      setLoading(false);
+      // setLoading(false);
     }
   };
 
@@ -62,6 +69,8 @@ export default function GalleryDashboard() {
       toast.error("Description and image are required");
       return;
     }
+
+    setIsSubmitting(true); 
 
     try {
       let response;
@@ -91,6 +100,8 @@ export default function GalleryDashboard() {
     } catch (error) {
       console.error("Error submitting form:", error);
       toast.error("Failed to submit image");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -103,18 +114,26 @@ export default function GalleryDashboard() {
     setEditingId(image._id);
   };
 
-  const handleDelete = async (id: string) => {
-    if (window.confirm("Are you sure you want to delete this image?")) {
-      try {
-        await fetch(`/api/gallery?id=${id}`, {
-          method: "DELETE",
-        });
-        toast.success("Image deleted successfully");
-        fetchImages();
-      } catch (error) {
-        console.error("Error deleting image:", error);
-        toast.error("Failed to delete image");
-      }
+  const handleDeleteClick = (id: string) => {
+    setItemToDelete(id);
+    setDeleteModalOpen(true);
+  };
+  
+  const handleDelete = async () => {
+    if (!itemToDelete) return;
+    
+    try {
+      await fetch(`/api/gallery?id=${itemToDelete}`, {
+        method: "DELETE",
+      });
+      toast.success("Image deleted successfully");
+      fetchImages();
+    } catch (error) {
+      console.error("Error deleting image:", error);
+      toast.error("Failed to delete image");
+    } finally {
+      setDeleteModalOpen(false);
+      setItemToDelete(null);
     }
   };
 
@@ -199,15 +218,33 @@ export default function GalleryDashboard() {
                   type="button"
                   onClick={resetForm}
                   className="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                  disabled={isSubmitting}
                 >
                   Cancel
                 </button>
               )}
               <button
                 type="submit"
-                className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                disabled={isSubmitting}
+                className={`inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+                  editingId
+                    ? 'bg-green-600 hover:bg-green-700 focus:ring-green-500'
+                    : 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500'
+                } ${
+                  isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
+                }`}
               >
-                {editingId ? "Update Image" : "Upload Image"}
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    {editingId ? 'Updating...' : 'Uploading...'}
+                  </>
+                ) : (
+                  editingId ? 'Update Image' : 'Upload Image'
+                )}
               </button>
             </div>
           </form>
@@ -221,11 +258,7 @@ export default function GalleryDashboard() {
             </h2>
           </div>
 
-          {loading ? (
-            <div className="flex justify-center items-center h-64">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-            </div>
-          ) : images.length === 0 ? (
+          {images.length === 0 ? (
             <div className="text-center py-12">
               <svg
                 className="mx-auto h-12 w-12 text-gray-400"
@@ -269,7 +302,7 @@ export default function GalleryDashboard() {
                         Edit
                       </button>
                       <button
-                        onClick={() => handleDelete(image._id)}
+                        onClick={() => handleDeleteClick(image._id)}
                         className="inline-flex items-center px-3 py-1.5 border border-transparent text-xs font-medium rounded text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
                       >
                         Delete
@@ -282,6 +315,15 @@ export default function GalleryDashboard() {
           )}
         </div>
       </div>
+       <ConfirmationModal
+        isOpen={deleteModalOpen}
+        onClose={() => setDeleteModalOpen(false)}
+        onConfirm={handleDelete}
+        title="Delete Image"
+        description="Are you sure you want to delete this image? This action cannot be undone."
+        confirmText="Delete"
+        cancelText="Cancel"
+      />
     </div>
   );
 }
