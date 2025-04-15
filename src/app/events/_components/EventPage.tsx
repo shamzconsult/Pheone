@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 
 interface Event {
   _id: string;
@@ -42,7 +41,7 @@ export default function EventsPage() {
   }
 
   return (
-    <div className="max-w-screen-2xl mx-auto p-6 mt-20">
+    <div className="max-w-screen-2xl mx-auto p-6 mt-24">
       <h1 className="text-3xl font-bold mb-8">Upcoming Events</h1>
       
       {events.length === 0 ? (
@@ -50,7 +49,7 @@ export default function EventsPage() {
       ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"> 
             {events.map((event) => (
-                <div key={event._id} className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div key={event._id} className="bg-white rounded-lg shadow-md overflow-hidden hover:border hover:border-[#2c7bbd] ">
                 {/* Media container */}
 
                 <div className="relative w-full h-[500px] aspect-video"> 
@@ -73,16 +72,16 @@ export default function EventsPage() {
                 
                 {/* Event details */}
                 <div className="p-6">
-                    <h2 className="text-xl font-bold mb-3">{event.title}</h2>
-                    <p className="text-gray-600 mb-4 line-clamp-2">{event.description}</p>
+                    <h2 className="text-xl text-gray-600 font-bold mb-3">{event.title}</h2>
+                    <p className="text-gray-500 mb-4 line-clamp-2">{event.description}</p>
                     <div className="grid grid-cols-2 gap-4">
                     <div>
-                        <p className="font-semibold">Date</p>
-                        <p>{new Date(event.date).toLocaleDateString()}</p>
+                        <p className="font-semibold text-gray-600">Date</p>
+                        <p className="text-gray-500">{new Date(event.date).toLocaleDateString()}</p>
                     </div>
                     <div>
-                        <p className="font-semibold">Location</p>
-                        <p>{event.location}</p>
+                        <p className="font-semibold text-gray-600">Location</p>
+                        <p className="text-gray-500">{event.location}</p>
                     </div>
                     </div>
                     {/* <Link

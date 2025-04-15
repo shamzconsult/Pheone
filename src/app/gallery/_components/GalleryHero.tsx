@@ -15,14 +15,17 @@ interface GalleryItem {
     image: string;
 }
 
-function GalleryHero() {
+interface GalleryProps {
+    images: GalleryItem[];
+}
+
+function GalleryHero({ images: initialImages }: GalleryProps) {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(16);
-    const [images, setImages] = useState<GalleryItem[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+    const [images, ] = useState<GalleryItem[]>(initialImages);
+    // const [loading, setLoading] = useState(true);
+    // const [error, setError] = useState<string | null>(null);
 
-    // Debugging logs - very important for troubleshooting
     useEffect(() => {
         console.log('Gallery State:', {
             totalImages: images.length,
@@ -36,7 +39,6 @@ function GalleryHero() {
         });
     }, [images, itemsPerPage, currentPage]);
 
-    // Responsive items per page calculation
     useEffect(() => {
         const calculateItemsPerPage = () => {
             if (window.innerWidth < 768) return 4;    // Mobile
@@ -55,40 +57,39 @@ function GalleryHero() {
     }, []);
 
     // Fetch images from API
-    useEffect(() => {
-        const fetchGalleryImages = async () => {
-            try {
-                setLoading(true);
-                setError(null);
+    // useEffect(() => {
+    //     const fetchGalleryImages = async () => {
+    //         try {
+    //             setLoading(true);
+    //             setError(null);
                 
-                const response = await fetch('/api/gallery');
+    //             const response = await fetch('/api/gallery');
                 
-                if (!response.ok) {
-                    throw new Error(`Server returned ${response.status} status`);
-                }
+    //             if (!response.ok) {
+    //                 throw new Error(`Server returned ${response.status} status`);
+    //             }
                 
-                const result = await response.json();
-                console.log('API Response Data:', result);
+    //             const result = await response.json();
+    //             console.log('API Response Data:', result);
                 
-                // Handle different response formats
-                const receivedImages = Array.isArray(result) 
-                    ? result 
-                    : Array.isArray(result?.data) 
-                        ? result.data 
-                        : [];
+    //             const receivedImages = Array.isArray(result) 
+    //                 ? result 
+    //                 : Array.isArray(result?.data) 
+    //                     ? result.data 
+    //                     : [];
                 
-                setImages(receivedImages);
-            } catch (err) {
-                console.error('Fetch error:', err);
-                setError('Failed to load gallery. Please try again.');
-                setImages([]);
-            } finally {
-                setLoading(false);
-            }
-        };
+    //             setImages(receivedImages);
+    //         } catch (err) {
+    //             console.error('Fetch error:', err);
+    //             setError('Failed to load gallery. Please try again.');
+    //             setImages([]);
+    //         } finally {
+    //             setLoading(false);
+    //         }
+    //     };
 
-        fetchGalleryImages();
-    }, []);
+    //     fetchGalleryImages();
+    // }, []);
 
     // Pagination calculations
     const totalPages = Math.max(1, Math.ceil(images.length / itemsPerPage));
@@ -96,7 +97,6 @@ function GalleryHero() {
     const currentImages = images.slice(startIndex, startIndex + itemsPerPage);
 
     const handlePageChange = (newPage: number) => {
-        // Validate page number stays within bounds
         const validatedPage = Math.max(1, Math.min(newPage, totalPages));
         setCurrentPage(validatedPage);
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -124,23 +124,8 @@ function GalleryHero() {
                     </p>
                 </div>
 
-                {/* Content area with different states */}
-                {loading ? (
-                    <div className="flex justify-center items-center h-64">
-                        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-                        <span className="ml-3"></span>
-                    </div>
-                ) : error ? (
-                    <div className="text-center py-8">
-                        <p className="text-red-500 mb-4">{error}</p>
-                        <button 
-                            onClick={() => window.location.reload()}
-                            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition"
-                        >
-                            Try Again
-                        </button>
-                    </div>
-                ) : images.length === 0 ? (
+                {/* Gallery content */}
+                {images.length === 0 ? (
                     <div className="text-center py-8">
                         <p className="text-gray-500">The gallery is currently empty.</p>
                         <p className="text-sm text-gray-400 mt-2">
@@ -150,82 +135,82 @@ function GalleryHero() {
                 ) : (
                     <>
                         {/* Image grid */}
-                        <div className='gap-4 grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4'>
+                        <div className='gap-4 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3'>
                             {currentImages.map((image, index) => (
                                 <div key={`${image._id}-${index}`} className="w-full p-2">
-                                <div className="relative overflow-hidden rounded-lg shadow-md ">
-                                    {/* Image */}
-                                    <img 
-                                    src={image.image} 
-                                    alt={image.description || `Gallery image ${index + 1}`}
-                                    className="w-full h-[500] object-center"
-                                    loading="lazy"
-                                    />
-                                    
-                                    {/* Text with slanted white background */}
-                                    {image.description && (
-                                    <div className="absolute bottom-0 left-1/3 -translate-x-1/2 w-11/12">
-                                        <div className="relative">
-                                        {/* Slanted white background */}
-                                        <div className="bg-white h-20 -skew-x-12 transform origin-bottom-left border-r-8 border-r-[#2c7bbd]"></div>
+                                    <div className="relative overflow-hidden rounded-lg shadow-md">
+                                        {/* Image */}
+                                        <img 
+                                            src={image.image} 
+                                            alt={image.description || `Gallery image ${index + 1}`}
+                                            className="w-full h-[450px] object-cover"
+                                            loading="lazy"
+                                        />
                                         
-                                        {/* Text container */}
-                                        <div className="absolute inset-0 flex items-center justify-center">
-                                            <p className="text-[#2c7bbd] font-bold uppercase tracking-wider text-center px-4">
-                                            {image.description.split(' ').map((word, i) => (
-                                                <span key={i} className="block">{word}</span>
-                                            ))}
-                                            </p>
-                                        </div>
-                                        </div>
+                                        {image.description && (
+                                            <div className="absolute bottom-0 left-1/3 -translate-x-1/2 w-11/12">
+                                                <div className="relative">
+                                                    {/* Slanted white background */}
+                                                    <div className="bg-white h-20 -skew-x-12 transform origin-bottom-left border-r-8 border-r-[#2c7bbd]"></div>
+                                                    
+                                                    {/* Text container */}
+                                                    <div className="absolute inset-0 flex items-center justify-center">
+                                                        <p className="text-[#2c7bbd] font-bold uppercase tracking-wider text-center px-4">
+                                                            {image.description.split(' ').map((word, i) => (
+                                                                <span key={i} className="block">{word}</span>
+                                                            ))}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
-                                    )}
-                                </div>
                                 </div>
                             ))}
                         </div>
 
-                        {/* Pagination controls - now always visible but disabled when not needed */}
-                        <div className="mt-8 flex justify-center">
-                            <Pagination>
-                                <PaginationContent>
-                                    <PaginationItem>
-                                        <PaginationPrevious 
-                                            onClick={() => handlePageChange(currentPage - 1)}
-                                            className={
-                                                currentPage <= 1 
-                                                    ? "opacity-50 cursor-not-allowed" 
-                                                    : "cursor-pointer hover:bg-gray-100"
-                                            }
-                                        />
-                                    </PaginationItem>
-                                    
-                                    {/* Always show at least one page number */}
-                                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                                        <PaginationItem key={page}>
-                                            <PaginationLink
-                                                onClick={() => handlePageChange(page)}
-                                                isActive={page === currentPage}
-                                                className="cursor-pointer hover:bg-gray-100"
-                                            >
-                                                {page}
-                                            </PaginationLink>
+                        {/* Pagination */}
+                        {totalPages > 1 && (
+                            <div className="mt-8 flex justify-center">
+                                <Pagination>
+                                    <PaginationContent>
+                                        <PaginationItem>
+                                            <PaginationPrevious 
+                                                onClick={() => handlePageChange(currentPage - 1)}
+                                                className={
+                                                    currentPage <= 1 
+                                                        ? "opacity-50 cursor-not-allowed" 
+                                                        : "cursor-pointer hover:bg-gray-100"
+                                                }
+                                            />
                                         </PaginationItem>
-                                    ))}
-                                    
-                                    <PaginationItem>
-                                        <PaginationNext 
-                                            onClick={() => handlePageChange(currentPage + 1)}
-                                            className={
-                                                currentPage >= totalPages 
-                                                    ? "opacity-50 cursor-not-allowed" 
-                                                    : "cursor-pointer hover:bg-gray-100"
-                                            }
-                                        />
-                                    </PaginationItem>
-                                </PaginationContent>
-                            </Pagination>
-                        </div>
+                                        
+                                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                                            <PaginationItem key={page}>
+                                                <PaginationLink
+                                                    onClick={() => handlePageChange(page)}
+                                                    isActive={page === currentPage}
+                                                    className="cursor-pointer hover:bg-gray-100"
+                                                >
+                                                    {page}
+                                                </PaginationLink>
+                                            </PaginationItem>
+                                        ))}
+                                        
+                                        <PaginationItem>
+                                            <PaginationNext 
+                                                onClick={() => handlePageChange(currentPage + 1)}
+                                                className={
+                                                    currentPage >= totalPages 
+                                                        ? "opacity-50 cursor-not-allowed" 
+                                                        : "cursor-pointer hover:bg-gray-100"
+                                                }
+                                            />
+                                        </PaginationItem>
+                                    </PaginationContent>
+                                </Pagination>
+                            </div>
+                        )}
                     </>
                 )}
             </div>
@@ -234,3 +219,4 @@ function GalleryHero() {
 }
 
 export default GalleryHero;
+
