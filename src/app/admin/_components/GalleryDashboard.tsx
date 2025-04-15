@@ -1,5 +1,6 @@
 "use client";
 import ConfirmationModal from "@/components/ConfirmationModal";
+import { logout } from "@/utils/auth";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
@@ -148,7 +149,14 @@ export default function GalleryDashboard({images: initalImage}: AdminGalleryProp
 
   return (
     <div className="min-h-screen bg-gray-50">
+     
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <button 
+        onClick={logout}
+        className="fixed top-20 bg-red-500 text-white px-4 py-2 rounded z-50"
+      >
+        Logout
+      </button>
         {/* Header */}
         <div className="text-center mb-12 mt-20">
           <h1 className="text-3xl font-extrabold text-[#2c7bbd] sm:text-4xl">
