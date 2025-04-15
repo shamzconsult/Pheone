@@ -33,7 +33,6 @@ export default function Signin() {
       }
 
       localStorage.setItem("isLoggedIn", "true");
-
       router.push("/admin");
     } catch {
       setError("An error occurred. Please try again.");
