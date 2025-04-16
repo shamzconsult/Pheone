@@ -74,7 +74,7 @@ function Header() {
                                 className={`rounded-full outline px-8 py-3.5 text-sm font-medium transition-colors ${
                                     isScrolled 
                                     ? 'border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white'
-                                    : 'border border-white text-white hover:bg-white hover:text-blue-500'
+                                    : 'border border-white text-white bg-[#2c7bbd] hover:bg-white hover:text-blue-500'
                                 }`}
                                 href="/contact"
                             >

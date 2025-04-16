@@ -1,10 +1,13 @@
 import React from 'react'
 import GalleryHero from './_components/GalleryHero'
+import { getAllImage } from '@/service/gallery/gallery.server'
 
-function page() {
+async function page() {
+  const images = await getAllImage();
+
   return (
     <div>
-        <GalleryHero/>
+        <GalleryHero images={images}/>
     </div>
   )
 }
