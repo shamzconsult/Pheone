@@ -130,7 +130,7 @@ function ServiceHero() {
         />
       </motion.div>
 
-      <div className='max-w-screen-xl mx-auto mt-32 p-2 md:p-10'>
+      <div className='max-w-screen-xl mx-auto mt-20 lg:mt-12 p-2 md:p-10'>
         <motion.div
           initial="hidden"
           animate="visible"
