@@ -168,3 +168,15 @@
 .animate-softBounce {
   animation: softBounce 3s ease-in-out infinite;
 }
+
+
+.form-container {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
