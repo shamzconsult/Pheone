@@ -578,7 +578,7 @@ function HomePage() {
           default:
             return null;
         }
-      };
+    };
     
 
 
@@ -603,7 +603,7 @@ function HomePage() {
         />
       </div>
 
-      <div className='max-w-screen-xl mx-auto mt-40 mb-40'>
+      <div className='max-w-screen-xl mx-auto mt-24 mb-40'>
         <div>
           <div className='text-center'>
             <h1 className='text-xl font-bold mt-6 text-white bg-[#2c7bbd] mb-6 inline-block p-2 px-10 rounded-full'>Support Our Mission</h1>
