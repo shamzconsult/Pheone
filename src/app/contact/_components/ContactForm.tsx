@@ -80,7 +80,7 @@ function ContactForm() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full  py-2 border-b border-b-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full py-2 border-b border-b-gray-300 focus:ring-blue-500 focus:border-blue-500"
                     placeholder="Please enter your full name"
                 />
             </div>
@@ -184,7 +184,7 @@ function ContactForm() {
                 href="tel:+234123456789" 
                 className='text-gray-600 hover:text-[#2c7bbd] transition-colors text-md font-medium'
               >
-                +234 123 456 789
+                +1 631-406-3671
               </a>
             </div>
 
@@ -200,7 +200,7 @@ function ContactForm() {
                 href="mailto:info@phebeansupport.org" 
                 className='text-gray-600 hover:text-[#2c7bbd] transition-colors text-md font-medium break-all'
               >
-                info@phebeansupport.org
+                liz@phebeanneurodiversitysupport.org
               </a>
             </div>
 

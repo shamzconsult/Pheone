@@ -168,15 +168,36 @@ function Footer() {
                             </li>
 
                             <li>
-                            <a className="text-white transition hover:text-gray-300" href="services">Terms of Services </a>
+                                <a 
+                                    className="text-white transition hover:text-gray-300" 
+                                    href="/pdf/Phebean NeuroDiversity  Byelaws.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Terms of Services
+                                </a>
                             </li>
 
                             <li>
-                            <a className="text-white transition hover:text-gray-300" href="#"> Legal </a>
+                                <a 
+                                    className="text-white transition hover:text-gray-300" 
+                                    href="/pdf/Phebean NeuroDiversity  Byelaws.pdf" 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Legal
+                                </a>
                             </li>
 
                             <li>
-                            <a className="text-white transition hover:text-gray-300" href="#"> Privacy policy </a>
+                                <a 
+                                    className="text-white transition hover:text-gray-300" 
+                                    href="/pdf/Phebean NeuroDiversity  Byelaws.pdf" 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Privacy policy
+                                </a>
                             </li>
                         </ul>
                     </div>
