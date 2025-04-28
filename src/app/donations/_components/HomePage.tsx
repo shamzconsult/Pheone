@@ -9,23 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { IoMdCheckmark } from "react-icons/io";
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-// import { usePayPalScriptReducer } from "@paypal/react-paypal-js";
-import { PayPalDonation } from './PayPalDonation';
 
-
-// interface PayPalButtonWrapperProps {
-//   amount: string;
-//   currency: string;
-//   donationType: 'one-time' | 'monthly' | 'partnership';
-//   donorInfo: {
-//     firstName: string;
-//     lastName: string;
-//     email: string;
-//   };
-//   onSuccess: () => void;
-//   onError: (err: Record<string, unknown>) => void;
-// }
 
 function HomePage() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -92,69 +76,6 @@ function HomePage() {
         return 'One-Time Donation';
     }
   };
-
-  // Create this PayPal button wrapper component
-  // const PayPalButtonWrapper: React.FC<PayPalButtonWrapperProps> = ({
-  //   amount,
-  //   currency,
-  //   donationType,
-  //   donorInfo,
-  //   onSuccess,
-  //   onError,
-  // }) => {
-  //   const [{ isPending }] = usePayPalScriptReducer();
-
-  //   const createOrder = (data: any, actions: any) => {
-  //     return actions.order.create({
-  //       purchase_units: [
-  //         {
-  //           amount: {
-  //             value: amount,
-  //             currency_code: currency,
-  //           },
-  //           description: `${donationType} donation`,
-  //           payee: {
-  //             email_address: "your-merchant-email@example.com", 
-  //           },
-  //         },
-  //       ],
-  //       application_context: {
-  //         shipping_preference: "NO_SHIPPING",
-  //       },
-  //     });
-  //   };
-
-  //   const onApprove = async (data: any, actions: any) => {
-  //     try {
-  //       const details = await actions.order.capture();
-  //       console.log("Payment completed:", details);
-  //       onSuccess();
-  //     } catch (err) {
-  //       console.error("Payment error:", err);
-  //       onError(err as Record<string, unknown>);
-  //     }
-  //   };
-
-  //   return (
-  //     <div className="paypal-button-container mt-4">
-  //       {isPending ? (
-  //         <div className="text-center">Loading PayPal...</div>
-  //       ) : (
-  //         <PayPalButtons
-  //           style={{
-  //             layout: "vertical",
-  //             color: "blue",
-  //             shape: "pill",
-  //             label: "pay",
-  //           }}
-  //           createOrder={createOrder}
-  //           onApprove={onApprove}
-  //           onError={onError}
-  //         />
-  //       )}
-  //     </div>
-  //   );
-  // };
 
 
   const SuccessPage = () => (
@@ -477,7 +398,7 @@ function HomePage() {
                 <h4 className="font-medium mb-2">Payment Method</h4>
                 <fieldset className="space-y-3">
                  <legend className="sr-only">Payment Method</legend>
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="payWithCard"
                       className={`flex items-center justify-between gap-4 p-3 text-sm font-medium transition-colors hover:bg-gray-50 hover:border-l-[#2c7bbd] hover:border-l-2 ${
@@ -497,7 +418,7 @@ function HomePage() {
                         onChange={() => handlePaymentMethodSelect('card')}
                       />
                     </label>
-                  </div>
+                  </div> */}
                   <div>
                     <label
                       htmlFor="payWithPayPal"
@@ -519,7 +440,7 @@ function HomePage() {
                       />
                     </label>
                   </div>
-                  <div>
+                  {/* <div>
                     <label
                       htmlFor="payOffline"
                       className={`flex items-center justify-between gap-4 p-3 text-sm font-medium transition-colors hover:bg-gray-50 hover:border-l-[#2c7bbd] hover:border-l-2 ${
@@ -539,7 +460,7 @@ function HomePage() {
                         onChange={() => handlePaymentMethodSelect('offline')}
                       />
                     </label>
-                  </div>
+                  </div> */}
                 </fieldset>
               </div>
 
@@ -579,154 +500,199 @@ function HomePage() {
                         <span>{donorInfo.firstName} {donorInfo.lastName}</span>
                       </p>
                     </div>
+
+                    <div className="text-center bg-yellow-100 p-4 rounded-lg">
+                      <p className="text-sm font-medium mb-2">Please send your donation to the following PayPal account:</p>
+                      <p className="font-bold text-[#2c7bbd] mb-4">lizben16@yahoo.com</p>
+                      <button
+                        onClick={handleCompleteDonation}
+                        className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg"
+                      >
+                        Confirm Payment
+                     </button>
+                    </div>
+                  </div>
+
+                  <div className="flex justify-between mt-6">
+                    <button
+                      onClick={handlePrevStep}
+                      className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
+                    >
+                      Back
+                    </button>
+                  </div>
+                </div>
+              );
+          }
+
+          // case 4:
+          //   if (paymentMethod === 'paypal') {
+          //     return (
+          //       <div className="px-6">
+          //         <div className="mb-6">
+          //           <div className="bg-gray-100 p-4 rounded-lg mb-4">
+          //             <h4 className="font-semibold mb-2 text-center">Donation Summary</h4>
+          //             <p className="flex justify-between mb-2 p-1 text-sm">
+          //               <span>Payment amount:</span>
+          //               <span>${donationAmount}</span>
+          //             </p>
+          //             <p className="flex justify-between p-1 mb-2 text-sm">
+          //               <span>Giving frequency:</span>
+          //               <span>{getFrequencyText()}</span>
+          //             </p>
+          //             <p className="flex justify-between p-1 text-sm">
+          //               <span>Donor:</span>
+          //               <span>{donorInfo.firstName} {donorInfo.lastName}</span>
+          //             </p>
+          //           </div>
                     
-                    <PayPalScriptProvider 
-                      options={{ 
-                        "client-id": "YOUR_PAYPAL_CLIENT_ID",
-                        currency: "USD",
-                        intent: "capture",
-                        components: "buttons",
-                      }}
-                    >
-                      <PayPalDonation
-                        amount={donationAmount}
-                        currency="USD"
-                        onSuccess={handleCompleteDonation}
-                        onError={(err) => {
-                          console.error("PayPal error:", err);
-                          alert("There was an error processing your PayPal payment. Please try again.");
-                        }}
-                      />
-                    </PayPalScriptProvider>
-                  </div>
+          //           <PayPalScriptProvider 
+          //             options={{ 
+          //               "client-id": "YOUR_PAYPAL_CLIENT_ID",
+          //               currency: "USD",
+          //               intent: "capture",
+          //               components: "buttons",
+          //             }}
+          //           >
+          //             <PayPalDonation
+          //               amount={donationAmount}
+          //               currency="USD"
+          //               onSuccess={handleCompleteDonation}
+          //               onError={(err) => {
+          //                 console.error("PayPal error:", err);
+          //                 alert("There was an error processing your PayPal payment. Please try again.");
+          //               }}
+          //             />
+          //           </PayPalScriptProvider>
+          //         </div>
           
-                  <div className="flex justify-between mt-6">
-                    <button
-                      onClick={handlePrevStep}
-                      className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
-                    >
-                      Back
-                    </button>
-                  </div>
-                </div>
-              );
-            } else if (paymentMethod === 'card') {
-              return (
-                <div className="px-6">
-                  <p className='text-sm text-center font-semibold -mt-4 mb-4'>Enter your debit card details to complete payment</p>
-                  <p className='font-semibold text-sm'>Payment methods</p>
-                  <div className='flex justify-around py-6'>
-                    <img src="/image/credit-card.png" alt="" className='h-10 w-14'/>
-                    <img src="/image/credit-card (1).png" alt="" className='h-10 w-14'/>
-                    <img src="/image/credit-card (2).png" alt="" className='h-10 w-14'/>
-                    <img src="/image/credit-card (3).png" alt="" className='h-10 w-14'/>
-                    <img src="/image/credit-card (4).png" alt="" className='h-10 w-14'/>
-                  </div>
+          //         <div className="flex justify-between mt-6">
+          //           <button
+          //             onClick={handlePrevStep}
+          //             className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
+          //           >
+          //             Back
+          //           </button>
+          //         </div>
+          //       </div>
+          //     );
+          //   } else if (paymentMethod === 'card') {
+          //     return (
+          //       <div className="px-6">
+          //         <p className='text-sm text-center font-semibold -mt-4 mb-4'>Enter your debit card details to complete payment</p>
+          //         <p className='font-semibold text-sm'>Payment methods</p>
+          //         <div className='flex justify-around py-6'>
+          //           <img src="/image/credit-card.png" alt="" className='h-10 w-14'/>
+          //           <img src="/image/credit-card (1).png" alt="" className='h-10 w-14'/>
+          //           <img src="/image/credit-card (2).png" alt="" className='h-10 w-14'/>
+          //           <img src="/image/credit-card (3).png" alt="" className='h-10 w-14'/>
+          //           <img src="/image/credit-card (4).png" alt="" className='h-10 w-14'/>
+          //         </div>
                  
-                  <div className="space-y-3">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Cardholder&apos;s Name</label>
-                      <input
-                        type="text"
-                        name="cardName"
-                        value={cardDetails.cardName}
-                        onChange={handleCardDetailsChange}
-                        className="w-full p-3 border border-[#2c7bbd] rounded-full"
-                        placeholder="Enter name on your card"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
-                      <input
-                        type="text"
-                        name="cardNumber"
-                        value={cardDetails.cardNumber}
-                        onChange={handleCardDetailsChange}
-                        className="w-full p-3 border border-[#2c7bbd] rounded-full"
-                        placeholder="Enter card number"
-                      />
-                    </div>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Expiry</label>
-                        <input
-                          type="text"
-                          name="expiry"
-                          value={cardDetails.expiry}
-                          onChange={handleCardDetailsChange}
-                          className="w-full p-3 border border-[#2c7bbd] rounded-full"
-                          placeholder="MM/YY"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">CVV</label>
-                        <input
-                          type="text"
-                          name="cvv"
-                          value={cardDetails.cvv}
-                          onChange={handleCardDetailsChange}
-                          className="w-full p-3 border border-[#2c7bbd] rounded-full"
-                          placeholder="123"
-                        />
-                      </div>
-                    </div>
-                  </div>
+          //         <div className="space-y-3">
+          //           <div>
+          //             <label className="block text-sm font-medium text-gray-700 mb-1">Cardholder&apos;s Name</label>
+          //             <input
+          //               type="text"
+          //               name="cardName"
+          //               value={cardDetails.cardName}
+          //               onChange={handleCardDetailsChange}
+          //               className="w-full p-3 border border-[#2c7bbd] rounded-full"
+          //               placeholder="Enter name on your card"
+          //             />
+          //           </div>
+          //           <div>
+          //             <label className="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+          //             <input
+          //               type="text"
+          //               name="cardNumber"
+          //               value={cardDetails.cardNumber}
+          //               onChange={handleCardDetailsChange}
+          //               className="w-full p-3 border border-[#2c7bbd] rounded-full"
+          //               placeholder="Enter card number"
+          //             />
+          //           </div>
+          //           <div className="grid grid-cols-2 gap-4">
+          //             <div>
+          //               <label className="block text-sm font-medium text-gray-700 mb-1">Expiry</label>
+          //               <input
+          //                 type="text"
+          //                 name="expiry"
+          //                 value={cardDetails.expiry}
+          //                 onChange={handleCardDetailsChange}
+          //                 className="w-full p-3 border border-[#2c7bbd] rounded-full"
+          //                 placeholder="MM/YY"
+          //               />
+          //             </div>
+          //             <div>
+          //               <label className="block text-sm font-medium text-gray-700 mb-1">CVV</label>
+          //               <input
+          //                 type="text"
+          //                 name="cvv"
+          //                 value={cardDetails.cvv}
+          //                 onChange={handleCardDetailsChange}
+          //                 className="w-full p-3 border border-[#2c7bbd] rounded-full"
+          //                 placeholder="123"
+          //               />
+          //             </div>
+          //           </div>
+          //         </div>
           
-                  <div className="flex justify-between mt-6">
-                    <button
-                      onClick={handlePrevStep}
-                      className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
-                    >
-                      Back
-                    </button>
-                    <button
-                      onClick={handleCompleteDonation}
-                      disabled={!cardDetails.cardName || !cardDetails.cardNumber || !cardDetails.expiry || !cardDetails.cvv}
-                      className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg disabled:opacity-50"
-                    >
-                      Pay ${donationAmount}
-                    </button>
-                  </div>
-                </div>
-              );
-            } else {
-              return (
-                <div className="px-6">
-                  <h3 className="text-lg font-semibold mb-4">Bank Transfer Details</h3>
-                  <div className="space-y-4">
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h5 className="font-medium mb-2">USD Account</h5>
-                      <p className="text-sm">Bank Name: International Bank</p>
-                      <p className="text-sm">Account Number: 1234567890</p>
-                      <p className="text-sm">SWIFT Code: ABCDUS123</p>
-                    </div>
-                    <div className="bg-gray-50 p-4 rounded-lg">
-                      <h5 className="font-medium mb-2">NGN Account</h5>
-                      <p className="text-sm">Bank Name: Local Bank</p>
-                      <p className="text-sm">Account Number: 0987654321</p>
-                    </div>
-                    <p className="text-sm text-gray-600 mt-3">
-                      Please include your name as reference when making the transfer.
-                    </p>
-                  </div>
+          //         <div className="flex justify-between mt-6">
+          //           <button
+          //             onClick={handlePrevStep}
+          //             className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
+          //           >
+          //             Back
+          //           </button>
+          //           <button
+          //             onClick={handleCompleteDonation}
+          //             disabled={!cardDetails.cardName || !cardDetails.cardNumber || !cardDetails.expiry || !cardDetails.cvv}
+          //             className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg disabled:opacity-50"
+          //           >
+          //             Pay ${donationAmount}
+          //           </button>
+          //         </div>
+          //       </div>
+          //     );
+          //   } else {
+          //     return (
+          //       <div className="px-6">
+          //         <h3 className="text-lg font-semibold mb-4">Bank Transfer Details</h3>
+          //         <div className="space-y-4">
+          //           <div className="bg-gray-50 p-4 rounded-lg">
+          //             <h5 className="font-medium mb-2">USD Account</h5>
+          //             <p className="text-sm">Bank Name: International Bank</p>
+          //             <p className="text-sm">Account Number: 1234567890</p>
+          //             <p className="text-sm">SWIFT Code: ABCDUS123</p>
+          //           </div>
+          //           <div className="bg-gray-50 p-4 rounded-lg">
+          //             <h5 className="font-medium mb-2">NGN Account</h5>
+          //             <p className="text-sm">Bank Name: Local Bank</p>
+          //             <p className="text-sm">Account Number: 0987654321</p>
+          //           </div>
+          //           <p className="text-sm text-gray-600 mt-3">
+          //             Please include your name as reference when making the transfer.
+          //           </p>
+          //         </div>
           
-                  <div className="flex justify-between mt-6">
-                    <button
-                      onClick={handlePrevStep}
-                      className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
-                    >
-                      Back
-                    </button>
-                    <button
-                      onClick={handleCompleteDonation}
-                      className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg"
-                    >
-                      Confirm Payment
-                    </button>
-                  </div>
-                </div>
-              );
-            }
+          //         <div className="flex justify-between mt-6">
+          //           <button
+          //             onClick={handlePrevStep}
+          //             className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
+          //           >
+          //             Back
+          //           </button>
+          //           <button
+          //             onClick={handleCompleteDonation}
+          //             className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg"
+          //           >
+          //             Confirm Payment
+          //           </button>
+          //         </div>
+          //       </div>
+          //     );
+          //   }
           default:
             return null;
         }
