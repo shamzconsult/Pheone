@@ -16,14 +16,14 @@ function OurObjectives() {
         {
           title: "Personalized Educational Programs",
           content: "",
-          items: ["We Develop and implement tailored learning strategies that leverage the unique strengths of neurodiverse individuals to enhance their educational experience."],
+          items: [""],
           titleColor: "text-[#2c7bbd]"
         },
         {
           title: "Inclusive Community Engagement",
           content: "",
           items: [
-            "Research and Collaborative Innovation"
+           
           ],
           titleColor: "text-[#BF232E]"
         },
@@ -37,7 +37,7 @@ function OurObjectives() {
             title: "Policy Advocacy",
             content: "",
             items: [
-              "Public Awareness and Inclusion Initiatives"
+              
             ],
             titleColor: "text-[#F9AE40]"
         },
@@ -57,7 +57,7 @@ function OurObjectives() {
           title: "Workplace Inclusion and Economic Empowerment",
           content: "",
           items: [
-            "Inclusive Community Engagement"
+           
           ],
           titleColor: "text-[#F9AE40]"
         },

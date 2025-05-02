@@ -1,12 +1,39 @@
 import Image from 'next/image'
 import Link from 'next/link';
-import React from 'react'
+import React, { useState } from 'react'
 import { FiSend } from "react-icons/fi";
 import { FiPhone, FiMail } from "react-icons/fi";
 
 
 
 function Footer() {
+    const [email, setEmail] = useState('');
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus('loading');
+        
+        try {
+          const response = await fetch('/api/newsletter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }),
+          });
+    
+          if (response.ok) {
+            setStatus('success');
+            setEmail('');
+            setTimeout(() => setStatus('idle'), 3000); 
+          } else {
+            setStatus('error');
+          }
+        } catch (error) {
+            console.error(error)
+          setStatus('error');
+        }
+      };
+
   return (
     <footer className="bg-[#2c7bbd]">
         <div className="mx-auto max-w-screen-2xl px-4 pt-16 pb-6 sm:px-6 lg:px-8 lg:pt-24">
@@ -49,7 +76,7 @@ function Footer() {
                             </a>
                         </li>
 
-                        <li>
+                        {/* <li>
                             <a
                                 href="https://web.facebook.com/me/"
                                 rel="noreferrer"
@@ -65,7 +92,7 @@ function Footer() {
                                 />
                                 </svg>
                             </a>
-                        </li>
+                        </li> */}
 
                         <li>
                             <a
@@ -205,14 +232,40 @@ function Footer() {
                     <div className="text-center md:text-left space-y-6">
                         <div className="flex flex-col items-center md:items-start">
                             <p className="text-lg font-medium text-white">Stay up to date</p>
-                            <div className="relative w-62 md:w-62 mt-4 md:mt-8">
-                                <input 
-                                    type="email"
-                                    className="w-full pl-4 pr-10 py-2 rounded-md text-gray-300 bg-white/10 backdrop-blur-lg text-sm" 
-                                    placeholder="Your email address"
-                                />
-                                <FiSend className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white" />
-                            </div>
+                            <div className='flex gap-2 items-center justify-center md:justify-start mt-2 md:mt-4'>
+                                <div className='flex gap-2 items-center w-full'>                                    
+                                    <form onSubmit={handleSubmit} className='relative flex-1'>
+                                        <input
+                                            type="email"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
+                                            className='w-full pl-4 pr-10 py-2 rounded-md text-gray-300 bg-white/10 backdrop-blur-lg text-sm border-none focus:ring-2 focus:ring-white/20'
+                                            placeholder='Your email address'
+                                            required
+                                            disabled={status === 'loading'}
+                                        />
+                                        
+                                        <button
+                                            type="submit"
+                                            disabled={status === 'loading'}
+                                            className='absolute right-2 top-1/2 transform -translate-y-1/2 text-white hover:text-blue-300 transition-colors'
+                                            aria-label="Subscribe"
+                                        >
+                                            <FiSend className={status === 'loading' ? 'animate-pulse' : ''} />
+                                        </button>
+                                    </form>
+                                </div>
+
+                                {/* Status Messages */}
+                                <div className='h-6'>
+                                    {status === 'success' && (
+                                    <p className='text-sm text-green-400 animate-fade-in'>Thank you for subscribing!</p>
+                                    )}
+                                    {status === 'error' && (
+                                    <p className='text-sm text-red-400 animate-fade-in'>Subscription failed. Please try again.</p>
+                                    )}
+                                </div>
+                                </div>
                         </div>
 
                         <div className="text-sm text-white space-y-2 mx-auto md:mx-0 w-full md:w-96">
