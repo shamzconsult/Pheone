@@ -30,6 +30,7 @@ export async function POST(req: Request) {
   }
 }
 
+export const dynamic = 'force-dynamic'; 
 
 export async function GET() {
   try {
@@ -41,14 +42,6 @@ export async function GET() {
     return NextResponse.json([], { status: 500 });
   }
 }
-
-// export async function GET(req: Request) {
-//   await connectViaMongoose();
-//   const url = new URL(req.url);
-//   const id = url.pathname.split("/")
-//   const image = await Gallery.findById(id);
-//   return NextResponse.json(image);
-// }
 
 export async function PUT(req: Request) {
     try {
