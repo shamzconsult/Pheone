@@ -259,7 +259,7 @@ function Footer() {
                                 {/* Status Messages */}
                                 <div className='h-6'>
                                     {status === 'success' && (
-                                    <p className='text-sm text-green-400 animate-fade-in'>Thank you for subscribing!</p>
+                                    <p className='text-sm text-white animate-fade-in'>Thank you for subscribing!</p>
                                     )}
                                     {status === 'error' && (
                                     <p className='text-sm text-red-400 animate-fade-in'>Subscription failed. Please try again.</p>
