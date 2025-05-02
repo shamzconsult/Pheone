@@ -22,6 +22,7 @@ interface GalleryProps {
 function GalleryHero({ images: initialImages }: GalleryProps) {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(16);
+    const [lastUpdate, setLastUpdate] = useState(Date.now());
     const [images, setImages] = useState<GalleryItem[]>(initialImages);
     const [, setLoading] = useState(true);
     const [, setError] = useState<string | null>(null);
@@ -49,6 +50,33 @@ function GalleryHero({ images: initialImages }: GalleryProps) {
         }
     }, [initialImages]);
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            fetchImages();
+        }, 30000); 
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const fetchImages = async () => {
+        try {
+            setLoading(true);
+            const response = await fetch(`/api/gallery?lastUpdate=${lastUpdate}`);
+            if (!response.ok) throw new Error('Failed to fetch');
+            
+            const result = await response.json();
+            const receivedImages = result.data || result;
+            if (receivedImages.length !== images.length) {
+                setImages(Array.isArray(receivedImages) ? receivedImages : []);
+                setLastUpdate(Date.now());
+            }
+        } catch (err) {
+            console.error('Fetch error:', err);
+            setError('Failed to load gallery');
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
         console.log('Gallery State:', {
@@ -80,40 +108,6 @@ function GalleryHero({ images: initialImages }: GalleryProps) {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    // Fetch images from API
-    // useEffect(() => {
-    //     const fetchGalleryImages = async () => {
-    //         try {
-    //             setLoading(true);
-    //             setError(null);
-                
-    //             const response = await fetch('/api/gallery');
-                
-    //             if (!response.ok) {
-    //                 throw new Error(`Server returned ${response.status} status`);
-    //             }
-                
-    //             const result = await response.json();
-    //             console.log('API Response Data:', result);
-                
-    //             const receivedImages = Array.isArray(result) 
-    //                 ? result 
-    //                 : Array.isArray(result?.data) 
-    //                     ? result.data 
-    //                     : [];
-                
-    //             setImages(receivedImages);
-    //         } catch (err) {
-    //             console.error('Fetch error:', err);
-    //             setError('Failed to load gallery. Please try again.');
-    //             setImages([]);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    //     };
-
-    //     fetchGalleryImages();
-    // }, []);
 
     // Pagination calculations
     const totalPages = Math.max(1, Math.ceil(images.length / itemsPerPage));
