@@ -144,7 +144,7 @@ const MemorialPage = () => {
         </section>
 
         {/* Photo Gallery */}
-        <section className="mb-16">
+        {/* <section className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 font-serif">Memory Gallery</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
@@ -155,7 +155,7 @@ const MemorialPage = () => {
               </div>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* Legacy Section */}
         <section className="bg-white p-8 rounded-lg shadow-lg mb-16">

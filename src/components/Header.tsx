@@ -40,7 +40,7 @@ function Header() {
                             alt='logo' 
                             width={200} 
                             height={100}
-                            className='w-[200px] h-[100px] object-contain'
+                            className='w-[200px] h-[100px] object-contain rounded-full'
                             priority
                         />
                     </Link>
