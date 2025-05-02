@@ -22,9 +22,33 @@ interface GalleryProps {
 function GalleryHero({ images: initialImages }: GalleryProps) {
     const [currentPage, setCurrentPage] = useState(1);
     const [itemsPerPage, setItemsPerPage] = useState(16);
-    const [images, ] = useState<GalleryItem[]>(initialImages);
-    // const [loading, setLoading] = useState(true);
-    // const [error, setError] = useState<string | null>(null);
+    const [images, setImages] = useState<GalleryItem[]>(initialImages);
+    const [, setLoading] = useState(true);
+    const [, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch('/api/gallery');
+                if (!response.ok) throw new Error('Failed to fetch');
+                
+                const result = await response.json();
+                const receivedImages = result.data || result;
+                setImages(Array.isArray(receivedImages) ? receivedImages : []);
+            } catch (err) {
+                console.error('Fetch error:', err);
+                setError('Failed to load gallery');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        if (!initialImages || initialImages.length === 0) {
+            fetchImages();
+        }
+    }, [initialImages]);
+
 
     useEffect(() => {
         console.log('Gallery State:', {
