@@ -35,13 +35,10 @@ export async function GET() {
   try {
     await connectViaMongoose();
     const images = await Gallery.find().sort({ createdAt: -1 });
-    return NextResponse.json({ success: true, data: images });
+    return NextResponse.json(images);
   } catch (err) {
     console.error(err);
-    return NextResponse.json(
-      { success: false, message: "Failed to fetch images" },
-      { status: 500 }
-    );
+    return NextResponse.json([], { status: 500 });
   }
 }
 
