@@ -2,7 +2,8 @@ import React from 'react'
 import GalleryHero from './_components/GalleryHero'
 import { getAllImage } from '@/service/gallery/gallery.server';
 
-export const revalidate = 3600; 
+export const dynamic = 'force-dynamic'; 
+export const revalidate = 0; 
 
 async function page() {
   const images = await getAllImage();

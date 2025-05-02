@@ -30,6 +30,7 @@ export async function POST(req: Request) {
   }
 }
 
+export const dynamic = 'force-dynamic'; 
 
 export async function GET() {
   try {
