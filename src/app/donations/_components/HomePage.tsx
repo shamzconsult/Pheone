@@ -10,10 +10,12 @@ import {
 } from "@/components/ui/dialog";
 import { IoMdCheckmark } from "react-icons/io";
 
+type Currency = 'USD' | 'NGN';
 
 function HomePage() {
   const [currentStep, setCurrentStep] = useState(1);
   const [donationAmount, setDonationAmount] = useState('');
+  const [selectedCurrency, setSelectedCurrency] = useState<Currency>('USD');
   const [donorInfo, setDonorInfo] = useState({
     firstName: '',
     lastName: '',
@@ -30,6 +32,16 @@ function HomePage() {
     cvv: ''
   });
   const [donationType, setDonationType] = useState<'one-time' | 'monthly' | 'partnership'>('one-time');
+
+  const handleCurrencyChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value.split(' ')[0] as Currency;
+    setSelectedCurrency(value);
+  };
+
+  const predefinedAmounts: Record<Currency, number[]> = {
+    USD: [10, 25, 50, 100, 250, 500],
+    NGN: [5000, 10000, 20000, 50000, 100000, 200000]
+  };
 
   const handleNextStep = () => {
     if (currentStep < 4) setCurrentStep(currentStep + 1);
@@ -274,34 +286,43 @@ function HomePage() {
             <div className="flex justify-between mb-4">
               <p className="text-black">Select donation amount</p>
               <div className="flex gap-4 sm:gap-6 border p-1 px-2 items-center rounded-full bg-gray-50">
-                <select className="text-sm font-medium text-[#2c7bbd] bg-transparent border-none focus:outline-none">
-                  <option>USD $</option>
-                  <option>NGN #</option>
+                <select 
+                  className="text-sm font-medium text-[#2c7bbd] bg-transparent border-none focus:outline-none"
+                  onChange={handleCurrencyChange}
+                  value={`${selectedCurrency} ${selectedCurrency === 'USD' ? '$' : '#'}`}
+                >
+                  <option value="USD $">USD $</option>
+                  <option value="NGN #">NGN #</option>
                 </select>
               </div>
             </div>
 
             <div className="grid grid-cols-3 gap-4 mb-6 font-semibold">
-              {[10, 25, 50, 100, 250, 500].map(amount => (
+              {predefinedAmounts[selectedCurrency].map(amount => (
                 <button
                   key={amount}
                   onClick={() => setDonationAmount(amount.toString())}
                   className={`p-3 rounded-full border ${donationAmount === amount.toString() ? 'bg-[#2c7bbd] text-white border-blue-500' : 'border-[#2c7bbd]'}`}
                 >
-                  ${amount}.00
+                  {selectedCurrency === 'USD' ? '$' : '#'}{amount.toLocaleString()}
                 </button>
               ))}
             </div>
 
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">Enter custom amount</label>
-              <input
-                type="number"
-                placeholder="0.00"
-                className="w-full p-3 border border-gray-300 rounded-full"
-                value={donationAmount}
-                onChange={(e) => setDonationAmount(e.target.value)}
-              />
+              <div className="relative">
+                <span className="absolute left-3 top-1/2 transform -translate-y-1/2">
+                  {selectedCurrency === 'USD' ? '$' : '#'}
+                </span>
+                <input
+                  type="number"
+                  placeholder="0.00"
+                  className="w-full p-3 border border-gray-300 rounded-full pl-8"
+                  value={donationAmount}
+                  onChange={(e) => setDonationAmount(e.target.value)}
+                />
+              </div>
             </div>
 
             <button
@@ -379,7 +400,7 @@ function HomePage() {
                   <h4 className="font-semibold mb-2 text-center">Donation Summary</h4>
                   <p className="flex justify-between mb-2 p-1 text-sm">
                     <span>Payment amount:</span>
-                    <span>${donationAmount}</span>
+                    <span>{selectedCurrency === 'USD' ? '$' : '#'}{donationAmount}</span>
                   </p>
                   <p className="flex justify-between p-1 mb-2 text-sm">
                     <span>Giving frequency:</span>
@@ -489,7 +510,7 @@ function HomePage() {
                       <h4 className="font-semibold mb-2 text-center">Donation Summary</h4>
                       <p className="flex justify-between mb-2 p-1 text-sm">
                         <span>Payment amount:</span>
-                        <span>${donationAmount}</span>
+                        <span>{selectedCurrency === 'USD' ? '$' : '#'}{donationAmount}</span>
                       </p>
                       <p className="flex justify-between p-1 mb-2 text-sm">
                         <span>Giving frequency:</span>
