@@ -1,16 +1,10 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-export async function createPaymentIntent(amount: number, currency: string = 'usd') {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-      apiVersion: '2024-04-10',
-      typescript: true,
-    });
-    return await stripe.paymentIntents.create({
-        amount,
-        currency,
-      });
-}
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: '2025-04-30.basil',
+  typescript: true,
+});
 
 export async function POST(request: Request) {
   try {
@@ -23,8 +17,12 @@ export async function POST(request: Request) {
       );
     }
 
+    const stripeAmount = currency.toLowerCase() === 'usd' 
+      ? Math.round(amount * 100) 
+      : Math.round(amount);
+
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: Math.round(amount * 100), 
+      amount: stripeAmount,
       currency: currency.toLowerCase(),
       metadata: {
         donor_name: `${donorInfo.firstName} ${donorInfo.lastName}`,

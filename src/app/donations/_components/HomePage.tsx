@@ -520,126 +520,126 @@ function HomePage() {
           </div>
             );
             case 4:
-  if (paymentMethod === 'stripe') {
-    return (
-      <div className="px-6">
-        <Elements stripe={stripePromise}>
-          <StripePaymentForm
-            donationAmount={donationAmount}
-            selectedCurrency={selectedCurrency}
-            donorInfo={donorInfo}
-            handleCompleteDonation={handleCompleteDonation}
-            handlePrevStep={handlePrevStep}
-          />
-        </Elements>
-      </div>
-    );
-  } else if (paymentMethod === 'paystack') {
-    return (
-      <div className="px-6">
-        <div className="mb-6">
-          <div className="bg-gray-100 p-4 rounded-lg mb-4">
-            <h4 className="font-semibold mb-2 text-center">Donation Summary</h4>
-            <p className="flex justify-between mb-2 p-1 text-sm">
-              <span>Payment amount:</span>
-              <span>{selectedCurrency === 'USD' ? '$' : '#'}{donationAmount}</span>
-            </p>
-            <p className="flex justify-between p-1 mb-2 text-sm">
-              <span>Giving frequency:</span>
-              <span>{getFrequencyText()}</span>
-            </p>
-            <p className="flex justify-between p-1 text-sm">
-              <span>Donor:</span>
-              <span>{donorInfo.firstName} {donorInfo.lastName}</span>
-            </p>
-          </div>
+            if (paymentMethod === 'stripe') {
+              return (
+                <div className="px-6">
+                  <Elements stripe={stripePromise}>
+                    <StripePaymentForm
+                      donationAmount={donationAmount}
+                      selectedCurrency={selectedCurrency}
+                      donorInfo={donorInfo}
+                      handleCompleteDonation={handleCompleteDonation}
+                      handlePrevStep={handlePrevStep}
+                    />
+                  </Elements>
+                </div>
+              );
+            } else if (paymentMethod === 'paystack') {
+              return (
+                <div className="px-6">
+                  <div className="mb-6">
+                    <div className="bg-gray-100 p-4 rounded-lg mb-4">
+                      <h4 className="font-semibold mb-2 text-center">Donation Summary</h4>
+                      <p className="flex justify-between mb-2 p-1 text-sm">
+                        <span>Payment amount:</span>
+                        <span>{selectedCurrency === 'USD' ? '$' : '#'}{donationAmount}</span>
+                      </p>
+                      <p className="flex justify-between p-1 mb-2 text-sm">
+                        <span>Giving frequency:</span>
+                        <span>{getFrequencyText()}</span>
+                      </p>
+                      <p className="flex justify-between p-1 text-sm">
+                        <span>Donor:</span>
+                        <span>{donorInfo.firstName} {donorInfo.lastName}</span>
+                      </p>
+                    </div>
 
-          <div className="text-center bg-blue-50 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">Paystack Payment Details</h4>
-            <p className="text-sm mb-2">Please make payment to:</p>
-            <p className="font-bold text-[#2c7bbd] mb-2">Paystack ID: PS123456789</p>
-            <p className="text-sm">Account Name: Your Organization</p>
-            <p className="text-sm">Reference: DON-{donorInfo.firstName}-{Date.now().toString().slice(-4)}</p>
-          </div>
-        </div>
+                    <div className="text-center bg-blue-50 p-4 rounded-lg">
+                      <h4 className="font-semibold mb-3">Paystack Payment Details</h4>
+                      <p className="text-sm mb-2">Please make payment to:</p>
+                      <p className="font-bold text-[#2c7bbd] mb-2">Paystack ID: PS123456789</p>
+                      <p className="text-sm">Account Name: Your Organization</p>
+                      <p className="text-sm">Reference: DON-{donorInfo.firstName}-{Date.now().toString().slice(-4)}</p>
+                    </div>
+                  </div>
 
-        <div className="flex justify-between">
-          <button
-            onClick={handlePrevStep}
-            className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
-          >
-            Back
-          </button>
-          <button
-            onClick={handleCompleteDonation}
-            className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg"
-          >
-            I&apos;ve Made the Payment
-          </button>
-        </div>
-      </div>
-    );
-  } else if (paymentMethod === 'bank') {
-    return (
-      <div className="px-6">
-        <div className="mb-6">
-          <div className="bg-gray-100 p-4 rounded-lg mb-4">
-            <h4 className="font-semibold mb-2 text-center">Donation Summary</h4>
-            <p className="flex justify-between mb-2 p-1 text-sm">
-              <span>Payment amount:</span>
-              <span>{selectedCurrency === 'USD' ? '$' : '#'}{donationAmount}</span>
-            </p>
-            <p className="flex justify-between p-1 mb-2 text-sm">
-              <span>Giving frequency:</span>
-              <span>{getFrequencyText()}</span>
-            </p>
-            <p className="flex justify-between p-1 text-sm">
-              <span>Donor:</span>
-              <span>{donorInfo.firstName} {donorInfo.lastName}</span>
-            </p>
-          </div>
+                  <div className="flex justify-between">
+                    <button
+                      onClick={handlePrevStep}
+                      className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
+                    >
+                      Back
+                    </button>
+                    <button
+                      onClick={handleCompleteDonation}
+                      className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg"
+                    >
+                      I&apos;ve Made the Payment
+                    </button>
+                  </div>
+                </div>
+              );
+            } else if (paymentMethod === 'bank') {
+              return (
+                <div className="px-6">
+                  <div className="mb-6">
+                    <div className="bg-gray-100 p-4 rounded-lg mb-4">
+                      <h4 className="font-semibold mb-2 text-center">Donation Summary</h4>
+                      <p className="flex justify-between mb-2 p-1 text-sm">
+                        <span>Payment amount:</span>
+                        <span>{selectedCurrency === 'USD' ? '$' : '#'}{donationAmount}</span>
+                      </p>
+                      <p className="flex justify-between p-1 mb-2 text-sm">
+                        <span>Giving frequency:</span>
+                        <span>{getFrequencyText()}</span>
+                      </p>
+                      <p className="flex justify-between p-1 text-sm">
+                        <span>Donor:</span>
+                        <span>{donorInfo.firstName} {donorInfo.lastName}</span>
+                      </p>
+                    </div>
 
-          <div className="text-center bg-blue-50 p-4 rounded-lg">
-            <h4 className="font-semibold mb-3">Bank Transfer Details</h4>
-            {selectedCurrency === 'USD' ? (
-              <div className="mb-3">
-                <p className="text-sm font-medium">USD Account</p>
-                <p className="text-sm">Bank: GTBank International</p>
-                <p className="text-sm">Account No: 0709484489</p>
-                <p className="text-sm">SWIFT Code: GTBINGLA</p>
-              </div>
-            ) : (
-              <div className="mb-3">
-                <p className="text-sm font-medium">NGN Account</p>
-                <p className="text-sm">Bank: GTBank Nigeria</p>
-                <p className="text-sm">Account No: 0709275892</p>
-                <p className="text-sm">Account Name: Olayinka Elizabeth Dada</p>
-              </div>
-            )}
-            <p className="text-xs text-gray-600 mt-2">
-              Please include &quot;{donorInfo.firstName} {donorInfo.lastName}&quot; as payment reference
-            </p>
-          </div>
-        </div>
+                    <div className="text-center bg-blue-50 p-4 rounded-lg">
+                      <h4 className="font-semibold mb-3">Bank Transfer Details</h4>
+                      {selectedCurrency === 'USD' ? (
+                        <div className="mb-3">
+                          <p className="text-sm font-medium">USD Account</p>
+                          <p className="text-sm">Bank: GTBank International</p>
+                          <p className="text-sm">Account No: 0709484489</p>
+                          <p className="text-sm">SWIFT Code: GTBINGLA</p>
+                        </div>
+                      ) : (
+                        <div className="mb-3">
+                          <p className="text-sm font-medium">NGN Account</p>
+                          <p className="text-sm">Bank: GTBank Nigeria</p>
+                          <p className="text-sm">Account No: 0709275892</p>
+                          <p className="text-sm">Account Name: Olayinka Elizabeth Dada</p>
+                        </div>
+                      )}
+                      <p className="text-xs text-gray-600 mt-2">
+                        Please include &quot;{donorInfo.firstName} {donorInfo.lastName}&quot; as payment reference
+                      </p>
+                    </div>
+                  </div>
 
-        <div className="flex justify-between">
-          <button
-            onClick={handlePrevStep}
-            className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
-          >
-            Back
-          </button>
-          <button
-            onClick={handleCompleteDonation}
-            className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg"
-          >
-            I&apos;ve Made the Payment
-          </button>
-        </div>
-      </div>
-    );
-  }
-  return null;
+                  <div className="flex justify-between">
+                    <button
+                      onClick={handlePrevStep}
+                      className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
+                    >
+                      Back
+                    </button>
+                    <button
+                      onClick={handleCompleteDonation}
+                      className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg"
+                    >
+                      I&apos;ve Made the Payment
+                    </button>
+                  </div>
+                </div>
+              );
+            }
+            return null;
           // case 4:
           //   if (paymentMethod === 'paypal') {
           //     return (
@@ -903,7 +903,7 @@ function HomePage() {
                 <DialogTrigger className='bg-[#2c7bbd] text-white rounded-full py-2 px-6 mt-auto w-fit mx-auto' onClick={() => handleDonationTypeSelect('one-time')}>
                   Donate Now
                 </DialogTrigger>
-                <DialogContent className='text-center max-w-md'>
+                <DialogContent className='text-center max-w-md max-h-[90vh] overflow-y-auto'>
                   <DialogHeader>
                     {!showSuccess && (
                       <div className='mt-6 p-4'>
@@ -936,7 +936,9 @@ function HomePage() {
                       </DialogTitle>
                     )}
                     
-                    {renderStepContent()}
+                     <div className="max-h-[calc(90vh-200px)] overflow-y-auto">
+                        {renderStepContent()}
+                      </div>
                   </DialogHeader>
                 </DialogContent>
               </Dialog>
