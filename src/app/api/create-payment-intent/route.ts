@@ -19,7 +19,7 @@ export async function POST(request: Request) {
 
     const stripeAmount = currency.toLowerCase() === 'usd' 
       ? Math.round(amount * 100) 
-      : Math.round(amount);
+      : Math.round(amount * 100);
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: stripeAmount,
@@ -27,7 +27,11 @@ export async function POST(request: Request) {
       metadata: {
         donor_name: `${donorInfo.firstName} ${donorInfo.lastName}`,
         donor_email: donorInfo.email,
+         original_amount: amount.toString(),
       },
+      //  automatic_payment_methods: {
+      //   enabled: true,
+      // },
     });
 
     return NextResponse.json({
