@@ -121,7 +121,7 @@ function GalleryHero({ images: initialImages }: GalleryProps) {
     };
 
     return (
-        <div className='relative overflow-x-hidden h-screen'>
+        <div className='relative overflow-x-hidden min-h-screen'>
             {/* Decorative background element */}
             <div className="absolute hidden lg:block right-0 top-0 h-full lg:h-[700px] 2xl:h-[900px] lg:max-w-[500px] w-full max-w-[300px] 2xl:max-w-[800px] -z-10">
                 <img 
