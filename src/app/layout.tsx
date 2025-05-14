@@ -23,7 +23,7 @@ const poppins = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: "PHEABEAN NEURODIVERSITY",
+  title: "Phebean Neurodiversity Support",
   description: "Together, we are shaping a world where every individual's special abilities are recognized and valued.",
 }
 
