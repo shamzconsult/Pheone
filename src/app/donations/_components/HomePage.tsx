@@ -297,7 +297,7 @@ function HomePage() {
                   value={`${selectedCurrency} ${selectedCurrency === 'USD' ? '$' : '#'}`}
                 >
                   <option value="USD $">USD $</option>
-                  <option value="NGN #">NGN #</option>
+                  <option value="NGN #">NGN ₦</option>
                 </select>
               </div>
             </div>
@@ -309,7 +309,7 @@ function HomePage() {
                   onClick={() => setDonationAmount(amount.toString())}
                   className={`p-3 rounded-full border ${donationAmount === amount.toString() ? 'bg-[#2c7bbd] text-white border-blue-500' : 'border-[#2c7bbd]'}`}
                 >
-                  {selectedCurrency === 'USD' ? '$' : '#'}{amount.toLocaleString()}
+                  {selectedCurrency === 'USD' ? '$' : '₦'}{amount.toLocaleString()}
                 </button>
               ))}
             </div>
@@ -318,7 +318,7 @@ function HomePage() {
               <label className="block text-sm font-medium text-gray-700 mb-2">Enter custom amount</label>
               <div className="relative">
                 <span className="absolute left-3 top-1/2 transform -translate-y-1/2">
-                  {selectedCurrency === 'USD' ? '$' : '#'}
+                  {selectedCurrency === 'USD' ? '$' : '₦'}
                 </span>
                 <input
                   type="number"
@@ -407,7 +407,7 @@ function HomePage() {
                 <h4 className="font-semibold mb-2 text-center">Donation Summary</h4>
                 <p className="flex justify-between mb-2 p-1 text-sm">
                   <span>Payment amount:</span>
-                  <span>{selectedCurrency === 'USD' ? '$' : '#'}{donationAmount}</span>
+                  <span>{selectedCurrency === 'USD' ? '$' : '₦'}{donationAmount}</span>
                 </p>
                 <p className="flex justify-between p-1 mb-2 text-sm">
                   <span>Giving frequency:</span>
@@ -419,7 +419,7 @@ function HomePage() {
                 </p>
                 <p className="flex justify-between p-1 text-sm">
                   <span>Donation Total:</span>
-                  <span className='text-[#2c7bbd] font-semibold'>{selectedCurrency === 'USD' ? '$' : '#'}{donationAmount}</span>
+                  <span className='text-[#2c7bbd] font-semibold'>{selectedCurrency === 'USD' ? '$' : '₦'}{donationAmount}</span>
                 </p>
               </div>
 
@@ -453,7 +453,7 @@ function HomePage() {
                 </div>
                 
                 {/* Paystack Option */}
-                <div>
+                {/* <div>
                   <label
                     htmlFor="payWithPaystack"
                     className={`flex items-center justify-between gap-4 p-3 text-sm font-medium transition-colors hover:bg-gray-50 hover:border-l-[#2c7bbd] hover:border-l-2 ${
@@ -474,7 +474,7 @@ function HomePage() {
                       onChange={() => handlePaymentMethodSelect('paystack')}
                     />
                   </label>
-                </div>
+                </div> */}
                 
                 {/* GTBank/Bank Transfer Option */}
                 <div>
@@ -640,219 +640,7 @@ function HomePage() {
               );
             }
             return null;
-          // case 4:
-          //   if (paymentMethod === 'paypal') {
-          //     return (
-          //       <div className="px-6">
-          //         <div className="mb-6">
-          //           <div className="bg-gray-100 p-4 rounded-lg mb-4">
-          //             <h4 className="font-semibold mb-2 text-center">Donation Summary</h4>
-          //             <p className="flex justify-between mb-2 p-1 text-sm">
-          //               <span>Payment amount:</span>
-          //               <span>{selectedCurrency === 'USD' ? '$' : '#'}{donationAmount}</span>
-          //             </p>
-          //             <p className="flex justify-between p-1 mb-2 text-sm">
-          //               <span>Giving frequency:</span>
-          //               <span>{getFrequencyText()}</span>
-          //             </p>
-          //             <p className="flex justify-between p-1 text-sm">
-          //               <span>Donor:</span>
-          //               <span>{donorInfo.firstName} {donorInfo.lastName}</span>
-          //             </p>
-          //           </div>
-
-          //           <div className="text-center bg-yellow-100 p-4 rounded-lg">
-          //             <p className="text-sm font-medium mb-2">Please send your donation to the following PayPal account:</p>
-          //             <p className="font-bold text-[#2c7bbd] mb-4">lizben16@yahoo.com</p>
-          //             <button
-          //               onClick={handleCompleteDonation}
-          //               className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg"
-          //             >
-          //               Confirm Payment
-          //            </button>
-          //           </div>
-          //         </div>
-
-          //         <div className="flex justify-between mt-6">
-          //           <button
-          //             onClick={handlePrevStep}
-          //             className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
-          //           >
-          //             Back
-          //           </button>
-          //         </div>
-          //       </div>
-          //     );
-          // }
-
-          // case 4:
-          //   if (paymentMethod === 'paypal') {
-          //     return (
-          //       <div className="px-6">
-          //         <div className="mb-6">
-          //           <div className="bg-gray-100 p-4 rounded-lg mb-4">
-          //             <h4 className="font-semibold mb-2 text-center">Donation Summary</h4>
-          //             <p className="flex justify-between mb-2 p-1 text-sm">
-          //               <span>Payment amount:</span>
-          //               <span>${donationAmount}</span>
-          //             </p>
-          //             <p className="flex justify-between p-1 mb-2 text-sm">
-          //               <span>Giving frequency:</span>
-          //               <span>{getFrequencyText()}</span>
-          //             </p>
-          //             <p className="flex justify-between p-1 text-sm">
-          //               <span>Donor:</span>
-          //               <span>{donorInfo.firstName} {donorInfo.lastName}</span>
-          //             </p>
-          //           </div>
-                    
-          //           <PayPalScriptProvider 
-          //             options={{ 
-          //               "client-id": "YOUR_PAYPAL_CLIENT_ID",
-          //               currency: "USD",
-          //               intent: "capture",
-          //               components: "buttons",
-          //             }}
-          //           >
-          //             <PayPalDonation
-          //               amount={donationAmount}
-          //               currency="USD"
-          //               onSuccess={handleCompleteDonation}
-          //               onError={(err) => {
-          //                 console.error("PayPal error:", err);
-          //                 alert("There was an error processing your PayPal payment. Please try again.");
-          //               }}
-          //             />
-          //           </PayPalScriptProvider>
-          //         </div>
           
-          //         <div className="flex justify-between mt-6">
-          //           <button
-          //             onClick={handlePrevStep}
-          //             className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
-          //           >
-          //             Back
-          //           </button>
-          //         </div>
-          //       </div>
-          //     );
-          //   } else if (paymentMethod === 'card') {
-          //     return (
-          //       <div className="px-6">
-          //         <p className='text-sm text-center font-semibold -mt-4 mb-4'>Enter your debit card details to complete payment</p>
-          //         <p className='font-semibold text-sm'>Payment methods</p>
-          //         <div className='flex justify-around py-6'>
-          //           <img src="/image/credit-card.png" alt="" className='h-10 w-14'/>
-          //           <img src="/image/credit-card (1).png" alt="" className='h-10 w-14'/>
-          //           <img src="/image/credit-card (2).png" alt="" className='h-10 w-14'/>
-          //           <img src="/image/credit-card (3).png" alt="" className='h-10 w-14'/>
-          //           <img src="/image/credit-card (4).png" alt="" className='h-10 w-14'/>
-          //         </div>
-                 
-          //         <div className="space-y-3">
-          //           <div>
-          //             <label className="block text-sm font-medium text-gray-700 mb-1">Cardholder&apos;s Name</label>
-          //             <input
-          //               type="text"
-          //               name="cardName"
-          //               value={cardDetails.cardName}
-          //               onChange={handleCardDetailsChange}
-          //               className="w-full p-3 border border-[#2c7bbd] rounded-full"
-          //               placeholder="Enter name on your card"
-          //             />
-          //           </div>
-          //           <div>
-          //             <label className="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
-          //             <input
-          //               type="text"
-          //               name="cardNumber"
-          //               value={cardDetails.cardNumber}
-          //               onChange={handleCardDetailsChange}
-          //               className="w-full p-3 border border-[#2c7bbd] rounded-full"
-          //               placeholder="Enter card number"
-          //             />
-          //           </div>
-          //           <div className="grid grid-cols-2 gap-4">
-          //             <div>
-          //               <label className="block text-sm font-medium text-gray-700 mb-1">Expiry</label>
-          //               <input
-          //                 type="text"
-          //                 name="expiry"
-          //                 value={cardDetails.expiry}
-          //                 onChange={handleCardDetailsChange}
-          //                 className="w-full p-3 border border-[#2c7bbd] rounded-full"
-          //                 placeholder="MM/YY"
-          //               />
-          //             </div>
-          //             <div>
-          //               <label className="block text-sm font-medium text-gray-700 mb-1">CVV</label>
-          //               <input
-          //                 type="text"
-          //                 name="cvv"
-          //                 value={cardDetails.cvv}
-          //                 onChange={handleCardDetailsChange}
-          //                 className="w-full p-3 border border-[#2c7bbd] rounded-full"
-          //                 placeholder="123"
-          //               />
-          //             </div>
-          //           </div>
-          //         </div>
-          
-          //         <div className="flex justify-between mt-6">
-          //           <button
-          //             onClick={handlePrevStep}
-          //             className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
-          //           >
-          //             Back
-          //           </button>
-          //           <button
-          //             onClick={handleCompleteDonation}
-          //             disabled={!cardDetails.cardName || !cardDetails.cardNumber || !cardDetails.expiry || !cardDetails.cvv}
-          //             className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg disabled:opacity-50"
-          //           >
-          //             Pay ${donationAmount}
-          //           </button>
-          //         </div>
-          //       </div>
-          //     );
-          //   } else {
-          //     return (
-          //       <div className="px-6">
-          //         <h3 className="text-lg font-semibold mb-4">Bank Transfer Details</h3>
-          //         <div className="space-y-4">
-          //           <div className="bg-gray-50 p-4 rounded-lg">
-          //             <h5 className="font-medium mb-2">USD Account</h5>
-          //             <p className="text-sm">Bank Name: International Bank</p>
-          //             <p className="text-sm">Account Number: 1234567890</p>
-          //             <p className="text-sm">SWIFT Code: ABCDUS123</p>
-          //           </div>
-          //           <div className="bg-gray-50 p-4 rounded-lg">
-          //             <h5 className="font-medium mb-2">NGN Account</h5>
-          //             <p className="text-sm">Bank Name: Local Bank</p>
-          //             <p className="text-sm">Account Number: 0987654321</p>
-          //           </div>
-          //           <p className="text-sm text-gray-600 mt-3">
-          //             Please include your name as reference when making the transfer.
-          //           </p>
-          //         </div>
-          
-          //         <div className="flex justify-between mt-6">
-          //           <button
-          //             onClick={handlePrevStep}
-          //             className="bg-gray-200 text-gray-800 py-2 px-6 rounded-lg"
-          //           >
-          //             Back
-          //           </button>
-          //           <button
-          //             onClick={handleCompleteDonation}
-          //             className="bg-[#2c7bbd] text-white py-2 px-6 rounded-lg"
-          //           >
-          //             Confirm Payment
-          //           </button>
-          //         </div>
-          //       </div>
-          //     );
-          //   }
           default:
             return null;
         }
