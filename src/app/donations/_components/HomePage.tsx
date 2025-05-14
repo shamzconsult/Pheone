@@ -757,7 +757,7 @@ function HomePage() {
       //             <h4 className="font-semibold mb-2 text-center">Donation Summary</h4>
       //             <p className="flex justify-between mb-2 p-1 text-sm">
       //               <span>Payment amount:</span>
-      //               <span>{selectedCurrency === 'USD' ? '$' : '#'}{donationAmount}</span>
+      //               <span>{selectedCurrency === 'USD' ? '$' : '₦'}{donationAmount}</span>
       //             </p>
       //             <p className="flex justify-between p-1 mb-2 text-sm">
       //               <span>Giving frequency:</span>
