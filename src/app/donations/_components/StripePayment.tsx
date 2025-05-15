@@ -184,7 +184,9 @@ const StripePaymentFormInner: React.FC<StripePaymentFormProps> = ({
         color: "#9e2146",
       },
     },
+     paymentMethodCreation: 'manual' as const,
   };
+
 
   return (
     <form onSubmit={handleSubmit} className='w-full'>

@@ -525,7 +525,7 @@ function HomePage() {
                 </div>
 
                 {/* Paystack Option */}
-                <div>
+                {/* <div>
                   <label
                     htmlFor='payWithPaystack'
                     className={`flex items-center justify-between gap-4 p-3 text-sm font-medium transition-colors hover:bg-gray-50 hover:border-l-[#2c7bbd] hover:border-l-2 ${
@@ -552,7 +552,7 @@ function HomePage() {
                       onChange={() => handlePaymentMethodSelect("paystack")}
                     />
                   </label>
-                </div>
+                </div> */}
 
                 {/* GTBank/Bank Transfer Option */}
                 <div>
