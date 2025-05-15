@@ -729,16 +729,16 @@ function HomePage() {
                 </div>
               </div>
 
-              <div className='flex justify-between'>
+              <div className='flex justify-between gap-10'>
                 <button
                   onClick={handlePrevStep}
-                  className='bg-gray-200 text-gray-800 py-2 px-6 rounded-lg'
+                  className='bg-gray-200 text-sm md:text-[1rem] text-gray-800 py-2 px-6 rounded-lg'
                 >
                   Back
                 </button>
                 <button
                   onClick={handleCompleteDonation}
-                  className='bg-[#2c7bbd] text-white py-2 px-6 rounded-lg'
+                  className='bg-[#2c7bbd] text-sm md:text-[1rem] text-white py-2 px-6 rounded-lg'
                 >
                   I&apos;ve Made the Payment
                 </button>
