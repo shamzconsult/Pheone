@@ -193,9 +193,21 @@ export default function GalleryDashboard({images: initalImage}: AdminGalleryProp
                 className="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md p-3 border"
                 placeholder="Enter image description (not more than 15 words)"
                 value={formData.description}
-                onChange={handleInputChange}
+                 onChange={(e) => {
+                  const input = e.target.value;
+                  const trimmedInput = input.trim();
+                  const letterCount = trimmedInput.replace(/\s/g, '').length;
+                  const wordCount = trimmedInput.split(/\s+/).length;
+
+                  if (letterCount <= 10 && wordCount <= 10) {
+                    handleInputChange(e);
+                  }
+                }}
                 required
               />
+              <p className="text-xs text-gray-500 mt-1">
+                Letters: {formData.description.replace(/\s/g, '').length}/10  
+              </p>
             </div>
 
             <div>

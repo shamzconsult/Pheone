@@ -13,13 +13,24 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: "All fields required" }, { status: 400 });
     }
 
+     const trimmedDesc = description.trim();
+    const letterCount = trimmedDesc.replace(/\s/g, '').length;
+    const wordCount = trimmedDesc.split(/\s+/).length;
+
+    if (letterCount > 10 || wordCount > 10) {
+      return NextResponse.json(
+        { message: "Description must be ≤10 letters and ≤10 words." },
+        { status: 400 }
+      );
+    }
+
     // Upload image to Cloudinary
     const uploadedImage = await cloudinary.uploader.upload(image, {
       folder: "gallery",
     });
 
     const newImage = await Gallery.create({
-      description,
+      description: trimmedDesc,
       image: uploadedImage.secure_url,
     });
 
@@ -54,8 +65,23 @@ export async function PUT(req: Request) {
       if (!id) {
         return NextResponse.json({ message: "Image ID required" }, { status: 400 });
       }
+
+      if (description) {
+      const trimmedDesc = description.trim();
+      const letterCount = trimmedDesc.replace(/\s/g, '').length;
+      const wordCount = trimmedDesc.split(/\s+/).length;
+
+      if (letterCount > 10 || wordCount > 10) {
+        return NextResponse.json(
+          { message: "Description must be ≤10 letters and ≤10 words." },
+          { status: 400 }
+        );
+      }
+    }
   
-      const updateData: { description: string; image?: string } = { description };
+     const updateData: { description?: string; image?: string } = {};
+
+    if (description) updateData.description = description.trim();
   
       // If image is being updated (new image provided)
       if (image && !image.startsWith("http")) {
