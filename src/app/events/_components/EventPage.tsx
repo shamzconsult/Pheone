@@ -53,9 +53,16 @@ function EventsPage({events: intialEvents}: EventsProps) {
             <h1 className='text-xl mt-6 text-white bg-[#2c7bbd] mb-6 inline-block p-2 px-10 rounded-full'>
                 OUR EVENTS
             </h1>
-            <p className='text-xl font-semibold text-black mb-8 max-w-4xl mx-auto leading-loose tracking-wide'>
+            {events.length === 0 ? (
+              ''
+            ):(
+              <p className='text-xl font-semibold text-black mb-8 max-w-4xl mx-auto leading-loose tracking-wide'>
                 Check out our past, present and upcoming events.
             </p>
+            )}
+            {/* <p className='text-xl font-semibold text-black mb-8 max-w-4xl mx-auto leading-loose tracking-wide'>
+                Check out our past, present and upcoming events.
+            </p> */}
           </div>
         
         {events.length === 0 ? (
