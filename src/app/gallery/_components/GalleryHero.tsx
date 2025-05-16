@@ -137,9 +137,16 @@ function GalleryHero({ images: initialImages }: GalleryProps) {
                     <h1 className='text-xl mt-6 text-white bg-[#2c7bbd] mb-6 inline-block p-2 px-10 rounded-full'>
                         OUR GALLERY
                     </h1>
-                    <p className='text-xl font-semibold text-black mb-8 max-w-4xl mx-auto leading-loose tracking-wide'>
+                    {images.length === 0 ? (
+                        ''
+                    ): (
+                        <p className='text-xl font-semibold text-black mb-8 max-w-4xl mx-auto leading-loose tracking-wide'>
                         Explore moments of impact, joy, and transformation captured in our work.
-                    </p>
+                        </p>
+                    )}
+                    {/* <p className='text-xl font-semibold text-black mb-8 max-w-4xl mx-auto leading-loose tracking-wide'>
+                        Explore moments of impact, joy, and transformation captured in our work.
+                    </p> */}
                 </div>
 
                 {/* Gallery content */}
@@ -158,9 +165,9 @@ function GalleryHero({ images: initialImages }: GalleryProps) {
                             d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                         />
                         </svg>
-                    <h3 className="mt-2 text-sm font-medium text-gray-900">No events yet</h3>
+                    <h3 className="mt-2 text-sm font-medium text-gray-900">No image yet</h3>
                     <p className="mt-1 text-sm text-gray-500">
-                      Get started by creating your first event.
+                      Get started by creating your first image.
                     </p>
                   </div>
                 ) : (
