@@ -4,7 +4,17 @@ const GallerySchema = new Schema({
    
     description: { 
         type: String, 
-        required: true 
+        required: true,
+        validate: [
+            {
+                validator: (desc: string) => desc.replace(/\s/g, '').length<= 10,
+                message: "Description must not exceed 10 letters (excluding spaces)."
+            },
+            {
+                validator: (desc: string) => desc.trim().split(/\s+/).length <= 10,
+                message: "Description must not exceed 10 words."
+            }
+        ] 
     },
     image: { 
         type: String, 
