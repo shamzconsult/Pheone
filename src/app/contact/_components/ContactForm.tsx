@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import axios from 'axios'; 
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaInstagram, FaLinkedin } from 'react-icons/fa'
+import { FaXTwitter } from "react-icons/fa6";
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -231,11 +232,11 @@ function ContactForm() {
                 <FaFacebook className='text-2xl' />
               </a> */}
               <a 
-                href=" https://x.com/phebeaneuro" 
+                href="https://x.com/phebeaneuro" 
                 className='bg-gray-100 p-4 rounded-full text-[#2c7bbd] hover:bg-[#2c7bbd] hover:text-white transition-all duration-300 transform hover:-translate-y-1'
                 aria-label="Twitter"
               >
-                <FaTwitter className='text-2xl' />
+                <FaXTwitter className='text-2xl' />
               </a>
               <a 
                 href="https://instagram.com/phebeanneuro" 
