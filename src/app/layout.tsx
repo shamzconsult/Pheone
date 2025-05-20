@@ -44,6 +44,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+   other: {
+    'google-site-verification': 'google251de09ef11af03c',
+  },
   openGraph: {
     title: "Phebean Neurodiversity Support",
     description: "Celebrating and supporting neurodivergent individuals",
