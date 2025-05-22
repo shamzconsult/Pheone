@@ -67,7 +67,7 @@ const MemorialPage = () => {
               <TimelineItem 
                 year="1995" 
                 title="Passing" 
-                content="Joined the saints triumphant on January 9, 1995" 
+                content="Passed away on January 9, 1995" 
                 position="right"
               />
             </div>
@@ -91,7 +91,7 @@ const MemorialPage = () => {
                 </div>
                 <p className="text-gray-700 mb-4 italic">
                 &ldquo;Thirty years ago yes I mean thirty years. Indeed it was on the 9th of January 1995 that our mother Phebean Aderinboye 
-                lost the battle against illness and joined the Saints Triumphant. Her loss was very painful because all her life she laboured on 
+                lost the battle against illness and passed away. Her loss was very painful because all her life she laboured on 
                 her children and fostered others in the knowledge industry. Death did not afford her the opportunity to reap her blue chip investment 
                 on her seeds. However, today her legacies remain; not written in the combustible pages of exercise books but in the annals of history and 
                 the minds of the erstwhile pupils that passed through her tutelage plus we, her noble family. She was a beauty personified a humble and caring woman of valour. 
@@ -164,7 +164,7 @@ const MemorialPage = () => {
             <LegacyItem 
               icon="👨‍👩‍👧‍👦" 
               title="Family" 
-              content="Mother of 5, grandmother of 12, great-grandmother of 8" 
+              content="Mother of 7, with many grandchildren" 
             />
             <LegacyItem 
               icon="🧵" 
