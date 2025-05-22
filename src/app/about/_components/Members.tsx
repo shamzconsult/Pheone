@@ -139,12 +139,12 @@ function Members() {
                                     className='w-[400px] h-[400px] object-contain' 
                                 />
                             </div>
-                            <p className='text-center text-lg font-semibold'>Salena Lyare, M.A</p>
+                            <p className='text-center text-lg font-semibold'>Salena Iyare, M.A</p>
                             <p className='text-center text-md py-2 font-semibold text-[#2c7bbd]'>Board Member.</p>
                         </div>
                         <div className='md:w-7/12 text-left max-w-3xl mt-10 md:mt-0'>
                             <p className='tracking-wider leading-loose text-left'>
-                                <span className='text-[#2c7bbd]'>Salena Lyare</span> is a distinguished Behavioral Analyst based in Tinley Park, IL, 
+                                <span className='text-[#2c7bbd]'>Salena Iyare</span> is a distinguished Behavioral Analyst based in Tinley Park, IL, 
                                 recognized for her expertise and dedication to improving client well-being. With a deep passion for behavioral analysis, 
                                 she has established herself as a trusted professional committed to delivering personalized and impactful care. Salena is 
                                 also a leader in education, emphasizing the core values of communication, safety, and trust in her approach. Through her work, 
