@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -67,19 +66,6 @@ function HomeHero() {
     }
   };
 
-  // const imageVariants = {
-  //   hidden: { scale: 0.9, opacity: 0 },
-  //   visible: {
-  //     scale: 1,
-  //     opacity: 1,
-  //     transition: {
-  //       type: 'spring',
-  //       stiffness: 50,
-  //       delay: 0.5
-  //     }
-  //   }
-  // };
-
   const buttonVariants = {
     hidden: { scale: 0.95, opacity: 0 },
     visible: {
@@ -99,9 +85,9 @@ function HomeHero() {
 
   return (
     <div className="relative overflow-x-hidden" ref={ref}>
-      {/* Left Blue Shape  */}
+      {/* Left Blue Shape */}
       <motion.div 
-        className="absolute hidden md:block left-0 top-0 h-full xl:w-[350px] xl:max-w-[400px] -z-10"
+        className="absolute hidden md:block left-0 top-0 h-full w-[200px] lg:w-[300px] xl:w-[350px] -z-10"
         initial="hidden"
         animate={controls}
         variants={leftShapeVariants}
@@ -115,27 +101,27 @@ function HomeHero() {
 
       {/* Right Blue Shape */}
       <motion.div 
-        className="absolute hidden md:block right-0 top-0 h-full w-full max-w-[300px] xl:max-w-[700px] -z-10 "
+        className="absolute hidden md:block right-0 top-0 h-full w-[250px] lg:w-[400px] xl:w-[500px] -z-10"
         initial="hidden"
         animate={controls}
         variants={rightShapeVariants}
       >
         <img 
           src="/image/Rectangle 40.png" 
-          className="h-[600px] lg:h-full w-full object-cover object-right"
+          className="h-full w-full object-cover object-right"
           alt="Decorative blue shape"
         />
       </motion.div>
 
       <motion.div 
-        className="relative z-10 max-w-screen-3xl mx-auto md:flex items-center min-h-[80vh] xl:px-32 mt-24 md:mt-0"
+        className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-0 flex flex-col md:flex-row items-center min-h-[80vh] py-12 md:py-0 mt-20 md:mt-10"
         initial="hidden"
         animate={controls}
         variants={containerVariants}
       >
-        <div className='md:w-7/12 p-6 md:p-12 xl:p-20 md:mt-2'>
+        <div className='md:w-1/2 lg:w-7/12 px-4 md:px-6 lg:px-8 xl:px-12'>
           <motion.h1 
-            className='font-bold text-4xl xl:text-4xl 2xl:text-5xl lg:tracking-wider leading-tight'
+            className='font-bold text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-5xl leading-tight tracking-tight'
             variants={textVariants}
           >
             EMBRACING <br />
@@ -152,33 +138,33 @@ function HomeHero() {
           </motion.h1>
 
           <motion.p 
-            className='lg:mt-10 mt-4 tracking-wide leading-relaxed lg:text-lg'
+            className='mt-6 lg:mt-8 text-base sm:text-lg lg:text-xl leading-relaxed'
             variants={textVariants}
           >
             Together, we are shaping a world where every individual&apos;s special abilities are recognized and valued.
           </motion.p>
 
           <motion.div 
-            className='mt-10 md:flex items-center gap-4 md:gap-8 xl:gap-16'
+            className='mt-8 lg:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 lg:gap-8'
             variants={textVariants}
           >
             <motion.div variants={buttonVariants} whileHover="hover">
               <a
-                className="inline-block whitespace-nowrap rounded-full font-bold px-6 py-3.5 text-sm bg-[#2c7bbd] text-white md:px-10 hover:bg-[#1a5a9a] transition-colors"
+                className="inline-block whitespace-nowrap rounded-full font-bold px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base bg-[#2c7bbd] text-white hover:bg-[#1a5a9a] transition-colors"
                 href="/contact"
               >
                 Get in Touch
               </a>
             </motion.div>
             <motion.div 
-              className='mt-6 md:mt-0'
+              className='mt-4 sm:mt-0'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
             >
-              <p className='text-[#2c7bbd] font-semibold'>Trusted by more than 5 countries</p>
+              <p className='text-[#2c7bbd] font-semibold text-sm sm:text-base'>Trusted by more than 5 countries</p>
               <motion.p 
-                className="text-yellow-400"
+                className="text-yellow-400 mt-1"
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ 
@@ -193,16 +179,19 @@ function HomeHero() {
           </motion.div>
         </div>
         
-        <div 
-          className='md:w-5/12 mt-10 lg:mt-2 xl:mt-32'
-          
-        >
-          <img 
-            src="/image/gettyimages-1347952744-640x640.png" 
-            alt="Neurodiversity illustration"
-            className="w-full w-[800px] mx-auto"
-          />
-          </div>
+        <div className='md:w-1/2 lg:w-5/12 mt-12 md:mt-0 px-4 md:px-0'>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.6 }}
+          >
+            <img 
+              src="/image/gettyimages-1347952744-640x640.png" 
+              alt="Neurodiversity illustration"
+              className="w-full max-w-[600px] lg:max-w-[800px] mx-auto object-contain"
+            />
+          </motion.div>
+        </div>
       </motion.div>
     </div>
   )
