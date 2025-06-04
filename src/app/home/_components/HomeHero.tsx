@@ -101,7 +101,7 @@ function HomeHero() {
 
       {/* Right Blue Shape */}
       <motion.div 
-        className="absolute hidden md:block right-0 top-0 h-full w-[250px] lg:w-[400px] xl:w-[500px] -z-10"
+        className="absolute hidden md:block right-0 top-0 h-full w-[250px] lg:w-[400px] xl:w-[700px] -z-10"
         initial="hidden"
         animate={controls}
         variants={rightShapeVariants}
@@ -114,7 +114,7 @@ function HomeHero() {
       </motion.div>
 
       <motion.div 
-        className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-0 flex flex-col md:flex-row items-center min-h-[80vh] py-12 md:py-0 mt-20 md:mt-10"
+        className="relative z-10 max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-0 flex flex-col md:flex-row items-center  py-12 md:py-0 mt-20 md:mt-32"
         initial="hidden"
         animate={controls}
         variants={containerVariants}
