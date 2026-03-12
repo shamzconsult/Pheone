@@ -167,7 +167,7 @@ function ContactForm() {
             </div>
       </form>
 
-      <div className='max-w-screen-lg mx-auto px-4 sm:px-6 mt-10'>
+      <div className='max-w-screen-xl mx-auto px-4 sm:px-6 mt-10'>
         <div className='bg-white p-8 sm:p-10 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100'>
           <h2 className='text-3xl font-bold text-[#2c7bbd] mb-8 text-center'>Get In Touch</h2>
           
@@ -199,9 +199,9 @@ function ContactForm() {
               <h3 className='font-semibold text-gray-800 text-lg mb-2'>Email</h3>
               <a 
                 href="mailto:info@phebeansupport.org" 
-                className='text-gray-600 hover:text-[#2c7bbd] transition-colors text-md font-medium break-all'
+                className='text-gray-600 hover:text-[#2c7bbd] transition-colors text-base font-medium break-all'
               >
-                liz@phebeanneurodiversitysupport.org
+                info@phebeanneurodiversity.org
               </a>
             </div>
 

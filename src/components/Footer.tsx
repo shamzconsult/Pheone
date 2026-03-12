@@ -278,8 +278,20 @@ function Footer() {
                             </div>
                             <div className='flex gap-2 items-center justify-center md:justify-start'>
                                 <FiMail className='bg-white/10 backdrop-blur-lg text-xl md:text-2xl p-1 rounded-full'/>
-                                <a href="mailto:liz@phebeanneurodiversitysupport.org" className="hover:underline">
-                                    liz@phebeanneurodiversitysupport.org
+                                <a href="mailto:info@phebeanneurodiversity.org" className="hover:underline">
+                                    info@phebeanneurodiversity.org
+                                </a>
+                            </div>
+                            <div className='flex gap-2 items-center justify-center md:justify-start'>
+                                <FiMail className='bg-white/10 backdrop-blur-lg text-xl md:text-2xl p-1 rounded-full'/>
+                                <a href="mailto:liz@phebeanneurodiversity.org" className="hover:underline">
+                                    liz@phebeanneurodiversity.org
+                                </a>
+                            </div>
+                            <div className='flex gap-2 items-center justify-center md:justify-start'>
+                                <FiMail className='bg-white/10 backdrop-blur-lg text-xl md:text-2xl p-1 rounded-full'/>
+                                <a href="mailto:programs@phebeanneurodiversity.org" className="hover:underline">
+                                    programs@phebeanneurodiversity.org
                                 </a>
                             </div>
                         </div>
@@ -289,7 +301,7 @@ function Footer() {
 
             <div className="mt-12 border-t border-gray-400 pt-6">
                 <div className="text-center ">
-                    <p className="text-sm text-white"> Copyright &copy; 2025 Phebean Neurodiversity support. All rights reserved
+                    <p className="text-sm text-white"> Copyright &copy; {new Date().getFullYear()} Phebean Neurodiversity support. All rights reserved
                     </p>
                 </div>
             </div>
