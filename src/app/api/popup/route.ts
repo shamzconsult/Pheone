@@ -10,8 +10,8 @@ type PopupUpdateData = {
     images?: string[];
     isActive?: boolean;
     showOncePerSession?: boolean;
-    startsAt?: string | null;
-    endsAt?: string | null;
+    startsAt?: Date | null;
+    endsAt?: Date | null;
   };
 
 export async function POST(req: Request) {
@@ -33,6 +33,20 @@ export async function POST(req: Request) {
           { status: 400 }
         );
       }
+
+      const parsedStartsAt = startsAt ? new Date(startsAt) : null;
+      const parsedEndsAt = endsAt ? new Date(endsAt) : null;
+
+    if (
+      parsedStartsAt &&
+      parsedEndsAt &&
+      parsedStartsAt.getTime() > parsedEndsAt.getTime()
+    ) {
+      return NextResponse.json(
+        { message: "Start date cannot be later than end date" },
+        { status: 400 }
+      );
+    }
   
       const uploadedImages = await Promise.all(
         images.map(async (img: string) => {
@@ -53,8 +67,8 @@ export async function POST(req: Request) {
         images: uploadedImages,
         isActive: isActive ?? true,
         showOncePerSession: showOncePerSession ?? true,
-        startsAt: startsAt || null,
-        endsAt: endsAt || null,
+        startsAt: parsedStartsAt,
+        endsAt: parsedEndsAt,
       });
   
       return NextResponse.json(popup, { status: 201 });
@@ -106,12 +120,27 @@ export async function PUT(req: Request) {
   
       const updateData: PopupUpdateData = {};
   
+      const parsedStartsAt = startsAt ? new Date(startsAt) : null;
+        const parsedEndsAt = endsAt ? new Date(endsAt) : null;
+
+        if (
+        parsedStartsAt &&
+        parsedEndsAt &&
+        parsedStartsAt.getTime() > parsedEndsAt.getTime()
+        ) {
+        return NextResponse.json(
+            { message: "Start date cannot be later than end date" },
+            { status: 400 }
+        );
+        }
+
+        if (startsAt !== undefined) updateData.startsAt = parsedStartsAt;
+        if (endsAt !== undefined) updateData.endsAt = parsedEndsAt;
+
       if (isActive !== undefined) updateData.isActive = isActive;
       if (showOncePerSession !== undefined) {
         updateData.showOncePerSession = showOncePerSession;
       }
-      if (startsAt !== undefined) updateData.startsAt = startsAt || null;
-      if (endsAt !== undefined) updateData.endsAt = endsAt || null;
   
       if (image) {
         if (image.startsWith("http")) {
