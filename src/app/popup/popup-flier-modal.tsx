@@ -101,7 +101,7 @@ export default function PopupFlyerModal() {
           <FiX />
         </button>
 
-        <div className="relative h-[500px] w-[full]">
+        <div className="relative h-[500px] w-full">
           <Image
             src={popupImages[currentIndex]}
             alt={`Popup flyer ${currentIndex + 1}`}
