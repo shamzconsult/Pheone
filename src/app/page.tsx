@@ -7,10 +7,12 @@ import HomeHero from "./home/_components/HomeHero";
 import Testimonials from "./home/_components/Testimonials";
 import Vision from "./home/_components/Vision";
 import WhyChooseUs from "./home/_components/WhyChooseUs";
+import PopupFlyerModal from "./popup/popup-flier-modal";
 
 export default function Home() {
   return (
     <div>
+      <PopupFlyerModal/>
       <HomeHero/>
       <Counters/>
       <Vision/>
