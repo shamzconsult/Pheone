@@ -50,7 +50,7 @@ const Counters = () => {
             </span>
             +
           </h2>
-          <p className="text-white text-lg font-medium mt-4">Years of Experience</p>
+          <p className="text-white text-lg font-medium mt-4">Years of Impact</p>
           <div className="hidden md:block absolute right-[-4rem] top-1/2 transform -translate-y-1/2 h-16 w-px bg-white/100"></div>
         </div>
 
@@ -61,7 +61,7 @@ const Counters = () => {
             </span>
             +
           </h2>
-          <p className="text-white text-lg font-medium mt-4">Successful Program</p>
+          <p className="text-white text-lg font-medium mt-4">Programs and Services</p>
           <div className="hidden md:block absolute right-[-4rem] top-1/2 transform -translate-y-1/2 h-16 w-px bg-white/100"></div>
         </div>
 
@@ -72,18 +72,18 @@ const Counters = () => {
             </span>
             +
           </h2>
-          <p className="text-white text-lg font-medium mt-4">Trained professionals</p>
+          <p className="text-white text-lg font-medium mt-4">Professionals and Volunteer</p>
           <div className="hidden md:block absolute right-[-4rem] top-1/2 transform -translate-y-1/2 h-16 w-px bg-white/100"></div>
         </div>
 
         <div className="counter-item text-center">
           <h2 className="flex items-center justify-center text-white text-6xl font-bold">
-            <span className="counter" data-target="87">
+            <span className="counter" data-target="40">
               0
             </span>
             +
           </h2>
-          <p className="text-white text-lg font-medium mt-4">Special People</p>
+          <p className="text-white text-lg font-medium mt-4">Lives Reached</p>
         </div>
       </div>
     </div>
