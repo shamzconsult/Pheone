@@ -1,40 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link';
-import React, { useState } from 'react'
-import { FiSend } from "react-icons/fi";
 import { FiPhone, FiMail } from "react-icons/fi";
 import { Newsletter } from './Newsletter';
 
 
 
 function Footer() {
-    const [email, setEmail] = useState('');
-    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setStatus('loading');
-        
-        try {
-          const response = await fetch('/api/newsletter', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email }),
-          });
-    
-          if (response.ok) {
-            setStatus('success');
-            setEmail('');
-            setTimeout(() => setStatus('idle'), 3000); 
-          } else {
-            setStatus('error');
-          }
-        } catch (error) {
-            console.error(error)
-          setStatus('error');
-        }
-      };
-
   return (
     <footer className="bg-[#2c7bbd]">
         <Newsletter />

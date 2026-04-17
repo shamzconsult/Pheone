@@ -1,6 +1,5 @@
 "use client"
-import { useState, useRef } from "react"
-import { useInView } from "framer-motion"
+import { useState} from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 function SuccessModal({ onClose }: { onClose: () => void }) {
@@ -36,7 +35,7 @@ function SuccessModal({ onClose }: { onClose: () => void }) {
 
           <h3 className="text-white text-2xl font-black tracking-tight mb-2">You are now subscribed!</h3>
           <p className="text-white/60 font-mono text-sm leading-relaxed mb-7">
-            Thanks for subscribing. You'll be the first to know about our
+          {"Thanks for subscribing. You'll be the first to know..."}
             latest updates, initiatives, and projects from ARBR.
           </p>
 
