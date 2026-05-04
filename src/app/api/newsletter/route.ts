@@ -35,7 +35,8 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true })
-  } catch (err) {
+  } catch (error) {
+    console.error("Newsletter API error:", error)
     return NextResponse.json({ error: "Server error. Please try again." }, { status: 500 })
   }
-}
+} 
