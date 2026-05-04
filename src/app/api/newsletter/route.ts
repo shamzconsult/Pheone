@@ -1,35 +1,42 @@
-import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { NextResponse } from "next/server"
 
 export async function POST(req: Request) {
-    const { email } = await req.json();
+  const { email } = await req.json()
 
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-        }
-    });
+  if (!email || !email.includes("@")) {
+    return NextResponse.json({ error: "Valid email is required" }, { status: 400 })
+  }
 
-    try {
-        await transporter.sendMail({
-          from: `"Website Newsletter" <${process.env.GMAIL_USER}>`,
-          to: 'phebeanneuro@gmail.com',
-          subject: 'New Newsletter Subscriber',
-          text: `New subscriber: ${email}`,
-          html: `
-            <h3>New Newsletter Signup</h3>
-            <p>Email: ${email}</p>
-            <p>Time: ${new Date().toLocaleString()}</p>
-          `
-        });
-        return NextResponse.json({ success: true });
-    } catch (error) {
-        console.error('Failed to send email:', error);
-        return NextResponse.json(
-          { error: "Failed to process subscription" },
-          { status: 500 }
-        );
-      }  
-}
+  const API_KEY = process.env.MAILCHIMP_API_KEY
+  const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID
+  const DC = process.env.MAILCHIMP_DATA_CENTER
+
+  const url = `https://${DC}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`
+
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: `apikey ${API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email_address: email,
+        status: "subscribed",
+        tags: ["website"],   // <-- your "website" tag
+      }),
+    })
+
+    const data = await response.json()
+
+    // 400 with title "Member Exists" means already subscribed
+    if (!response.ok && data.title !== "Member Exists") {
+      return NextResponse.json({ error: data.detail || "Subscription failed" }, { status: 400 })
+    }
+
+    return NextResponse.json({ success: true })
+  } catch (error) {
+    console.error("Newsletter API error:", error)
+    return NextResponse.json({ error: "Server error. Please try again." }, { status: 500 })
+  }
+} 
