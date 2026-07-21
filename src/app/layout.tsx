@@ -72,7 +72,6 @@ export const metadata: Metadata = {
   },
 }
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -80,7 +79,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-    <Script 
+      {/* Google Analytics */}
+      <Script 
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
         strategy="afterInteractive"
       />
@@ -92,6 +92,16 @@ export default function RootLayout({
           gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
         `}
       </Script>
+
+      {/* Sabilytics Analytics */}
+      <Script
+        async
+        src="https://sabilytics.vercel.app/script.js"
+        data-site="odmujp15xvl6"
+        data-domain="phebeanneurodiversity.org"
+        strategy="afterInteractive"
+      />
+
       <StructuredData />
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
